@@ -4,49 +4,57 @@
       "id": 1,
       "name": "Hotel Shreepad Continental",
       "city": "Amravati",
-      "contactNumbers": ["9638060000", "0721 2660901"]
+      "contactNumbers": ["9638060000", "0721 2660901"],
+      "bookingUrl": "https://www.booking.com/hotel/in/shripad-continental.en-gb.html"
     },
     {
       "id": 2,
-      "name": "Hotel Ramgiri",
+      "name": "Hotel Ramgiri International",
       "city": "Amravati",
-      "contactNumbers": ["0721 2677624", "0721 2676724"]
+      "contactNumbers": ["0721 2677624", "0721 2676724"],
+      "bookingUrl": "https://us.trip.com/hotels/amravati-hotel-detail-22796579/hotel-ramgiri-international/"
     },
     {
       "id": 3,
       "name": "Hotel Grand Mehfil",
       "city": "Amravati",
-      "contactNumbers": ["9960336218", "0721 2552288"]
+      "contactNumbers": ["9960336218", "0721 2552288"],
+      "bookingUrl": "http://www.mehfilhotels.com/Grand-Mehfil/"
     },
     {
       "id": 4,
-      "name": "Hotel Rangoli Perl",
+      "name": "Hotel Rangoli Pearl",
       "city": "Amravati",
-      "contactNumbers": ["9224444455", "7767807309"]
+      "contactNumbers": ["9224444455", "7767807309"],
+      "bookingUrl": "https://www.makemytrip.com/hotels/hotel_rangoli_pearl-details-amravati.html"
     },
     {
       "id": 5,
       "name": "Hotel Neelam",
       "city": "Amravati",
-      "contactNumbers": ["7498482355", "0721 2678743"]
+      "contactNumbers": ["7498482355", "0721 2678743"],
+      "bookingUrl": "https://www.neelamhotel.com/"
     },
     {
       "id": 6,
       "name": "Hotel Grace Inn",
       "city": "Amravati",
-      "contactNumbers": ["9272107475", "9975232724"]
+      "contactNumbers": ["9272107475", "9975232724"],
+      "bookingUrl": "https://www.makemytrip.global/hotels/hotel_grace_inn-details-amravati.html"
     },
     {
       "id": 7,
       "name": "Hotel Radhey Inn",
       "city": "Amravati",
-      "contactNumbers": ["7383075836", "0721 2671234"]
+      "contactNumbers": ["7383075836", "0721 2671234"],
+      "bookingUrl": "http://www.hotelradheyinn.in/"
     },
     {
       "id": 8,
       "name": "Hotel Gauri Inn",
       "city": "Amravati",
-      "contactNumbers": ["9561098550", "9834341277"]
+      "contactNumbers": ["9561098550", "9834341277"],
+      "bookingUrl": "https://www.gouriinn.in/"
     }
   ]
 }

@@ -37,8 +37,9 @@ export const navigationLinks = [
   { label: 'Home', href: '/' },
   { label: 'Categories', href: '/#categories' },
   { label: 'Prizes', href: '/prizes' },
+  { label: 'Hotels', href: '/hotels' },
   { label: 'Sponsors', href: '/#sponsors' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Results', href: '/results' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
