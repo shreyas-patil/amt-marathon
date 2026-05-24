@@ -1,0 +1,52 @@
+{
+  "hotels": [
+    {
+      "id": 1,
+      "name": "Hotel Shreepad Continental",
+      "city": "Amravati",
+      "contactNumbers": ["9638060000", "0721 2660901"]
+    },
+    {
+      "id": 2,
+      "name": "Hotel Ramgiri",
+      "city": "Amravati",
+      "contactNumbers": ["0721 2677624", "0721 2676724"]
+    },
+    {
+      "id": 3,
+      "name": "Hotel Grand Mehfil",
+      "city": "Amravati",
+      "contactNumbers": ["9960336218", "0721 2552288"]
+    },
+    {
+      "id": 4,
+      "name": "Hotel Rangoli Perl",
+      "city": "Amravati",
+      "contactNumbers": ["9224444455", "7767807309"]
+    },
+    {
+      "id": 5,
+      "name": "Hotel Neelam",
+      "city": "Amravati",
+      "contactNumbers": ["7498482355", "0721 2678743"]
+    },
+    {
+      "id": 6,
+      "name": "Hotel Grace Inn",
+      "city": "Amravati",
+      "contactNumbers": ["9272107475", "9975232724"]
+    },
+    {
+      "id": 7,
+      "name": "Hotel Radhey Inn",
+      "city": "Amravati",
+      "contactNumbers": ["7383075836", "0721 2671234"]
+    },
+    {
+      "id": 8,
+      "name": "Hotel Gauri Inn",
+      "city": "Amravati",
+      "contactNumbers": ["9561098550", "9834341277"]
+    }
+  ]
+}

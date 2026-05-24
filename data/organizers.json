@@ -1,0 +1,28 @@
+{
+  "organizers": [
+    {
+      "id": 1,
+      "name": "Contact Person 1",
+      "role": "Event Organizer",
+      "email": "organizer1@runamravati.com",
+      "phone": "+91 XXXXXXXXXX",
+      "avatar": "/images/organizers/organizer-1.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Contact Person 2",
+      "role": "Event Coordinator",
+      "email": "organizer2@runamravati.com",
+      "phone": "+91 XXXXXXXXXX",
+      "avatar": "/images/organizers/organizer-2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Contact Person 3",
+      "role": "Sponsorship Lead",
+      "email": "sponsor@runamravati.com",
+      "phone": "+91 XXXXXXXXXX",
+      "avatar": "/images/organizers/organizer-3.jpg"
+    }
+  ]
+}

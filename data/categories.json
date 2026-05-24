@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "id": "half-marathon",
+      "name": "Half Marathon",
+      "distance": "21.1 km",
+      "description": "Challenge yourself with the full half marathon distance",
+      "ageGroup": "Age 18 & above",
+      "fees": {
+        "earlyBird": 1400,
+        "standard": 1700,
+        "currency": "INR",
+        "earlyBirdDeadline": "2026-07-31"
+      }
+    },
+    {
+      "id": "10km-power-run",
+      "name": "10 km Power Run",
+      "distance": "10 km",
+      "description": "A powerful running experience for fitness enthusiasts",
+      "ageGroup": "Age 15 & above",
+      "fees": {
+        "earlyBird": 1000,
+        "standard": 1250,
+        "currency": "INR",
+        "earlyBirdDeadline": "2026-07-31"
+      }
+    },
+    {
+      "id": "5km-fitness-run",
+      "name": "5 km Fitness Run",
+      "distance": "5 km",
+      "description": "A great way to start your fitness journey",
+      "ageGroup": "Age 15 & above",
+      "fees": {
+        "earlyBird": 800,
+        "standard": 1000,
+        "currency": "INR",
+        "earlyBirdDeadline": "2026-07-31"
+      }
+    },
+    {
+      "id": "5km-children-dream-run",
+      "name": "5 km Children's Dream Run",
+      "distance": "5 km",
+      "description": "A fun and safe running experience for young participants",
+      "ageGroup": "Age 10 to 15 years",
+      "fees": {
+        "earlyBird": 400,
+        "standard": 600,
+        "currency": "INR",
+        "earlyBirdDeadline": "2026-07-31"
+      }
+    }
+  ]
+}
