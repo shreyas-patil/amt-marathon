@@ -14,7 +14,7 @@ export const siteConfig = {
 export const eventConfig = {
   year: 2026,
   name: 'Amravati Half Marathon 2026',
-  date: '2026-06-XX', // Update with actual date
+  date: '2026-10-25',
   location: 'Amravati, Maharashtra, India',
   registrationUrl:
     process.env.NEXT_PUBLIC_TOWNSCRIPT_URL ||
