@@ -1,0 +1,86 @@
+{
+  "categories": [
+    {
+      "id": "half-marathon-male",
+      "name": "Half Marathon Male",
+      "ageNote": "Age 18 & above",
+      "columns": ["Below 45 Years", "Above 45 Years"],
+      "prizes": [
+        { "rank": 1, "amounts": [21000, 15000] },
+        { "rank": 2, "amounts": [15000, 12500] },
+        { "rank": 3, "amounts": [12500, 10000] },
+        { "rank": 4, "amounts": [10000, 7500] },
+        { "rank": 5, "amounts": [7500, 5000] }
+      ]
+    },
+    {
+      "id": "half-marathon-female",
+      "name": "Half Marathon Female",
+      "ageNote": "Age 18 & above",
+      "columns": ["Below 40 Years", "Above 40 Years"],
+      "prizes": [
+        { "rank": 1, "amounts": [15000, 15000] },
+        { "rank": 2, "amounts": [12500, 12500] },
+        { "rank": 3, "amounts": [10000, 10000] },
+        { "rank": 4, "amounts": [7500, 7500] },
+        { "rank": 5, "amounts": [5000, 5000] }
+      ]
+    },
+    {
+      "id": "half-marathon-out-of-maharashtra",
+      "name": "Half Marathon – Out of Maharashtra",
+      "ageNote": "Age 18 & above",
+      "columns": ["Male", "Female"],
+      "prizes": [
+        { "rank": 1, "amounts": [15000, 15000] },
+        { "rank": 2, "amounts": [10000, 10000] },
+        { "rank": 3, "amounts": [7500, 7500] },
+        { "rank": 4, "amounts": [null, null] },
+        { "rank": 5, "amounts": [null, null] }
+      ]
+    },
+    {
+      "id": "10km-power-run",
+      "name": "10 km Power Run",
+      "ageNote": "Age 15 & above",
+      "columns": ["Male", "Female"],
+      "prizes": [
+        { "rank": 1, "amounts": [10000, 10000] },
+        { "rank": 2, "amounts": [7500, 7500] },
+        { "rank": 3, "amounts": [5000, 5000] },
+        { "rank": 4, "amounts": [3000, 3000] },
+        { "rank": 5, "amounts": [2000, 2000] }
+      ]
+    },
+    {
+      "id": "5km-fitness-run",
+      "name": "5 km Fitness Run",
+      "ageNote": "Age 15 & above",
+      "columns": ["Gents", "Ladies"],
+      "prizes": [
+        { "rank": 1, "amounts": [10000, 10000] },
+        { "rank": 2, "amounts": [7500, 7500] },
+        { "rank": 3, "amounts": [5000, 5000] },
+        { "rank": 4, "amounts": [3000, 3000] },
+        { "rank": 5, "amounts": [2000, 2000] }
+      ]
+    },
+    {
+      "id": "5km-dream-run",
+      "name": "5 km Children's Dream Run",
+      "ageNote": "Age 10 to 15 years",
+      "columns": ["Boys", "Girls"],
+      "prizes": [
+        { "rank": 1, "amounts": [10000, 10000] },
+        { "rank": 2, "amounts": [7500, 7500] },
+        { "rank": 3, "amounts": [5000, 5000] },
+        { "rank": 4, "amounts": [3000, 3000] },
+        { "rank": 5, "amounts": [2000, 2000] }
+      ]
+    }
+  ],
+  "notes": [
+    "Out of Maharashtra Runners includes runners from any other state other than Maharashtra and international runners.",
+    "Any runner taking more than 2:30 hours in Half Marathon Category is not eligible for cash prize."
+  ]
+}

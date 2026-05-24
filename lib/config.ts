@@ -36,6 +36,7 @@ export const seoKeywords = [
 export const navigationLinks = [
   { label: 'Home', href: '/' },
   { label: 'Categories', href: '/#categories' },
+  { label: 'Prizes', href: '/prizes' },
   { label: 'Sponsors', href: '/#sponsors' },
   { label: 'Gallery', href: '/gallery' },
   { label: 'Results', href: '/results' },
