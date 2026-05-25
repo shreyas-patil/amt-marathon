@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { navigationLinks, eventConfig } from '@/lib/config'
 
@@ -13,9 +14,13 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           <Link href="/" className="flex items-center gap-3">
-            <span className="text-white font-black text-xl tracking-tight">
-              AMT<span className="text-orange-500">26</span>
-            </span>
+            <Image
+              src="/images/amt-marathon-logo.png"
+              alt="Amravati Marathon"
+              width={40}
+              height={40}
+              className="rounded-lg"
+            />
             <span className="hidden sm:block text-white/40 text-xs tracking-widest uppercase">
               Amravati Marathon
             </span>

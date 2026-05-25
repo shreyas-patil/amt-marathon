@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import organizersData from '@/data/organizers.json'
 import { siteConfig } from '@/lib/config'
 
@@ -20,10 +21,16 @@ function OrganizerCard({ org }: { org: (typeof organizersData.organizers)[0] }) 
   return (
     <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-8 flex flex-col gap-6 max-w-2xl mx-auto w-full">
       <div className="flex items-start gap-5">
-        {/* Initials avatar */}
-        <div className="w-16 h-16 rounded-2xl bg-orange-500 flex items-center justify-center shrink-0 shadow-md shadow-orange-200">
-          <span className="text-white font-black text-xl tracking-tight">{initials}</span>
-        </div>
+        {/* Avatar */}
+        {org.avatar ? (
+          <div className="w-16 h-16 rounded-2xl shrink-0 shadow-md shadow-orange-200 overflow-hidden">
+            <Image src={org.avatar} alt={org.name} width={64} height={64} className="w-full h-full object-cover" />
+          </div>
+        ) : (
+          <div className="w-16 h-16 rounded-2xl bg-orange-500 flex items-center justify-center shrink-0 shadow-md shadow-orange-200">
+            <span className="text-white font-black text-xl tracking-tight">{initials}</span>
+          </div>
+        )}
         <div>
           <h3 className="text-zinc-900 font-black text-xl leading-tight">{org.name}</h3>
           <p className="text-orange-500 font-semibold text-sm mt-0.5">{org.role}</p>
@@ -85,13 +92,15 @@ export default function ContactSection() {
               Get in Touch
             </p>
             <h3 className="text-zinc-900 font-black text-2xl mb-4">General Enquiries</h3>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center gap-2.5 text-zinc-700 hover:text-orange-500 transition-colors font-medium"
-            >
-              <span className="text-zinc-400"><MailIcon /></span>
-              {siteConfig.email}
-            </a>
+            {siteConfig.email ? (
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="inline-flex items-center gap-2.5 text-zinc-700 hover:text-orange-500 transition-colors font-medium"
+              >
+                <span className="text-zinc-400"><MailIcon /></span>
+                {siteConfig.email}
+              </a>
+            ) : null}
             <p className="text-zinc-400 text-sm mt-4 leading-relaxed">
               For registration queries, please visit Townscript. For timing and results, contact Alpha Racing Solutions directly.
             </p>
@@ -132,12 +141,14 @@ export default function ContactSection() {
               <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Location</p>
               <p className="font-black text-2xl">Amravati, MH</p>
             </div>
-            <div>
-              <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Email</p>
-              <a href={`mailto:${siteConfig.email}`} className="font-black text-lg hover:text-orange-200 transition-colors break-all">
-                {siteConfig.email}
-              </a>
-            </div>
+            {siteConfig.email && (
+              <div>
+                <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Email</p>
+                <a href={`mailto:${siteConfig.email}`} className="font-black text-lg hover:text-orange-200 transition-colors break-all">
+                  {siteConfig.email}
+                </a>
+              </div>
+            )}
           </div>
         </div>
 

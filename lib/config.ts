@@ -8,7 +8,8 @@ export const siteConfig = {
   ogImage: '/og-image.jpg',
   twitter: '@amravatimarathon', // Update as needed
   author: 'Amravati Marathon Team',
-  email: 'info@runamravati.com',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ??
+    (process.env.NODE_ENV === 'development' ? '[FILL OUT THIS SPACE]' : ''),
 };
 
 export const eventConfig = {

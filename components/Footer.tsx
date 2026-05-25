@@ -41,11 +41,13 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-zinc-500">
               <li>📅 25 October 2026</li>
               <li>📍 Amravati, Maharashtra</li>
-              <li>
-                <a href={`mailto:${siteConfig.email}`} className="hover:text-zinc-300 transition-colors">
-                  ✉️ {siteConfig.email}
-                </a>
-              </li>
+              {siteConfig.email && (
+                <li>
+                  <a href={`mailto:${siteConfig.email}`} className="hover:text-zinc-300 transition-colors">
+                    ✉️ {siteConfig.email}
+                  </a>
+                </li>
+              )}
             </ul>
 
             <div className="mt-8">
