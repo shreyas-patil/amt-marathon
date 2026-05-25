@@ -5,6 +5,8 @@ import GalleryScroll from '@/components/GalleryScroll'
 export const metadata: Metadata = {
   title: 'Gallery',
   description: 'Photos from the Amravati Half Marathon — runners, crowds, and the spirit of the event.',
+  alternates: { canonical: 'https://runamravati.com/gallery' },
+  openGraph: { url: 'https://runamravati.com/gallery' },
 }
 
 export default function GalleryPage() {
