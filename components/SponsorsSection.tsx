@@ -22,14 +22,11 @@ export default function SponsorsSection() {
   return (
     <section id="sponsors" className="bg-zinc-50 py-24 px-6">
       <div className="max-w-5xl mx-auto">
-
         <div className="text-center mb-16">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Partners
           </p>
-          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
-            Our Sponsors
-          </h2>
+          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">Our Sponsors</h2>
           <p className="text-zinc-500 max-w-md mx-auto">
             The organizations that make this event possible.
           </p>
@@ -39,7 +36,7 @@ export default function SponsorsSection() {
           <EmptyState />
         ) : (
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-            {sponsors.map(sponsor => (
+            {sponsors.map((sponsor) => (
               <div
                 key={sponsor.id}
                 className="flex items-center justify-center p-6 bg-white rounded-2xl border border-zinc-100 shadow-sm hover:shadow-md transition-shadow"
@@ -55,7 +52,6 @@ export default function SponsorsSection() {
             ))}
           </div>
         )}
-
       </div>
     </section>
   )

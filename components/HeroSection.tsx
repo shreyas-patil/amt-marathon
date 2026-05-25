@@ -24,8 +24,8 @@ export default function HeroSection() {
         </h1>
 
         <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          Run through the heart of Vidarbha. Four categories. Thousands of runners.
-          One unforgettable race day.
+          Run through the heart of Vidarbha. Four categories. Thousands of runners. One
+          unforgettable race day.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -48,7 +48,12 @@ export default function HeroSection() {
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
         <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
-        <svg className="w-4 h-4 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-4 h-4 animate-bounce"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
         </svg>
       </div>

@@ -4,7 +4,8 @@ import { eventConfig } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Route Maps',
-  description: 'Official route maps for all Amravati Half Marathon 2026 categories — Half Marathon 21.1 km, 10 km Power Run, and 5 km Fitness Run.',
+  description:
+    'Official route maps for all Amravati Half Marathon 2026 categories — Half Marathon 21.1 km, 10 km Power Run, and 5 km Fitness Run.',
   alternates: { canonical: 'https://runamravati.com/route-maps' },
   openGraph: { url: 'https://runamravati.com/route-maps' },
 }
@@ -46,15 +47,12 @@ export default function RouteMapsPage() {
   return (
     <div className="pt-16 bg-white min-h-screen">
       <div className="max-w-5xl mx-auto px-6 py-16">
-
         {/* Header */}
         <div className="text-center mb-16">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             {eventConfig.name}
           </p>
-          <h1 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
-            Route Maps
-          </h1>
+          <h1 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">Route Maps</h1>
           <p className="text-zinc-500 max-w-md mx-auto">
             Official course routes for all race categories on October 25, 2026.
           </p>
@@ -110,9 +108,11 @@ export default function RouteMapsPage() {
               <div
                 className="w-full bg-white"
                 style={{
-                  maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)',
+                  maskImage:
+                    'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)',
                   maskComposite: 'intersect',
-                  WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)',
+                  WebkitMaskImage:
+                    'linear-gradient(to right, transparent, black 5%, black 95%, transparent), linear-gradient(to bottom, transparent, black 5%, black 95%, transparent)',
                   WebkitMaskComposite: 'destination-in',
                 }}
               >
@@ -128,7 +128,6 @@ export default function RouteMapsPage() {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   )

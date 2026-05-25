@@ -5,14 +5,14 @@ export default function Footer() {
   return (
     <footer className="bg-black border-t border-white/10 py-16 px-4">
       <div className="max-w-7xl mx-auto">
-
         <div className="grid sm:grid-cols-3 gap-12 mb-12">
           <div>
             <div className="text-white font-black text-2xl mb-4">
               AMT<span className="text-orange-500">26</span>
             </div>
             <p className="text-zinc-500 text-sm leading-relaxed">
-              Annual running event celebrating fitness and community in Amravati, Maharashtra, India.
+              Annual running event celebrating fitness and community in Amravati, Maharashtra,
+              India.
             </p>
           </div>
 
@@ -21,7 +21,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {navigationLinks.map(link => (
+              {navigationLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -43,7 +43,10 @@ export default function Footer() {
               <li>📍 Amravati, Maharashtra</li>
               {siteConfig.email && (
                 <li>
-                  <a href={`mailto:${siteConfig.email}`} className="hover:text-zinc-300 transition-colors">
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="hover:text-zinc-300 transition-colors"
+                  >
                     ✉️ {siteConfig.email}
                   </a>
                 </li>
@@ -76,7 +79,6 @@ export default function Footer() {
             Timing by Alpha Racing Solutions
           </p>
         </div>
-
       </div>
     </footer>
   )

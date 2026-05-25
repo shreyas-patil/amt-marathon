@@ -38,7 +38,7 @@ function MoreDropdown() {
 
       {open && (
         <div className="absolute right-0 top-full mt-3 w-44 bg-zinc-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden">
-          {moreLinks.map(link => (
+          {moreLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -61,7 +61,6 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-white/10">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-
           <Link href="/" className="flex items-center">
             <Image
               src="/images/amt-marathon-logo.png"
@@ -74,7 +73,7 @@ export default function Header() {
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navigationLinks.map(link => (
+            {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -105,11 +104,21 @@ export default function Header() {
           >
             {menuOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -118,7 +127,7 @@ export default function Header() {
         {/* Mobile drawer — all links flat */}
         {menuOpen && (
           <div className="md:hidden border-t border-white/10 py-6 flex flex-col gap-5">
-            {[...navigationLinks, ...moreLinks].map(link => (
+            {[...navigationLinks, ...moreLinks].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}

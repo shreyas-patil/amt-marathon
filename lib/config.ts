@@ -6,10 +6,10 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://runamravati.com',
   domain: 'runamravati.com',
   ogImage: '/og-image.jpg',
-  twitter: '@amravatimarathon', // Update as needed
+  instagram: 'amravati.half.marathon',
   author: 'Amravati Marathon Team',
   email: 'amravatimarathon@gmail.com',
-};
+}
 
 export const eventConfig = {
   year: 2026,
@@ -20,7 +20,7 @@ export const eventConfig = {
     process.env.NEXT_PUBLIC_TOWNSCRIPT_URL ||
     'https://www.townscript.com/e/amravati-half-marathon2026-221331',
   maxParticipants: 200,
-};
+}
 
 export const seoKeywords = [
   'Amravati Half Marathon',
@@ -31,7 +31,7 @@ export const seoKeywords = [
   '10 km Power Run',
   'Marathon Registration',
   'Amravati Sports Event',
-];
+]
 
 export const navigationLinks = [
   { label: 'Home', href: '/' },
@@ -46,4 +46,4 @@ export const moreLinks = [
   { label: 'Sponsors', href: '/#sponsors' },
   { label: 'Results', href: '/results' },
   { label: 'Contact', href: '/contact' },
-];
+]

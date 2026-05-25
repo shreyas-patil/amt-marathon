@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import categoriesData from '@/data/categories.json'
 import { eventConfig } from '@/lib/config'
 
@@ -8,27 +8,30 @@ import { eventConfig } from '@/lib/config'
 const EARLY_BIRD_DEADLINE = new Date('2026-07-31T18:30:00Z')
 
 function useEarlyBirdExpired() {
-  const [expired, setExpired] = useState(false)
-  useEffect(() => {
-    setExpired(new Date() > EARLY_BIRD_DEADLINE)
-  }, [])
+  const [expired] = useState(
+    () => typeof window !== 'undefined' && new Date() > EARLY_BIRD_DEADLINE
+  )
   return expired
 }
 
 type Category = (typeof categoriesData.categories)[0]
 
-const categoryTheme: Record<string, {
-  accent: string
-  glow: string
-  medalBg: string
-  sheenColor: string
-  stripeColor: string
-  ageColor: string
-}> = {
+const categoryTheme: Record<
+  string,
+  {
+    accent: string
+    glow: string
+    medalBg: string
+    sheenColor: string
+    stripeColor: string
+    ageColor: string
+  }
+> = {
   'half-marathon': {
     accent: '#f97316',
     glow: 'rgba(249,115,22,0.50)',
-    medalBg: 'linear-gradient(155deg, #100804 0%, #1e0d06 15%, #321408 35%, #2a1006 55%, #180903 75%, #0c0502 100%)',
+    medalBg:
+      'linear-gradient(155deg, #100804 0%, #1e0d06 15%, #321408 35%, #2a1006 55%, #180903 75%, #0c0502 100%)',
     sheenColor: 'rgba(150,80,25,0.20)',
     stripeColor: '#ea580c',
     ageColor: '#c4784a',
@@ -36,7 +39,8 @@ const categoryTheme: Record<string, {
   '10km-power-run': {
     accent: '#7aad68',
     glow: 'rgba(122,173,104,0.45)',
-    medalBg: 'linear-gradient(155deg, #04100a 0%, #091e0e 15%, #0f2e14 35%, #0a2010 55%, #06140a 75%, #030a05 100%)',
+    medalBg:
+      'linear-gradient(155deg, #04100a 0%, #091e0e 15%, #0f2e14 35%, #0a2010 55%, #06140a 75%, #030a05 100%)',
     sheenColor: 'rgba(60,110,40,0.20)',
     stripeColor: '#4a8c3a',
     ageColor: '#6a9e58',
@@ -44,7 +48,8 @@ const categoryTheme: Record<string, {
   '5km-fitness-run': {
     accent: '#9c7ec0',
     glow: 'rgba(156,126,192,0.45)',
-    medalBg: 'linear-gradient(155deg, #07050d 0%, #110820 15%, #1c0d32 35%, #150a26 55%, #0d0618 75%, #060310 100%)',
+    medalBg:
+      'linear-gradient(155deg, #07050d 0%, #110820 15%, #1c0d32 35%, #150a26 55%, #0d0618 75%, #060310 100%)',
     sheenColor: 'rgba(90,50,140,0.20)',
     stripeColor: '#6b3a9c',
     ageColor: '#9070b8',
@@ -52,7 +57,8 @@ const categoryTheme: Record<string, {
   '5km-children-dream-run': {
     accent: '#c49a2e',
     glow: 'rgba(196,154,46,0.48)',
-    medalBg: 'linear-gradient(155deg, #0c0a03 0%, #1c1608 15%, #2c2008 35%, #20180a 55%, #140f04 75%, #09080a 100%)',
+    medalBg:
+      'linear-gradient(155deg, #0c0a03 0%, #1c1608 15%, #2c2008 35%, #20180a 55%, #140f04 75%, #09080a 100%)',
     sheenColor: 'rgba(150,110,20,0.20)',
     stripeColor: '#b07c18',
     ageColor: '#b08828',
@@ -62,7 +68,7 @@ const categoryTheme: Record<string, {
 function MedalCard({ cat }: { cat: Category }) {
   const theme = categoryTheme[cat.id]
   const [distNum, distUnit] = cat.distance.split(' ')
-  const earlyBirdExpired = useEarlyBirdExpired();
+  const earlyBirdExpired = useEarlyBirdExpired()
 
   // Strip redundant distance prefix from name
   const displayName = cat.name.startsWith(cat.distance)
@@ -87,12 +93,11 @@ function MedalCard({ cat }: { cat: Category }) {
         />
 
         <div className="relative z-10 flex flex-col h-full p-4">
-
           {/* Distance — right-aligned */}
           <div className="text-right leading-none">
             <span
               style={{
-                fontFamily: '"Rubik Doodle Triangles", serif',
+                fontFamily: 'var(--font-rubik-doodle), serif',
                 fontSize: '5.5rem',
                 lineHeight: 1,
                 color: theme.accent,
@@ -103,7 +108,7 @@ function MedalCard({ cat }: { cat: Category }) {
             </span>
             <span
               style={{
-                fontFamily: '"Rubik Doodle Triangles", serif',
+                fontFamily: 'var(--font-rubik-doodle), serif',
                 fontSize: '1.4rem',
                 lineHeight: 1,
                 color: theme.accent,
@@ -120,9 +125,7 @@ function MedalCard({ cat }: { cat: Category }) {
 
           {/* Name + age */}
           <div className="text-left mb-2">
-            <h3 className="text-white font-black text-base leading-snug">
-              {displayName}
-            </h3>
+            <h3 className="text-white font-black text-base leading-snug">{displayName}</h3>
             <p
               className="text-xs tracking-widest uppercase mt-0.5"
               style={{ color: theme.ageColor }}
@@ -132,19 +135,26 @@ function MedalCard({ cat }: { cat: Category }) {
           </div>
 
           {/* Pricing */}
-          <div className="border-t pt-2.5 space-y-1" style={{ borderColor: 'rgba(255,255,255,0.09)' }}>
+          <div
+            className="border-t pt-2.5 space-y-1"
+            style={{ borderColor: 'rgba(255,255,255,0.09)' }}
+          >
             <div className="flex justify-between items-baseline">
               <span
                 className="text-xs font-medium transition-colors"
-                style={{ color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#d4d4d8',
-                         textDecoration: earlyBirdExpired ? 'line-through' : 'none' }}
+                style={{
+                  color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#d4d4d8',
+                  textDecoration: earlyBirdExpired ? 'line-through' : 'none',
+                }}
               >
                 Early bird
               </span>
               <span
                 className="font-black text-base transition-colors"
-                style={{ color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#ffffff',
-                         textDecoration: earlyBirdExpired ? 'line-through' : 'none' }}
+                style={{
+                  color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#ffffff',
+                  textDecoration: earlyBirdExpired ? 'line-through' : 'none',
+                }}
               >
                 ₹{cat.fees.earlyBird.toLocaleString()}
               </span>
@@ -174,7 +184,6 @@ export default function CategoriesSection() {
   return (
     <section id="categories" className="bg-white py-24 px-6 scroll-mt-16">
       <div className="max-w-6xl mx-auto">
-
         <div className="text-center mb-20">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
             Race Categories
@@ -189,12 +198,16 @@ export default function CategoriesSection() {
 
         {/* Desktop — 2-col on tablet, 4-col on large desktop */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {categoriesData.categories.map(cat => <MedalCard key={cat.id} cat={cat} />)}
+          {categoriesData.categories.map((cat) => (
+            <MedalCard key={cat.id} cat={cat} />
+          ))}
         </div>
 
         {/* Mobile — single column */}
         <div className="sm:hidden flex flex-col gap-14 mb-16">
-          {categoriesData.categories.map(cat => <MedalCard key={cat.id} cat={cat} />)}
+          {categoriesData.categories.map((cat) => (
+            <MedalCard key={cat.id} cat={cat} />
+          ))}
         </div>
 
         {/* Fees summary table */}
@@ -204,14 +217,25 @@ export default function CategoriesSection() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b-2 border-zinc-200">
-                  <th className="text-left py-3 pr-8 font-semibold text-zinc-500 uppercase text-xs tracking-wider">Category</th>
-                  <th className="text-right py-3 px-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">Upto 31 July 2026</th>
-                  <th className="text-right py-3 pl-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">1 Aug 2026 onwards</th>
+                  <th className="text-left py-3 pr-8 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
+                    Category
+                  </th>
+                  <th className="text-right py-3 px-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
+                    Upto 31 July 2026
+                  </th>
+                  <th className="text-right py-3 pl-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
+                    1 Aug 2026 onwards
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {categoriesData.categories.map((cat, i) => (
-                  <tr key={cat.id} className={i < categoriesData.categories.length - 1 ? 'border-b border-zinc-100' : ''}>
+                  <tr
+                    key={cat.id}
+                    className={
+                      i < categoriesData.categories.length - 1 ? 'border-b border-zinc-100' : ''
+                    }
+                  >
                     <td className="py-4 pr-8 font-semibold text-zinc-800">{cat.name}</td>
                     <td className="py-4 px-6 text-right font-black text-orange-600 text-base">
                       ₹{cat.fees.earlyBird.toLocaleString()}
@@ -236,7 +260,6 @@ export default function CategoriesSection() {
             Register Now
           </a>
         </div>
-
       </div>
     </section>
   )

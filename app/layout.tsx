@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
+import { Geist, Notable, Rubik_Doodle_Triangles } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -8,6 +8,12 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 import { siteConfig, eventConfig, seoKeywords } from '@/lib/config'
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
+const notable = Notable({ weight: '400', subsets: ['latin'], variable: '--font-notable' })
+const rubikDoodle = Rubik_Doodle_Triangles({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-rubik-doodle',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +44,6 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    site: siteConfig.twitter,
     title: eventConfig.name,
     description: siteConfig.description,
     images: ['/opengraph-image'],
@@ -57,11 +62,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geist.variable} scroll-smooth`}>
+    <html
+      lang="en"
+      className={`${geist.variable} ${notable.variable} ${rubikDoodle.variable} scroll-smooth`}
+    >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?family=Notable&family=Rubik+Doodle+Triangles&display=swap" rel="stylesheet" />
         <JsonLd />
       </head>
       <body className="bg-black text-white antialiased flex flex-col min-h-screen">
