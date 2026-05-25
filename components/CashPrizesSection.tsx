@@ -157,7 +157,7 @@ export default function CashPrizesSection() {
         </h2>
         <p className="text-zinc-500 max-w-lg mx-auto text-base mb-14">
           Total prize pool of{' '}
-          <span className="text-orange-400 font-bold">₹4,25,000</span>{' '}
+          <span className="text-orange-400 font-bold">₹4,50,000</span>{' '}
           across all categories.
         </p>
 

@@ -68,7 +68,7 @@ export default function EventOverview() {
               Organized since 2016 with eight successful editions, the Amravati Half Marathon is celebrated for its meticulous organization and participant-focused approach. Open to runners of all levels — from elite athletes to first-timers — with categories for every pace and age.
             </p>
             <p className="text-zinc-500 text-base leading-relaxed mt-4">
-              <strong className="text-zinc-300">Unique Features:</strong> Special "Out of Maharashtra" category for national and international runners. Children's Dream Run (5 km) to encourage young athletes. Total prize pool: ₹4,25,000.
+              <strong className="text-zinc-300">Unique Features:</strong> Special "Out of Maharashtra" category for national and international runners. Children's Dream Run (5 km) to encourage young athletes. Total prize pool: ₹4,50,000.
             </p>
           </div>
         </div>
