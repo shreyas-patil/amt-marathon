@@ -2,8 +2,57 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react'
-import { navigationLinks, eventConfig } from '@/lib/config'
+import { useState, useRef, useEffect } from 'react'
+import { navigationLinks, moreLinks, eventConfig } from '@/lib/config'
+
+function MoreDropdown() {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        onClick={() => setOpen(!open)}
+        className="flex items-center gap-1 text-white/90 hover:text-white text-base font-bold transition-colors tracking-wide"
+      >
+        More
+        <svg
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {open && (
+        <div className="absolute right-0 top-full mt-3 w-44 bg-zinc-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden">
+          {moreLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="block px-5 py-3 text-sm font-semibold text-white/80 hover:text-white hover:bg-white/5 transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -13,7 +62,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
 
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/amt-marathon-logo.png"
               alt="Amravati Marathon"
@@ -21,11 +70,9 @@ export default function Header() {
               height={40}
               className="rounded-lg"
             />
-            <span className="hidden sm:block text-white/40 text-xs tracking-widest uppercase">
-              Amravati Marathon
-            </span>
           </Link>
 
+          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
             {navigationLinks.map(link => (
               <Link
@@ -36,6 +83,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <MoreDropdown />
           </div>
 
           <div className="hidden md:block">
@@ -49,6 +97,7 @@ export default function Header() {
             </a>
           </div>
 
+          {/* Mobile hamburger */}
           <button
             className="md:hidden text-white/70 hover:text-white p-2 transition-colors"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -66,9 +115,10 @@ export default function Header() {
           </button>
         </div>
 
+        {/* Mobile drawer — all links flat */}
         {menuOpen && (
           <div className="md:hidden border-t border-white/10 py-6 flex flex-col gap-5">
-            {navigationLinks.map(link => (
+            {[...navigationLinks, ...moreLinks].map(link => (
               <Link
                 key={link.href}
                 href={link.href}

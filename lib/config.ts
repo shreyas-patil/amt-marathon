@@ -37,9 +37,13 @@ export const navigationLinks = [
   { label: 'Home', href: '/' },
   { label: 'Categories', href: '/#categories' },
   { label: 'Prizes', href: '/prizes' },
+  { label: 'Route', href: '/route-maps' },
   { label: 'Hotels', href: '/hotels' },
-  { label: 'Sponsors', href: '/#sponsors' },
   { label: 'Gallery', href: '/gallery' },
+]
+
+export const moreLinks = [
+  { label: 'Sponsors', href: '/#sponsors' },
   { label: 'Results', href: '/results' },
   { label: 'Contact', href: '/contact' },
 ];

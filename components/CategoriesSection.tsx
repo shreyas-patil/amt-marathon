@@ -152,13 +152,13 @@ function MedalCard({ cat }: { cat: Category }) {
             <div className="flex justify-between items-baseline">
               <span
                 className="text-xs font-medium transition-colors"
-                style={{ color: earlyBirdExpired ? '#d4d4d8' : 'rgba(161,161,170,0.6)' }}
+                style={{ color: earlyBirdExpired ? '#d4d4d8' : '#a1a1aa' }}
               >
                 After Aug 1
               </span>
               <span
                 className={`font-black transition-colors ${earlyBirdExpired ? 'text-base' : 'text-sm'}`}
-                style={{ color: earlyBirdExpired ? '#ffffff' : 'rgba(161,161,170,0.5)' }}
+                style={{ color: earlyBirdExpired ? '#ffffff' : '#d4d4d8' }}
               >
                 ₹{cat.fees.standard.toLocaleString()}
               </span>

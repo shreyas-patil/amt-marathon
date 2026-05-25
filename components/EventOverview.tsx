@@ -38,7 +38,7 @@ export default function EventOverview() {
                   Sri Shivaji College of Physical Education
                 </span>
                 <span className="block text-zinc-400 text-base mt-0.5">
-                  Phanchavati Chhowk, Amravati
+                  Phanchavati Chouk, Amravati
                 </span>
                 <span className="block text-sm text-orange-500 group-hover:text-orange-400 mt-2 transition-colors">
                   View on Google Maps →
