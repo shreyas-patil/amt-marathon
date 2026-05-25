@@ -31,7 +31,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/60 hover:text-white text-sm font-medium transition-colors tracking-wide"
+                className="text-white/90 hover:text-white text-base font-bold transition-colors tracking-wide"
               >
                 {link.label}
               </Link>
@@ -72,7 +72,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-white/60 hover:text-white text-sm font-medium transition-colors px-1"
+                className="text-white/90 hover:text-white text-base font-bold transition-colors px-1"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}

@@ -119,7 +119,7 @@ function PrizeTable({ cat }: { cat: PrizeCategory }) {
             >
               <td className="px-6 py-4">
                 <span className={`font-bold text-sm ${prize.rank === 1 ? 'text-yellow-400' : prize.rank === 2 ? 'text-zinc-300' : prize.rank === 3 ? 'text-amber-600' : 'text-zinc-600'}`}>
-                  {prize.rank === 1 ? '🥇' : prize.rank === 2 ? '🥈' : prize.rank === 3 ? '🥉' : `#${prize.rank}`}
+                  {`#${prize.rank}`}
                 </span>
               </td>
               {prize.amounts.map((amount, j) => (

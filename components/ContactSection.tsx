@@ -42,15 +42,17 @@ function OrganizerCard({ org }: { org: (typeof organizersData.organizers)[0] }) 
         {org.bio}
       </p>
 
-      <div className="flex items-center gap-2.5 border-t border-zinc-100 pt-5">
-        <span className="text-zinc-300"><MailIcon /></span>
-        <a
-          href={`mailto:${org.email}`}
-          className="text-zinc-600 hover:text-orange-500 text-sm font-medium transition-colors"
-        >
-          {org.email}
-        </a>
-      </div>
+      {siteConfig.email && (
+        <div className="flex items-center gap-2.5 border-t border-zinc-100 pt-5">
+          <span className="text-zinc-300"><MailIcon /></span>
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-zinc-600 hover:text-orange-500 text-sm font-medium transition-colors"
+          >
+            {siteConfig.email}
+          </a>
+        </div>
+      )}
     </div>
   )
 }

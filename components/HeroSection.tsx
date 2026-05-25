@@ -12,15 +12,15 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-16">
         <p className="text-orange-500 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-8">
-          Amravati, Maharashtra &nbsp;·&nbsp; 25 October 2026
+          Amravati, Maharashtra
         </p>
 
-        <h1 className="text-6xl sm:text-8xl lg:text-[10rem] font-black text-white leading-[0.9] tracking-tighter mb-8">
+        <h1 className="text-6xl sm:text-8xl lg:text-[7rem] font-black text-white leading-[0.9] tracking-tighter mb-8">
           AMRAVATI
           <br />
-          <span className="text-orange-500">MARATHON</span>
+          <span className="text-orange-500">HALF MARATHON</span>
           <br />
-          <span className="text-white/30">2026</span>
+          <span className="text-white/30">25 October 2026</span>
         </h1>
 
         <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">

@@ -59,31 +59,6 @@ const categoryTheme: Record<string, {
   },
 }
 
-function MedalLanyard({ stripeColor }: { stripeColor: string }) {
-  return (
-    <svg
-      viewBox="0 0 300 96"
-      width="100%"
-      height="96"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-      style={{ display: 'block', marginBottom: '-2px' }}
-    >
-      <path d="M 32 0 L 68 0 L 154 96 L 140 96 Z" fill="#191919" />
-      <path d="M 58 0 L 66 0 L 150 96 L 144 96 Z" fill={stripeColor} />
-      <path d="M 32 0 L 36 0 L 143 96 L 140 96 Z" fill="rgba(255,255,255,0.06)" />
-
-      <path d="M 268 0 L 232 0 L 146 96 L 160 96 Z" fill="#191919" />
-      <path d="M 242 0 L 234 0 L 150 96 L 156 96 Z" fill={stripeColor} />
-      <path d="M 268 0 L 264 0 L 157 96 L 160 96 Z" fill="rgba(255,255,255,0.06)" />
-
-      <ellipse cx="150" cy="90" rx="14" ry="9" fill="#5a5a5a" />
-      <ellipse cx="150" cy="90" rx="9"  ry="6"  fill="#2e2e2e" />
-      <ellipse cx="150" cy="89" rx="5"  ry="3.5" fill="#444" />
-    </svg>
-  )
-}
-
 function MedalCard({ cat }: { cat: Category }) {
   const theme = categoryTheme[cat.id]
   const [distNum, distUnit] = cat.distance.split(' ')
@@ -96,8 +71,6 @@ function MedalCard({ cat }: { cat: Category }) {
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm mx-auto">
-      <MedalLanyard stripeColor={theme.stripeColor} />
-
       <div
         className="w-full aspect-square rounded-2xl relative overflow-hidden flex flex-col"
         style={{
@@ -113,14 +86,14 @@ function MedalCard({ cat }: { cat: Category }) {
           }}
         />
 
-        <div className="relative z-10 flex flex-col h-full p-7">
+        <div className="relative z-10 flex flex-col h-full p-4">
 
-          {/* Distance — right-aligned, number large, unit half size */}
+          {/* Distance — right-aligned */}
           <div className="text-right leading-none">
             <span
               style={{
                 fontFamily: '"Rubik Doodle Triangles", serif',
-                fontSize: '7rem',
+                fontSize: '5.5rem',
                 lineHeight: 1,
                 color: theme.accent,
                 textShadow: `0 0 36px ${theme.glow}`,
@@ -131,7 +104,7 @@ function MedalCard({ cat }: { cat: Category }) {
             <span
               style={{
                 fontFamily: '"Rubik Doodle Triangles", serif',
-                fontSize: '2.5rem',
+                fontSize: '1.4rem',
                 lineHeight: 1,
                 color: theme.accent,
                 textShadow: `0 0 36px ${theme.glow}`,
@@ -145,31 +118,31 @@ function MedalCard({ cat }: { cat: Category }) {
           {/* Negative space */}
           <div className="flex-1" />
 
-          {/* Name + age — left-aligned, just above divider */}
-          <div className="text-left mb-4">
-            <h3 className="text-white font-black text-xl leading-snug">
+          {/* Name + age */}
+          <div className="text-left mb-2">
+            <h3 className="text-white font-black text-base leading-snug">
               {displayName}
             </h3>
             <p
-              className="text-xs tracking-widest uppercase mt-1"
+              className="text-xs tracking-widest uppercase mt-0.5"
               style={{ color: theme.ageColor }}
             >
               {cat.ageGroup}
             </p>
           </div>
 
-          {/* Pricing — divider + rows */}
-          <div className="border-t pt-4 space-y-2" style={{ borderColor: 'rgba(255,255,255,0.09)' }}>
+          {/* Pricing */}
+          <div className="border-t pt-2.5 space-y-1" style={{ borderColor: 'rgba(255,255,255,0.09)' }}>
             <div className="flex justify-between items-baseline">
               <span
-                className="text-base font-medium transition-colors"
+                className="text-xs font-medium transition-colors"
                 style={{ color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#d4d4d8',
                          textDecoration: earlyBirdExpired ? 'line-through' : 'none' }}
               >
                 Early bird
               </span>
               <span
-                className="font-black text-2xl transition-colors"
+                className="font-black text-base transition-colors"
                 style={{ color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#ffffff',
                          textDecoration: earlyBirdExpired ? 'line-through' : 'none' }}
               >
@@ -178,15 +151,14 @@ function MedalCard({ cat }: { cat: Category }) {
             </div>
             <div className="flex justify-between items-baseline">
               <span
-                className="text-base font-medium transition-colors"
+                className="text-xs font-medium transition-colors"
                 style={{ color: earlyBirdExpired ? '#d4d4d8' : 'rgba(161,161,170,0.6)' }}
               >
                 After Aug 1
               </span>
               <span
-                className="font-black text-2xl transition-colors"
-                style={{ color: earlyBirdExpired ? '#ffffff' : 'rgba(161,161,170,0.5)',
-                         fontSize: earlyBirdExpired ? '1.5rem' : '1.25rem' }}
+                className={`font-black transition-colors ${earlyBirdExpired ? 'text-base' : 'text-sm'}`}
+                style={{ color: earlyBirdExpired ? '#ffffff' : 'rgba(161,161,170,0.5)' }}
               >
                 ₹{cat.fees.standard.toLocaleString()}
               </span>
@@ -199,12 +171,9 @@ function MedalCard({ cat }: { cat: Category }) {
 }
 
 export default function CategoriesSection() {
-  const leftCol = categoriesData.categories.filter((_, i) => i % 2 === 0)
-  const rightCol = categoriesData.categories.filter((_, i) => i % 2 === 1)
-
   return (
     <section id="categories" className="bg-white py-24 px-6 scroll-mt-16">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         <div className="text-center mb-20">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
@@ -218,14 +187,9 @@ export default function CategoriesSection() {
           </p>
         </div>
 
-        {/* Desktop — 2-col staggered */}
-        <div className="hidden sm:grid sm:grid-cols-2 gap-x-10 mb-20">
-          <div className="flex flex-col gap-20">
-            {leftCol.map(cat => <MedalCard key={cat.id} cat={cat} />)}
-          </div>
-          <div className="flex flex-col gap-20 pt-28">
-            {rightCol.map(cat => <MedalCard key={cat.id} cat={cat} />)}
-          </div>
+        {/* Desktop — 2-col on tablet, 4-col on large desktop */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+          {categoriesData.categories.map(cat => <MedalCard key={cat.id} cat={cat} />)}
         </div>
 
         {/* Mobile — single column */}
