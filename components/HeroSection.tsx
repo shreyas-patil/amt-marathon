@@ -23,6 +23,10 @@ export default function HeroSection() {
           <span className="text-white/30">25 October 2026</span>
         </h1>
 
+        <p className="text-orange-500/60 text-2xl sm:text-3xl font-semibold tracking-[0.2em] uppercase -mt-4 mb-12">
+          9th Edition
+        </p>
+
         <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
           Run through the heart of Vidarbha. Four categories. Thousands of runners. One
           unforgettable race day.

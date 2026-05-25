@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { GalleryImage } from '@/lib/gallery'
 
 interface Props {
@@ -49,21 +50,22 @@ export default function GalleryScroll({ images }: Props) {
 
   return (
     <div className="relative overflow-hidden" style={{ height: '70vh', minHeight: '500px' }}>
-      <div className="flex gap-3 px-4 sm:px-8 h-full items-start">
+      <div className="max-w-7xl mx-auto flex gap-3 px-4 sm:px-8 h-full items-start">
         {/* Column 1 — slower */}
         <div
           className="flex-1 flex flex-col gap-3"
-          style={{ animation: 'scroll-gallery 38s linear infinite' }}
+          style={{ animation: 'scroll-gallery 90s linear infinite' }}
         >
           {loopedCol1.map((img, i) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              key={i}
-              src={img.src}
-              alt={img.alt}
-              className="w-full h-auto rounded-xl"
-              loading="lazy"
-            />
+            <div key={i} className="relative w-full aspect-[3/2]">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(max-width: 896px) 50vw, 448px"
+                className="object-cover rounded-xl"
+              />
+            </div>
           ))}
         </div>
 
@@ -71,17 +73,18 @@ export default function GalleryScroll({ images }: Props) {
         {loopedCol2 && (
           <div
             className="flex-1 flex flex-col gap-3"
-            style={{ animation: 'scroll-gallery 28s linear infinite', animationDelay: '-12s' }}
+            style={{ animation: 'scroll-gallery 70s linear infinite', animationDelay: '-12s' }}
           >
             {loopedCol2.map((img, i) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                key={i}
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-auto rounded-xl"
-                loading="lazy"
-              />
+              <div key={i} className="relative w-full aspect-[3/2]">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 896px) 50vw, 448px"
+                  className="object-cover rounded-xl"
+                />
+              </div>
             ))}
           </div>
         )}

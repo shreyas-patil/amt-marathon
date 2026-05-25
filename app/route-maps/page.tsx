@@ -53,7 +53,7 @@ export default function RouteMapsPage() {
             {eventConfig.name}
           </p>
           <h1 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">Route Maps</h1>
-          <p className="text-zinc-500 max-w-md mx-auto">
+          <p className="text-zinc-500 max-w-md mx-auto text-lg sm:text-xl">
             Official course routes for all race categories on October 25, 2026.
           </p>
         </div>

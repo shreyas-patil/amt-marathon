@@ -65,8 +65,8 @@ export default function Header() {
             <Image
               src="/images/amt-marathon-logo.png"
               alt="Amravati Marathon"
-              width={40}
-              height={40}
+              width={60}
+              height={60}
               className="rounded-lg"
             />
           </Link>

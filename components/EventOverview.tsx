@@ -1,4 +1,3 @@
-
 export default function EventOverview() {
   return (
     <section className="bg-zinc-950 py-24 px-4">
@@ -77,7 +76,7 @@ export default function EventOverview() {
               every pace and age.
             </p>
             <p className="text-zinc-500 text-base leading-relaxed mt-4">
-              <strong className="text-zinc-300">Unique Features:</strong> Special &ldquo;Out of
+              <strong className="text-zinc-300">Unique Features: </strong> Special &ldquo;Out of
               Maharashtra&rdquo; category for national and international runners. Children&apos;s
               Dream Run (5 km) to encourage young athletes. Total prize pool: ₹4,50,000.
             </p>
