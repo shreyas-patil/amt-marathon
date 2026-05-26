@@ -76,7 +76,12 @@ function MedalCard({ cat }: { cat: Category }) {
     : cat.name
 
   return (
-    <div className="flex flex-col items-center w-full max-w-sm mx-auto">
+    <a
+      href="https://www.townscript.com/v2/e/amravati-half-marathon2026-221331/booking/tickets"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex flex-col items-center w-full max-w-sm mx-auto"
+    >
       <div
         className="w-full aspect-square rounded-2xl relative overflow-hidden flex flex-col"
         style={{
@@ -176,7 +181,7 @@ function MedalCard({ cat }: { cat: Category }) {
           </div>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 
