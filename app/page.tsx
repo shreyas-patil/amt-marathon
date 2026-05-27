@@ -3,16 +3,19 @@ import HeroSection from '@/components/HeroSection'
 import EventOverview from '@/components/EventOverview'
 import CategoriesSection from '@/components/CategoriesSection'
 import SponsorsSection from '@/components/SponsorsSection'
-import { siteConfig, eventConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const { site, event, seo } = siteData
+const siteUrl = `https://${site.domain}`
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: siteConfig.url,
+    canonical: siteUrl,
   },
   openGraph: {
-    url: siteConfig.url,
-    title: eventConfig.name,
-    description: `Register now for the ${eventConfig.name} on October 25, 2026 in Amravati, Maharashtra. Half Marathon, 10 km, 5 km & Children's Dream Run. Total prize pool ₹4,50,000.`,
+    url: siteUrl,
+    title: seo.pages.home.openGraph?.title ?? event.name,
+    description: seo.pages.home.openGraph?.description ?? seo.pages.home.description,
   },
 }
 

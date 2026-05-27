@@ -1,0 +1,21 @@
+{
+  "locationTag": "Amravati, Maharashtra",
+  "headingLines": ["AMRAVATI", "HALF MARATHON", "25 October 2026"],
+  "edition": "9th Edition",
+  "description": "Run through the heart of Vidarbha. Four categories. Thousands of runners. Join the event that has revolutionized fitness in Amravati.",
+  "ctaButtons": [
+    {
+      "label": "Register Now",
+      "variant": "primary",
+      "hrefKey": "registrationUrl"
+    },
+    {
+      "label": "View Categories",
+      "variant": "secondary",
+      "href": "#categories"
+    }
+  ],
+  "scrollIndicator": {
+    "label": "Scroll"
+  }
+}

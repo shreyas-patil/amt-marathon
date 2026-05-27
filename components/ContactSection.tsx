@@ -1,6 +1,8 @@
 import Image from 'next/image'
-import organizersData from '@/data/organizers.json'
-import { siteConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+import type { Organizer } from '@/lib/types'
+
+const { organizers, site, event, contact } = siteData
 
 function getInitials(name: string) {
   return name
@@ -24,7 +26,7 @@ function MailIcon() {
   )
 }
 
-function OrganizerCard({ org }: { org: (typeof organizersData.organizers)[0] }) {
+function OrganizerCard({ org }: { org: Organizer }) {
   const initials = getInitials(org.name)
 
   return (
@@ -57,16 +59,16 @@ function OrganizerCard({ org }: { org: (typeof organizersData.organizers)[0] }) 
         {org.bio}
       </p>
 
-      {siteConfig.email && (
+      {site.email && (
         <div className="flex items-center gap-2.5 border-t border-zinc-100 pt-5">
           <span className="text-zinc-300">
             <MailIcon />
           </span>
           <a
-            href={`mailto:${siteConfig.email}`}
+            href={`mailto:${site.email}`}
             className="text-zinc-600 hover:text-orange-500 text-sm font-medium transition-colors"
           >
-            {siteConfig.email}
+            {site.email}
           </a>
         </div>
       )}
@@ -74,14 +76,22 @@ function OrganizerCard({ org }: { org: (typeof organizersData.organizers)[0] }) 
   )
 }
 
+// Derive social platforms list from site.social
 const socialPlatforms = [
   {
     label: 'Instagram',
-    handle: 'Amravati.Half.Marathon',
-    href: 'https://www.instagram.com/amravati.half.marathon',
+    handle: site.social.instagram.displayName,
+    href: site.social.instagram.available ? site.social.instagram.url : null,
     icon: 'IG',
   },
-  { label: 'Facebook', handle: 'link coming soon', href: null, icon: 'FB' },
+  {
+    label: 'Facebook',
+    handle: site.social.facebook.available
+      ? site.social.facebook.displayName
+      : (site.social.facebook.comingSoonLabel ?? 'link coming soon'),
+    href: site.social.facebook.available ? site.social.facebook.url : null,
+    icon: 'FB',
+  },
 ]
 
 export default function ContactSection() {
@@ -91,18 +101,16 @@ export default function ContactSection() {
         {/* Organizers */}
         <div className="text-center mb-16">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            The Team
+            {contact.organizers.sectionTag}
           </p>
           <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
-            Meet the Organizers
+            {contact.organizers.heading}
           </h2>
-          <p className="text-zinc-500 max-w-md mx-auto">
-            The people behind Amravati&apos;s premier running event.
-          </p>
+          <p className="text-zinc-500 max-w-md mx-auto">{contact.organizers.description}</p>
         </div>
 
         <div className="flex flex-col items-center gap-6 mb-24">
-          {organizersData.organizers.map((org) => (
+          {organizers.organizers.map((org) => (
             <OrganizerCard key={org.id} org={org} />
           ))}
         </div>
@@ -111,31 +119,34 @@ export default function ContactSection() {
         <div className="grid sm:grid-cols-2 gap-6 mb-16">
           <div className="bg-zinc-50 rounded-2xl p-8 border border-zinc-100">
             <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-5">
-              Get in Touch
+              {contact.contactBoxes[0].eyebrow}
             </p>
-            <h3 className="text-zinc-900 font-black text-2xl mb-4">General Enquiries</h3>
-            {siteConfig.email ? (
+            <h3 className="text-zinc-900 font-black text-2xl mb-4">
+              {contact.contactBoxes[0].heading}
+            </h3>
+            {site.email ? (
               <a
-                href={`mailto:${siteConfig.email}`}
+                href={`mailto:${site.email}`}
                 className="inline-flex items-center gap-2.5 text-zinc-700 hover:text-orange-500 transition-colors font-medium"
               >
                 <span className="text-zinc-400">
                   <MailIcon />
                 </span>
-                {siteConfig.email}
+                {site.email}
               </a>
             ) : null}
             <p className="text-zinc-400 text-sm mt-4 leading-relaxed">
-              For registration queries, please visit Townscript. For timing and results, contact
-              Alpha Racing Solutions directly.
+              {contact.contactBoxes[0].note}
             </p>
           </div>
 
           <div className="bg-zinc-50 rounded-2xl p-8 border border-zinc-100">
             <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-5">
-              Follow Along
+              {contact.contactBoxes[1].eyebrow}
             </p>
-            <h3 className="text-zinc-900 font-black text-2xl mb-6">Social Media</h3>
+            <h3 className="text-zinc-900 font-black text-2xl mb-6">
+              {contact.contactBoxes[1].heading}
+            </h3>
             <div className="space-y-4">
               {socialPlatforms.map((p) => (
                 <div key={p.label} className="flex items-center gap-3">
@@ -167,21 +178,27 @@ export default function ContactSection() {
         <div className="bg-orange-500 rounded-2xl p-8 sm:p-10 text-white">
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
-              <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Race Day</p>
-              <p className="font-black text-2xl">Oct 25, 2026</p>
+              <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">
+                {contact.quickFacts.raceDayLabel}
+              </p>
+              <p className="font-black text-2xl">{event.displayDateShort}</p>
             </div>
             <div>
-              <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Location</p>
-              <p className="font-black text-2xl">Amravati, MH</p>
+              <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">
+                {contact.quickFacts.locationLabel}
+              </p>
+              <p className="font-black text-2xl">{event.location.displayShort}</p>
             </div>
-            {siteConfig.email && (
+            {site.email && (
               <div>
-                <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">Email</p>
+                <p className="text-orange-200 text-xs uppercase tracking-widest mb-2">
+                  {contact.quickFacts.emailLabel}
+                </p>
                 <a
-                  href={`mailto:${siteConfig.email}`}
+                  href={`mailto:${site.email}`}
                   className="font-black text-lg hover:text-orange-200 transition-colors break-all"
                 >
-                  {siteConfig.email}
+                  {site.email}
                 </a>
               </div>
             )}

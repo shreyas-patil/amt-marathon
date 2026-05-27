@@ -1,0 +1,38 @@
+{
+  "year": 2026,
+  "edition": "9th Edition",
+  "name": "Amravati Half Marathon 2026",
+  "date": "2026-10-25",
+  "displayDate": "25 October 2026",
+  "displayDateMedium": "October 25, 2026",
+  "displayDateShort": "Oct 25, 2026",
+  "startTime": "06:00:00+05:30",
+  "endTime": "12:00:00+05:30",
+  "location": {
+    "city": "Amravati",
+    "state": "Maharashtra",
+    "stateShort": "MH",
+    "country": "India",
+    "countryCode": "IN",
+    "display": "Amravati, Maharashtra, India",
+    "displayShort": "Amravati, MH",
+    "displayMedium": "Amravati, Maharashtra"
+  },
+  "startLine": {
+    "venueName": "Sri Shivaji College of Physical Education",
+    "address": "Phanchavati Chouk, Amravati",
+    "googleMapsUrl": "https://www.google.com/maps/place/Shri+Shivaji+College+of+Physical+Education/@20.9415074,77.7654201,17z/data=!4m10!1m2!2m1!1sSri+Shivaji+College+of+Physical+Education+Phanchavati+Chhowk+Amravati!3m6!1s0x3bd6a360e81101e1:0x286a93cdffad8a3e!8m2!3d20.9415074!4d77.7701837!15sCkVTcmkgU2hpdmFqaSBDb2xsZWdlIG9mIFBoeXNpY2FsIEVkdWNhdGlvbiBQaGFuY2hhdmF0aSBDaGhvd2sgQW1yYXZhdGlaRyJFc3JpIHNoaXZhamkgY29sbGVnZSBvZiBwaHlzaWNhbCBlZHVjYXRpb24gcGhhbmNoYXZhdGkgY2hob3drIGFtcmF2YXRpkgEHY29sbGVnZZoBRENpOURRVWxSUVVOdlpFTm9kSGxqUmpsdlQycEdibFV4UWtObFJHeDNVMnRHTWxGVlNYaGthM2d4VG10d1JGbHNSUkFC4AEA-gEECAAQFg!16s%2Fg%2F11f3j8j31f?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+  },
+  "bibCollection": {
+    "date": "24 October, 2026",
+    "subtext": "Day before the race",
+    "venueNote": "Venue to be announced closer to race day. Stay tuned."
+  },
+  "registrationUrl": "https://www.townscript.com/e/amravati-half-marathon2026-221331",
+  "maxParticipants": 200,
+  "totalPrizePool": "₹4,50,000",
+  "history": {
+    "organizedSince": 2016,
+    "editionsCompleted": 8
+  }
+}

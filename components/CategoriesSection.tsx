@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import categoriesData from '@/data/categories.json'
-import { eventConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+import type { RaceCategory } from '@/lib/types'
 
-// Aug 1 2026, 12:00 AM IST = July 31 2026, 18:30 UTC
-const EARLY_BIRD_DEADLINE = new Date('2026-07-31T18:30:00Z')
+const { categories, event } = siteData
+
+// Deadline sourced from categories.section — single source of truth
+const EARLY_BIRD_DEADLINE = new Date(categories.section.earlyBirdDeadline)
 
 function useEarlyBirdExpired() {
   const [expired] = useState(
@@ -13,8 +15,6 @@ function useEarlyBirdExpired() {
   )
   return expired
 }
-
-type Category = (typeof categoriesData.categories)[0]
 
 const categoryTheme: Record<
   string,
@@ -65,7 +65,7 @@ const categoryTheme: Record<
   },
 }
 
-function MedalCard({ cat }: { cat: Category }) {
+function MedalCard({ cat }: { cat: RaceCategory }) {
   const theme = categoryTheme[cat.id]
   const [distNum, distUnit] = cat.distance.split(' ')
   const earlyBirdExpired = useEarlyBirdExpired()
@@ -191,33 +191,36 @@ export default function CategoriesSection() {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            Race Categories
+            {categories.section.sectionTag}
           </p>
           <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
-            Choose Your Challenge
+            {categories.section.heading}
           </h2>
           <p className="text-zinc-500 max-w-lg mx-auto">
-            Early-bird pricing available until <strong className="text-zinc-700">31 July 2026.</strong>
+            Early-bird pricing available until{' '}
+            <strong className="text-zinc-700">31 July 2026.</strong>
           </p>
         </div>
 
         {/* Desktop — 2-col on tablet, 4-col on large desktop */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {categoriesData.categories.map((cat) => (
+          {categories.categories.map((cat) => (
             <MedalCard key={cat.id} cat={cat} />
           ))}
         </div>
 
         {/* Mobile — single column */}
         <div className="sm:hidden flex flex-col gap-14 mb-16">
-          {categoriesData.categories.map((cat) => (
+          {categories.categories.map((cat) => (
             <MedalCard key={cat.id} cat={cat} />
           ))}
         </div>
 
         {/* Fees summary table */}
         <div className="bg-zinc-50 rounded-2xl p-6 sm:p-10 mb-10">
-          <h3 className="font-black text-zinc-900 text-xl mb-6">Registration Fees (₹)</h3>
+          <h3 className="font-black text-zinc-900 text-xl mb-6">
+            {categories.section.feesTableCaption}
+          </h3>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
@@ -234,11 +237,11 @@ export default function CategoriesSection() {
                 </tr>
               </thead>
               <tbody>
-                {categoriesData.categories.map((cat, i) => (
+                {categories.categories.map((cat, i) => (
                   <tr
                     key={cat.id}
                     className={
-                      i < categoriesData.categories.length - 1 ? 'border-b border-zinc-100' : ''
+                      i < categories.categories.length - 1 ? 'border-b border-zinc-100' : ''
                     }
                   >
                     <td className="py-4 pr-8 font-semibold text-zinc-800">{cat.name}</td>
@@ -257,12 +260,12 @@ export default function CategoriesSection() {
 
         <div className="text-center">
           <a
-            href={eventConfig.registrationUrl}
+            href={event.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black px-12 py-4 rounded-full text-lg transition-colors"
           >
-            Register Now
+            {categories.section.ctaLabel}
           </a>
         </div>
       </div>

@@ -1,0 +1,74 @@
+{
+  "titleTemplate": "%s | Amravati Marathon",
+  "global": {
+    "metadataBase": "https://runamravati.com",
+    "keywordsKey": "site.seoKeywords",
+    "robots": {
+      "index": true,
+      "follow": true,
+      "googleBot": { "index": true, "follow": true, "max-image-preview": "large", "max-snippet": -1 }
+    },
+    "openGraph": {
+      "type": "website",
+      "locale": "en_IN",
+      "siteNameKey": "site.name",
+      "imageUrl": "/opengraph-image",
+      "imageSize": { "width": 1200, "height": 630 }
+    },
+    "twitter": { "card": "summary_large_image", "imageUrl": "/opengraph-image" }
+  },
+  "pages": {
+    "home": {
+      "title": "Amravati Half Marathon 2026 | runamravati.com",
+      "description": "Register now for the Amravati Half Marathon 2026 on October 25, 2026 in Amravati, Maharashtra. Half Marathon, 10 km, 5 km & Children's Dream Run. Total prize pool ₹4,50,000.",
+      "canonical": "/",
+      "openGraph": {
+        "url": "/",
+        "title": "Amravati Half Marathon 2026",
+        "description": "Register now for the Amravati Half Marathon 2026 on October 25, 2026 in Amravati, Maharashtra. Half Marathon, 10 km, 5 km & Children's Dream Run. Total prize pool ₹4,50,000."
+      },
+      "sitemap": { "priority": 1.0, "changefreq": "weekly" }
+    },
+    "prizes": {
+      "title": "Cash Prizes & Trophies",
+      "description": "Full cash prize breakdown for all categories at Amravati Half Marathon 2026. Total prize pool of ₹4,50,000.",
+      "canonical": "/prizes",
+      "openGraph": { "url": "/prizes" },
+      "sitemap": { "priority": 0.8, "changefreq": "monthly" }
+    },
+    "hotels": {
+      "title": "Hotels & Accommodation",
+      "description": "Recommended hotels near the Amravati Half Marathon 2026 venue. Book your stay for race weekend.",
+      "canonical": "/hotels",
+      "sitemap": { "priority": 0.7, "changefreq": "monthly" }
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "Photos from the Amravati Half Marathon — runners, crowds, and the spirit of the event.",
+      "canonical": "/gallery",
+      "sitemap": { "priority": 0.6, "changefreq": "monthly" }
+    },
+    "routeMaps": {
+      "title": "Route Maps",
+      "description": "Official route maps for all Amravati Half Marathon 2026 categories — Half Marathon 21.1 km, 10 km Power Run, and 5 km Fitness Run.",
+      "canonical": "/route-maps",
+      "sitemap": { "priority": 0.7, "changefreq": "yearly" }
+    },
+    "results": {
+      "title": "Results",
+      "description": "Results for the Amravati Half Marathon 2026. Race day is October 25, 2026.",
+      "canonical": "/results",
+      "sitemap": { "priority": 0.6, "changefreq": "yearly" }
+    },
+    "contact": {
+      "title": "Contact & Organizers",
+      "description": "Meet the team behind the Amravati Half Marathon 2026. Get in touch with the organizers.",
+      "canonical": "/contact",
+      "sitemap": { "priority": 0.5, "changefreq": "yearly" }
+    }
+  },
+  "openGraph": {
+    "imageAlt": "Amravati Half Marathon 2026 — 2026-10-25",
+    "categoryBadges": ["Half Marathon", "10 km", "5 km", "Children's Run"]
+  }
+}

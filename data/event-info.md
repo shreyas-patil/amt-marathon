@@ -4,11 +4,12 @@
 
 The Amravati Marathon Association has organized this prestigious Half Marathon annually since 2016. With eight successful events completed, the Amravati Half Marathon is recognized for its meticulous organization and participant-focused approach.
 
-**Total Prize Pool**: ₹4,25,000 across all categories
+**Total Prize Pool**: ₹4,50,000 across all categories
 
 ## Event Features
 
 **Inclusive Categories**: The event welcomes runners of all levels:
+
 - Separate age categories for optimal competition
 - Special "Out of Maharashtra" category to celebrate national and international participation
 - Children's Dream Run (5 km) to encourage young runners

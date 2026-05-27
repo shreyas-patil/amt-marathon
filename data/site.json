@@ -1,0 +1,45 @@
+{
+  "name": "Amravati Half Marathon",
+  "shortName": "Amravati Marathon",
+  "domain": "runamravati.com",
+  "email": "amravatimarathon@gmail.com",
+  "author": "Amravati Marathon Team",
+  "logoImage": "/images/amt-marathon-logo.png",
+  "logoAlt": "Amravati Marathon",
+  "logoSize": { "width": 60, "height": 60 },
+  "tagline": "Annual running event celebrating fitness and community in Amravati, Maharashtra, India.",
+  "social": {
+    "instagram": {
+      "handle": "amravati.half.marathon",
+      "displayName": "Amravati.Half.Marathon",
+      "url": "https://www.instagram.com/amravati.half.marathon",
+      "available": true
+    },
+    "facebook": {
+      "displayName": "Facebook",
+      "url": null,
+      "available": false,
+      "comingSoonLabel": "link coming soon"
+    }
+  },
+  "partners": {
+    "registration": {
+      "name": "Townscript",
+      "label": "Registrations via"
+    },
+    "timing": {
+      "name": "Alpha Racing Solutions",
+      "label": "Timing by"
+    }
+  },
+  "seoKeywords": [
+    "Amravati Half Marathon",
+    "Amravati Marathon",
+    "Half Marathon Maharashtra",
+    "Running Event Amravati",
+    "21.1 km Marathon",
+    "10 km Power Run",
+    "Marathon Registration",
+    "Amravati Sports Event"
+  ]
+}

@@ -1,49 +1,32 @@
+// Bridge file — re-exports derived values from siteData so existing component
+// imports continue to work during the migration to lib/data.ts.
+// Once all components import from lib/data.ts directly, delete this file.
+
+import siteData from '@/lib/data'
+
 export const siteConfig = {
-  name: 'Amravati Half Marathon',
-  shortName: 'Amravati Marathon',
-  description:
-    'Join us for the annual Amravati Half Marathon 2026 - a running event in Amravati, Maharashtra',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://runamravati.com',
-  domain: 'runamravati.com',
+  name: siteData.site.name,
+  shortName: siteData.site.shortName,
+  description: siteData.seo.pages.home.description,
+  url: `https://${siteData.site.domain}`,
+  domain: siteData.site.domain,
   ogImage: '/og-image.jpg',
-  instagram: 'amravati.half.marathon',
-  author: 'Amravati Marathon Team',
-  email: 'amravatimarathon@gmail.com',
+  instagram: siteData.site.social.instagram.handle,
+  author: siteData.site.author,
+  email: siteData.site.email,
 }
 
 export const eventConfig = {
-  year: 2026,
-  name: 'Amravati Half Marathon 2026',
-  date: '2026-10-25',
-  location: 'Amravati, Maharashtra, India',
-  registrationUrl:
-    process.env.NEXT_PUBLIC_TOWNSCRIPT_URL ||
-    'https://www.townscript.com/e/amravati-half-marathon2026-221331',
-  maxParticipants: 200,
+  year: siteData.event.year,
+  name: siteData.event.name,
+  date: siteData.event.date,
+  location: siteData.event.location.display,
+  registrationUrl: siteData.event.registrationUrl,
+  maxParticipants: siteData.event.maxParticipants,
 }
 
-export const seoKeywords = [
-  'Amravati Half Marathon',
-  'Amravati Marathon',
-  'Half Marathon Maharashtra',
-  'Running Event Amravati',
-  '21.1 km Marathon',
-  '10 km Power Run',
-  'Marathon Registration',
-  'Amravati Sports Event',
-]
+export const seoKeywords = siteData.site.seoKeywords
 
-export const navigationLinks = [
-  { label: 'Home', href: '/' },
-  { label: 'Categories', href: '/#categories' },
-  { label: 'Prizes', href: '/prizes' },
-  { label: 'Route', href: '/route-maps' },
-  { label: 'Hotels', href: '/hotels' },
-  { label: 'Gallery', href: '/gallery' },
-]
+export const navigationLinks = siteData.navigation.main
 
-export const moreLinks = [
-  { label: 'Sponsors', href: '/#sponsors' },
-  { label: 'Results', href: '/results' },
-  { label: 'Contact', href: '/contact' },
-]
+export const moreLinks = siteData.navigation.more

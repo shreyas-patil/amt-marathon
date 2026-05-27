@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import CashPrizesSection from '@/components/CashPrizesSection'
+import siteData from '@/lib/data'
+
+const { seo, site } = siteData
+const siteUrl = `https://${site.domain}`
 
 export const metadata: Metadata = {
-  title: 'Cash Prizes & Trophies',
-  description:
-    'Full cash prize breakdown for all categories at Amravati Half Marathon 2026. Total prize pool of ₹4,50,000.',
-  alternates: { canonical: 'https://runamravati.com/prizes' },
-  openGraph: { url: 'https://runamravati.com/prizes' },
+  title: seo.pages.prizes.title,
+  description: seo.pages.prizes.description,
+  alternates: { canonical: `${siteUrl}/prizes` },
+  openGraph: { url: `${siteUrl}/prizes` },
 }
 
 export default function PrizesPage() {

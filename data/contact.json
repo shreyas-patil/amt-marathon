@@ -1,0 +1,25 @@
+{
+  "organizers": {
+    "sectionTag": "The Team",
+    "heading": "Meet the Organizers",
+    "description": "The people behind Amravati’s premier running event."
+  },
+  "contactBoxes": [
+    {
+      "id": "general-enquiries",
+      "eyebrow": "Get in Touch",
+      "heading": "General Enquiries",
+      "note": "For registration queries, please visit Townscript. For timing and results, contact Alpha Racing Solutions directly."
+    },
+    {
+      "id": "social-media",
+      "eyebrow": "Follow Along",
+      "heading": "Social Media"
+    }
+  ],
+  "quickFacts": {
+    "raceDayLabel": "Race Day",
+    "locationLabel": "Location",
+    "emailLabel": "Email"
+  }
+}

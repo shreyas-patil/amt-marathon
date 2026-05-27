@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import HotelsSection from '@/components/HotelsSection'
+import siteData from '@/lib/data'
+
+const { seo, site } = siteData
+const siteUrl = `https://${site.domain}`
 
 export const metadata: Metadata = {
-  title: 'Hotels & Accommodation',
-  description:
-    'Recommended hotels near the Amravati Half Marathon 2026 venue. Book your stay for race weekend.',
-  alternates: { canonical: 'https://runamravati.com/hotels' },
-  openGraph: { url: 'https://runamravati.com/hotels' },
+  title: seo.pages.hotels.title,
+  description: seo.pages.hotels.description,
+  alternates: { canonical: `${siteUrl}/hotels` },
+  openGraph: { url: `${siteUrl}/hotels` },
 }
 
 export default function HotelsPage() {

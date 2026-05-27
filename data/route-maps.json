@@ -1,0 +1,36 @@
+{
+  "page": {
+    "sectionTag": "Amravati Half Marathon 2026",
+    "heading": "Route Maps",
+    "description": "Official course routes for all race categories on October 25, 2026."
+  },
+  "routes": [
+    {
+      "id": "half-marathon",
+      "label": "Half Marathon",
+      "distance": "21.1 km",
+      "categoryLabels": ["Half Marathon"],
+      "ageGroup": "Age 18 & above",
+      "image": "/images/route-maps/21kmRoute.png",
+      "imageAlt": "Half Marathon route map — Amravati Half Marathon 2026"
+    },
+    {
+      "id": "10km",
+      "label": "10 km Power Run",
+      "distance": "10 km",
+      "categoryLabels": ["10 km Power Run"],
+      "ageGroup": "Age 15 & above",
+      "image": "/images/route-maps/10kmRoute.png",
+      "imageAlt": "10 km Power Run route map — Amravati Half Marathon 2026"
+    },
+    {
+      "id": "5km",
+      "label": "5 km Run",
+      "distance": "5 km",
+      "categoryLabels": ["5 km Fitness Run", "Children's Dream Run"],
+      "ageGroup": "Age 10 & above",
+      "image": "/images/route-maps/05kmRoute.png",
+      "imageAlt": "5 km Run route map — Amravati Half Marathon 2026"
+    }
+  ]
+}

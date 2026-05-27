@@ -1,0 +1,14 @@
+{
+  "year": 2026,
+  "eventDate": "2026-10-25",
+  "status": "pending",
+  "message": "Results will be available after the event.",
+  "placeholderContent": {
+    "icon": "🏁",
+    "tag": "Results",
+    "heading": "Not yet.",
+    "subtext": "The race is on October 25, 2026.",
+    "description": "Results, rankings, and prize winners will be published here once the last runner crosses the finish line. Come back then."
+  },
+  "results": []
+}

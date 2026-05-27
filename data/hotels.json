@@ -1,4 +1,11 @@
 {
+  "section": {
+    "sectionTag": "Accommodation",
+    "heading": "Where to Stay",
+    "description": "Recommended hotels near the event venue. Contact them directly to book your stay.",
+    "footerNote": "Tap a number to call directly. Hotel listings are for convenience — the organizers are not affiliated with any hotel.",
+    "bookNowLabel": "Book Now"
+  },
   "hotels": [
     {
       "id": 1,

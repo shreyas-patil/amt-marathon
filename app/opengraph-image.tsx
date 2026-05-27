@@ -1,8 +1,10 @@
 import { ImageResponse } from 'next/og'
-import { eventConfig, siteConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const { site, event, seo } = siteData
 
 export const runtime = 'edge'
-export const alt = `${eventConfig.name} — ${eventConfig.date}`
+export const alt = `${event.name} — ${event.date}`
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -44,7 +46,7 @@ export default function Image() {
           fontWeight: 600,
         }}
       >
-        {siteConfig.domain}
+        {site.domain}
       </div>
 
       {/* Event title */}
@@ -59,7 +61,7 @@ export default function Image() {
           padding: '0 60px',
         }}
       >
-        {eventConfig.name}
+        {event.name}
       </div>
 
       {/* Date & location */}
@@ -72,14 +74,14 @@ export default function Image() {
           marginBottom: 40,
         }}
       >
-        <span>October 25, 2026</span>
+        <span>{event.displayDateMedium}</span>
         <span style={{ color: '#f97316' }}>•</span>
-        <span>Amravati, Maharashtra</span>
+        <span>{event.location.displayMedium}</span>
       </div>
 
       {/* Categories badges */}
       <div style={{ display: 'flex', gap: 16 }}>
-        {['Half Marathon', '10 km', '5 km', "Children's Run"].map((cat) => (
+        {seo.openGraph.categoryBadges.map((cat) => (
           <div
             key={cat}
             style={{

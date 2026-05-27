@@ -1,0 +1,13 @@
+{
+  "section": {
+    "sectionTag": "Partners",
+    "heading": "Our Sponsors",
+    "description": "The organizations that make this event possible.",
+    "emptyState": {
+      "message": "Sponsor logos will appear here",
+      "ctaText": "Get in touch.",
+      "ctaHref": "/contact"
+    }
+  },
+  "sponsors": []
+}

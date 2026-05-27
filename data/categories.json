@@ -1,4 +1,12 @@
 {
+  "section": {
+    "sectionTag": "Race Categories",
+    "heading": "Choose Your Challenge",
+    "description": "Early-bird pricing available until **31 July 2026.**",
+    "earlyBirdDeadline": "2026-07-31T18:30:00Z",
+    "ctaLabel": "Register Now",
+    "feesTableCaption": "Registration Fees (₹)"
+  },
   "categories": [
     {
       "id": "half-marathon",

@@ -3,7 +3,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import { navigationLinks, moreLinks, eventConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const { navigation, event, site } = siteData
 
 function MoreDropdown() {
   const [open, setOpen] = useState(false)
@@ -25,7 +27,7 @@ function MoreDropdown() {
         onClick={() => setOpen(!open)}
         className="flex items-center gap-1 text-white/90 hover:text-white text-base font-bold transition-colors tracking-wide"
       >
-        More
+        {navigation.header.registerButton.moreDropdownLabel}
         <svg
           className={`w-3.5 h-3.5 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
           fill="none"
@@ -38,7 +40,7 @@ function MoreDropdown() {
 
       {open && (
         <div className="absolute right-0 top-full mt-3 w-44 bg-zinc-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden">
-          {moreLinks.map((link) => (
+          {navigation.more.map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -63,17 +65,17 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/amt-marathon-logo.png"
-              alt="Amravati Marathon"
-              width={60}
-              height={60}
+              src={site.logoImage}
+              alt={site.logoAlt}
+              width={site.logoSize.width}
+              height={site.logoSize.height}
               className="rounded-lg"
             />
           </Link>
 
           {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navigationLinks.map((link) => (
+            {navigation.main.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -87,12 +89,12 @@ export default function Header() {
 
           <div className="hidden md:block">
             <a
-              href={eventConfig.registrationUrl}
+              href={event.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2 rounded-full transition-colors"
             >
-              Register Now
+              {navigation.header.registerButton.label}
             </a>
           </div>
 
@@ -127,7 +129,7 @@ export default function Header() {
         {/* Mobile drawer — all links flat */}
         {menuOpen && (
           <div className="md:hidden border-t border-white/10 py-6 flex flex-col gap-5">
-            {[...navigationLinks, ...moreLinks].map((link) => (
+            {[...navigation.main, ...navigation.more].map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -138,12 +140,12 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href={eventConfig.registrationUrl}
+              href={event.registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-3 rounded-full transition-colors text-center mt-2"
             >
-              Register Now
+              {navigation.header.registerButton.label}
             </a>
           </div>
         )}

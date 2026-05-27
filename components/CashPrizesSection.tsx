@@ -1,38 +1,20 @@
 'use client'
 
 import { useState } from 'react'
-import cashPrizesData from '@/data/cash-prizes.json'
+import siteData from '@/lib/data'
+import type { PrizeCategory } from '@/lib/types'
+
+const { prizes } = siteData
+
+// Tab accent colors are presentation-layer — owned by CSS tokens in Phase 9
+const tabColors: Record<string, string> = {
+  'half-marathon': '#f97316',
+  '10km': '#7aad68',
+  '5km-fitness': '#a78bfa',
+  'dream-run': '#c49a2e',
+}
 
 const fmt = (amount: number | null) => (amount == null ? '—' : `₹${amount.toLocaleString('en-IN')}`)
-
-const tabs = [
-  {
-    id: 'half-marathon',
-    label: 'Half Marathon',
-    categoryIds: ['half-marathon-male', 'half-marathon-female', 'half-marathon-out-of-maharashtra'],
-    color: '#f97316',
-  },
-  {
-    id: '10km',
-    label: '10 km Power Run',
-    categoryIds: ['10km-power-run'],
-    color: '#7aad68',
-  },
-  {
-    id: '5km-fitness',
-    label: '5 km Fitness Run',
-    categoryIds: ['5km-fitness-run'],
-    color: '#a78bfa',
-  },
-  {
-    id: 'dream-run',
-    label: "Children's Dream Run",
-    categoryIds: ['5km-dream-run'],
-    color: '#c49a2e',
-  },
-]
-
-type PrizeCategory = (typeof cashPrizesData.categories)[0]
 
 function PrizeTable({ cat }: { cat: PrizeCategory }) {
   const validPrizes = cat.prizes.filter((p) => p.amounts.some((a) => a != null))
@@ -88,10 +70,10 @@ function PrizeTable({ cat }: { cat: PrizeCategory }) {
 }
 
 export default function CashPrizesSection() {
-  const [activeTab, setActiveTab] = useState('half-marathon')
+  const [activeTab, setActiveTab] = useState(prizes.tabs[0].id)
 
-  const activeTabData = tabs.find((t) => t.id === activeTab)!
-  const activeCategories = cashPrizesData.categories.filter((c) =>
+  const activeTabData = prizes.tabs.find((t) => t.id === activeTab)!
+  const activeCategories = prizes.categories.filter((c) =>
     activeTabData.categoryIds.includes(c.id)
   )
 
@@ -100,7 +82,7 @@ export default function CashPrizesSection() {
       <div className="max-w-5xl mx-auto text-center">
         {/* Header */}
         <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-          Cash Prizes & Trophies
+          {prizes.section.sectionTag}
         </p>
         <h2 className="text-white text-4xl sm:text-5xl font-black mb-4">
           Run for Glory, <span className="text-zinc-400">Win Big</span>
@@ -114,8 +96,8 @@ export default function CashPrizesSection() {
         <div className="inline-flex items-start gap-3 bg-orange-500/10 border border-orange-500/30 rounded-xl px-5 py-4 mb-14 text-left max-w-xl">
           <span className="text-orange-400 text-lg shrink-0 mt-0.5">⚠</span>
           <p className="text-orange-200 text-sm leading-relaxed">
-            <span className="font-bold text-orange-400">Eligibility:</span> Half Marathon runners
-            finishing in more than 2:30 hours are not eligible for cash prizes.
+            <span className="font-bold text-orange-400">Eligibility:</span>{' '}
+            {prizes.section.eligibilityNote}
           </p>
         </div>
 
@@ -125,24 +107,23 @@ export default function CashPrizesSection() {
           style={{ paddingTop: '16px', paddingBottom: '16px' }}
         >
           <div className="flex gap-2 w-max mx-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className="px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap"
-                style={
-                  activeTab === tab.id
-                    ? {
-                        background: tab.color,
-                        color: '#000',
-                        boxShadow: `0 0 20px -4px ${tab.color}`,
-                      }
-                    : { background: 'rgba(255,255,255,0.06)', color: '#a1a1aa' }
-                }
-              >
-                {tab.label}
-              </button>
-            ))}
+            {prizes.tabs.map((tab) => {
+              const color = tabColors[tab.id] ?? '#f97316'
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className="px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap"
+                  style={
+                    activeTab === tab.id
+                      ? { background: color, color: '#000', boxShadow: `0 0 20px -4px ${color}` }
+                      : { background: 'rgba(255,255,255,0.06)', color: '#a1a1aa' }
+                  }
+                >
+                  {tab.label}
+                </button>
+              )
+            })}
           </div>
         </div>
 
@@ -163,8 +144,7 @@ export default function CashPrizesSection() {
 
         {/* Footer note */}
         <p className="text-zinc-600 text-xs mt-8 leading-relaxed">
-          * Out of Maharashtra Runners includes runners from any other state other than Maharashtra
-          and international runners.
+          {prizes.section.outOfMaharashtraNote}
         </p>
       </div>
     </section>

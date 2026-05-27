@@ -1,0 +1,21 @@
+{
+  "brand": {
+    "tagline1": "Brought to you by",
+    "nameWordmark": ["Amravati Marathon", "Association"],
+    "description": "Annual running event celebrating fitness and community in Amravati, Maharashtra, India."
+  },
+  "sections": {
+    "quickLinks": {
+      "heading": "Quick Links"
+    },
+    "eventDetails": {
+      "heading": "Event Details",
+      "items": [
+        { "icon": "📅", "valueKey": "event.displayDate" },
+        { "icon": "📍", "valueKey": "event.location.displayMedium" },
+        { "icon": "✉️", "valueKey": "site.email", "linkType": "mailto" }
+      ]
+    }
+  },
+  "copyright": "© {year} Amravati Marathon. All rights reserved."
+}

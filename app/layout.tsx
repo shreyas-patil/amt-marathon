@@ -5,7 +5,9 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
-import { siteConfig, eventConfig, seoKeywords } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const { site, event, seo } = siteData
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const notable = Notable({ weight: '400', subsets: ['latin'], variable: '--font-notable' })
@@ -15,37 +17,39 @@ const rubikDoodle = Rubik_Doodle_Triangles({
   variable: '--font-rubik-doodle',
 })
 
+const siteUrl = `https://${site.domain}`
+
 export const metadata: Metadata = {
   title: {
-    default: `${eventConfig.name} | ${siteConfig.domain}`,
-    template: `%s | Amravati Marathon`,
+    default: `${event.name} | ${site.domain}`,
+    template: seo.titleTemplate,
   },
-  description: siteConfig.description,
-  keywords: seoKeywords,
-  metadataBase: new URL(siteConfig.url),
+  description: seo.pages.home.description,
+  keywords: site.seoKeywords,
+  metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: siteConfig.url,
+    canonical: siteUrl,
   },
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: eventConfig.name,
-    description: siteConfig.description,
+    url: siteUrl,
+    siteName: site.name,
+    title: event.name,
+    description: seo.pages.home.description,
     images: [
       {
         url: '/opengraph-image',
         width: 1200,
         height: 630,
-        alt: eventConfig.name,
+        alt: event.name,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: eventConfig.name,
-    description: siteConfig.description,
+    title: event.name,
+    description: seo.pages.home.description,
     images: ['/opengraph-image'],
   },
   robots: {

@@ -1,4 +1,7 @@
-import hotelsData from '@/data/hotels.json'
+import siteData from '@/lib/data'
+import type { Hotel } from '@/lib/types'
+
+const { hotels } = siteData
 
 function PhoneIcon() {
   return (
@@ -26,7 +29,7 @@ function ExternalLinkIcon() {
   )
 }
 
-function HotelCard({ hotel }: { hotel: (typeof hotelsData.hotels)[0] }) {
+function HotelCard({ hotel }: { hotel: Hotel }) {
   const initials = hotel.name
     .replace(/^Hotel\s+/i, '')
     .split(' ')
@@ -71,7 +74,7 @@ function HotelCard({ hotel }: { hotel: (typeof hotelsData.hotels)[0] }) {
         rel="noopener noreferrer"
         className="mt-auto flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold py-2.5 rounded-xl transition-colors"
       >
-        Book Now
+        {hotels.section.bookNowLabel}
         <ExternalLinkIcon />
       </a>
     </div>
@@ -84,24 +87,21 @@ export default function HotelsSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            Accommodation
+            {hotels.section.sectionTag}
           </p>
-          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">Where to Stay</h2>
-          <p className="text-zinc-500 max-w-lg mx-auto">
-            Recommended hotels near the event venue. Contact them directly to book your stay.
-          </p>
+          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
+            {hotels.section.heading}
+          </h2>
+          <p className="text-zinc-500 max-w-lg mx-auto">{hotels.section.description}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {hotelsData.hotels.map((hotel) => (
+          {hotels.hotels.map((hotel) => (
             <HotelCard key={hotel.id} hotel={hotel} />
           ))}
         </div>
 
-        <p className="text-center text-zinc-400 text-xs mt-10">
-          Tap a number to call directly. Hotel listings are for convenience — the organizers are not
-          affiliated with any hotel.
-        </p>
+        <p className="text-center text-zinc-400 text-xs mt-10">{hotels.section.footerNote}</p>
       </div>
     </section>
   )

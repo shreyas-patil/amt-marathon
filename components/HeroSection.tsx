@@ -1,4 +1,6 @@
-import { eventConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const { hero, event } = siteData
 
 export default function HeroSection() {
   return (
@@ -12,46 +14,45 @@ export default function HeroSection() {
 
       <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-16">
         <p className="text-orange-500 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-8">
-          Amravati, Maharashtra
+          {hero.locationTag}
         </p>
 
         <h1 className="text-6xl sm:text-8xl lg:text-[7rem] font-black text-white leading-[0.9] tracking-tighter mb-8">
-          AMRAVATI
+          {hero.headingLines[0]}
           <br />
-          <span className="text-orange-500">HALF MARATHON</span>
+          <span className="text-orange-500">{hero.headingLines[1]}</span>
           <br />
-          <span className="text-white/30">25 October 2026</span>
+          <span className="text-white/30">{hero.headingLines[2]}</span>
         </h1>
 
         <p className="text-orange-500/60 text-2xl sm:text-3xl font-semibold tracking-[0.2em] uppercase -mt-4 mb-12">
-          9th Edition
+          {hero.edition}
         </p>
 
         <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          Run through the heart of Vidarbha. Four categories. Thousands of runners. Join the event
-          that has revolutionized fitness in Amravati.
+          {hero.description}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={eventConfig.registrationUrl}
+            href={event.registrationUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors"
           >
-            Register Now
+            {hero.ctaButtons[0].label}
           </a>
           <a
-            href="#categories"
+            href={hero.ctaButtons[1].href}
             className="border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-semibold px-10 py-4 rounded-full text-base sm:text-lg transition-all"
           >
-            View Categories
+            {hero.ctaButtons[1].label}
           </a>
         </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
-        <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
+        <span className="text-xs tracking-[0.3em] uppercase">{hero.scrollIndicator.label}</span>
         <svg
           className="w-4 h-4 animate-bounce"
           fill="none"

@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/config'
+import siteData from '@/lib/data'
+
+const siteUrl = `https://${siteData.site.domain}`
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -7,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
   }
 }

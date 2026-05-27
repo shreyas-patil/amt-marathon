@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import ContactSection from '@/components/ContactSection'
+import siteData from '@/lib/data'
+
+const { seo, site } = siteData
+const siteUrl = `https://${site.domain}`
 
 export const metadata: Metadata = {
-  title: 'Contact & Organizers',
-  description:
-    'Meet the team behind the Amravati Half Marathon 2026. Get in touch with the organizers.',
-  alternates: { canonical: 'https://runamravati.com/contact' },
-  openGraph: { url: 'https://runamravati.com/contact' },
+  title: seo.pages.contact.title,
+  description: seo.pages.contact.description,
+  alternates: { canonical: `${siteUrl}/contact` },
+  openGraph: { url: `${siteUrl}/contact` },
 }
 
 export default function ContactPage() {

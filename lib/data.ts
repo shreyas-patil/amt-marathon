@@ -1,87 +1,71 @@
-import fs from 'fs'
-import path from 'path'
+import site from '@/data/site.json'
+import event from '@/data/event.json'
+import navigation from '@/data/navigation.json'
+import seo from '@/data/seo.json'
+import hero from '@/data/hero.json'
+import overview from '@/data/event-overview.json'
+import categories from '@/data/categories.json'
+import prizes from '@/data/prizes.json'
+import hotels from '@/data/hotels.json'
+import sponsors from '@/data/sponsors.json'
+import gallery from '@/data/gallery.json'
+import contact from '@/data/contact.json'
+import footer from '@/data/footer.json'
+import routeMaps from '@/data/route-maps.json'
+import results from '@/data/results/2026.json'
+import organizers from '@/data/organizers.json'
 
-const DATA_DIR = path.join(process.cwd(), 'data')
-
-function loadJSON<T>(filename: string): T | null {
-  try {
-    const filePath = path.join(DATA_DIR, filename)
-    const fileContent = fs.readFileSync(filePath, 'utf-8')
-    return JSON.parse(fileContent)
-  } catch (error) {
-    console.error(`Error loading ${filename}:`, error)
-    return null
-  }
+// Resolve cross-references: inject registrationUrl into hero CTA buttons
+const resolvedHero = {
+  ...hero,
+  ctaButtons: hero.ctaButtons.map((btn) =>
+    'hrefKey' in btn && btn.hrefKey === 'registrationUrl'
+      ? { ...btn, href: event.registrationUrl }
+      : btn
+  ),
 }
 
-export interface Category {
-  id: string
-  name: string
-  distance: string
-  description: string
-  ageGroup: string
-  fees: {
-    earlyBird: number
-    standard: number
-    currency: string
-    earlyBirdDeadline: string
-  }
+export const siteData = {
+  site,
+  event,
+  navigation,
+  seo,
+  hero: resolvedHero,
+  overview,
+  categories,
+  prizes,
+  hotels,
+  sponsors,
+  gallery,
+  contact,
+  footer,
+  routeMaps,
+  results,
+  organizers,
 }
 
-export interface Hotel {
-  id: number
-  name: string
-  city: string
-  contactNumbers: string[]
-}
+export type SiteData = typeof siteData
 
-export interface Organizer {
-  id: number
-  name: string
-  role: string
-  email: string
-  phone: string
-  avatar: string
-}
-
-export interface Results {
-  year: number
-  eventDate: string
-  status: 'pending' | 'completed'
-  message: string
-  results: Array<{
-    rank: number
-    name: string
-    category: string
-    time: string
-    prize: number
-  }>
-}
+// Named convenience exports (so existing imports keep working during migration)
+export type Category = (typeof categories.categories)[0]
+export type Hotel = (typeof hotels.hotels)[0]
+export type Organizer = (typeof organizers.organizers)[0]
+export type ResultsData = typeof results
 
 export function getCategories(): Category[] {
-  const data = loadJSON<{ categories: Category[] }>('categories.json')
-  return data?.categories || []
+  return categories.categories
 }
 
 export function getHotels(): Hotel[] {
-  const data = loadJSON<{ hotels: Hotel[] }>('hotels.json')
-  return data?.hotels || []
+  return hotels.hotels
 }
 
 export function getOrganizers(): Organizer[] {
-  const data = loadJSON<{ organizers: Organizer[] }>('organizers.json')
-  return data?.organizers || []
+  return organizers.organizers
 }
 
-export function getResults(): Results {
-  const data = loadJSON<Results>('results-2026.json')
-  return (
-    data || {
-      year: 2026,
-      eventDate: '',
-      status: 'pending',
-      message: 'Results coming soon',
-      results: [],
-    }
-  )
+export function getResults(): ResultsData {
+  return results
 }
+
+export default siteData
