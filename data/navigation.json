@@ -10,7 +10,8 @@
   "more": [
     { "label": "Sponsors", "href": "/#sponsors" },
     { "label": "Results", "href": "/results" },
-    { "label": "Contact", "href": "/contact" }
+    { "label": "Contact", "href": "/contact" },
+    { "label": "Privacy Policy", "href": "/privacy" }
   ],
   "header": {
     "registerButton": {
