@@ -169,7 +169,7 @@ function MedalCard({ cat }: { cat: Category }) {
                 className="text-xs font-medium transition-colors"
                 style={{ color: earlyBirdExpired ? '#d4d4d8' : '#a1a1aa' }}
               >
-                After Aug 1
+                Regular pricing
               </span>
               <span
                 className={`font-black transition-colors ${earlyBirdExpired ? 'text-base' : 'text-sm'}`}
@@ -197,7 +197,7 @@ export default function CategoriesSection() {
             Choose Your Challenge
           </h2>
           <p className="text-zinc-500 max-w-lg mx-auto">
-            Early-bird pricing available until 31 July 2026.
+            Early-bird pricing available until <strong className="text-zinc-700">31 July 2026.</strong>
           </p>
         </div>
 
@@ -222,14 +222,14 @@ export default function CategoriesSection() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b-2 border-zinc-200">
-                  <th className="text-left py-3 pr-8 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
+                  <th className="text-left py-3 pr-8 font-semibold text-zinc-600 uppercase text-xs tracking-wider">
                     Category
                   </th>
-                  <th className="text-right py-3 px-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
-                    Upto 31 July 2026
+                  <th className="text-right py-3 px-6 font-semibold text-zinc-600 uppercase text-xs tracking-wider">
+                    Early Bird
                   </th>
-                  <th className="text-right py-3 pl-6 font-semibold text-zinc-500 uppercase text-xs tracking-wider">
-                    1 Aug 2026 onwards
+                  <th className="text-right py-3 pl-6 font-semibold text-zinc-600 uppercase text-xs tracking-wider">
+                    Regular Pricing
                   </th>
                 </tr>
               </thead>
@@ -242,10 +242,10 @@ export default function CategoriesSection() {
                     }
                   >
                     <td className="py-4 pr-8 font-semibold text-zinc-800">{cat.name}</td>
-                    <td className="py-4 px-6 text-right font-black text-orange-600 text-base">
+                    <td className="py-4 px-6 text-right font-black text-orange-700 text-base">
                       ₹{cat.fees.earlyBird.toLocaleString()}
                     </td>
-                    <td className="py-4 pl-6 text-right text-zinc-400">
+                    <td className="py-4 pl-6 text-right font-black text-base text-zinc-600">
                       ₹{cat.fees.standard.toLocaleString()}
                     </td>
                   </tr>

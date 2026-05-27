@@ -7,8 +7,11 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="grid sm:grid-cols-3 gap-12 mb-12">
           <div>
+            <h4 className="text-white font-semibold text-xs uppercase tracking-widest mb-5">
+              Brought to you by
+            </h4>
             <div className="text-white font-black text-2xl mb-4">
-              AMT<span className="text-orange-500">26</span>
+              Amravati Marathon <span className="text-orange-500">Association</span>
             </div>
             <p className="text-zinc-500 text-sm leading-relaxed">
               Annual running event celebrating fitness and community in Amravati, Maharashtra,
@@ -52,14 +55,6 @@ export default function Footer() {
                 </li>
               )}
             </ul>
-
-            <div className="mt-8">
-              <h4 className="text-white font-semibold text-xs uppercase tracking-widest mb-3">
-                Follow Us
-              </h4>
-              {/* Social links placeholder — to be added */}
-              <p className="text-zinc-600 text-xs italic">Social links coming soon</p>
-            </div>
           </div>
         </div>
 

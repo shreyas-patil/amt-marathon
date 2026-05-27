@@ -28,8 +28,8 @@ export default function HeroSection() {
         </p>
 
         <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-          Run through the heart of Vidarbha. Four categories. Thousands of runners. One
-          unforgettable race day.
+          Run through the heart of Vidarbha. Four categories. Thousands of runners. Join the event
+          that has revolutionized fitness in Amravati.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
