@@ -69,10 +69,8 @@ export default function Footer() {
           <p>
             {site.partners.registration.label}{' '}
             <a
-              href={event.registrationUrl}
+              href="/register"
               className="hover:text-zinc-400 transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               {site.partners.registration.name}
             </a>

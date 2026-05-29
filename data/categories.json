@@ -5,7 +5,8 @@
     "description": "Early-bird pricing available until **31 July 2026.**",
     "earlyBirdDeadline": "2026-07-31T18:30:00Z",
     "ctaLabel": "Register Now",
-    "feesTableCaption": "Registration Fees (₹)"
+    "feesTableCaption": "Registration Fees (₹)",
+    "eligibilityHeading": "Eligibility & Age Groups"
   },
   "categories": [
     {
@@ -14,6 +15,12 @@
       "distance": "21.1 km",
       "description": "Challenge yourself with the full half marathon distance",
       "ageGroup": "Age 18 & above",
+      "subCategories": [
+        { "gender": "Male", "label": "Open Category", "ageRange": "Below 45 years" },
+        { "gender": "Male", "label": "Veteran Category", "ageRange": "Above 45 years" },
+        { "gender": "Female", "label": "Open Category", "ageRange": "Below 40 years" },
+        { "gender": "Female", "label": "Veteran Category", "ageRange": "Above 40 years" }
+      ],
       "fees": {
         "earlyBird": 1400,
         "standard": 1700,
@@ -27,6 +34,7 @@
       "distance": "10 km",
       "description": "A powerful running experience for fitness enthusiasts",
       "ageGroup": "Age 15 & above",
+      "noAgeCategory": true,
       "fees": {
         "earlyBird": 1000,
         "standard": 1250,
@@ -40,6 +48,7 @@
       "distance": "5 km",
       "description": "A great way to start your fitness journey",
       "ageGroup": "Age 15 & above",
+      "noAgeCategory": true,
       "fees": {
         "earlyBird": 800,
         "standard": 1000,
@@ -60,5 +69,11 @@
         "earlyBirdDeadline": "2026-07-31"
       }
     }
-  ]
+  ],
+  "outOfMaharashtra": {
+    "heading": "Out of Maharashtra — Special Category",
+    "applicableTo": "Half Marathon only No Age Category",
+    "description": "A dedicated category for Half Marathon runners travelling from outside Maharashtra. Male and female participants compete separately with no internal age division.",
+    "note": "Separate cash prizes are awarded exclusively for this category."
+  }
 }

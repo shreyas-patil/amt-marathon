@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 import siteData from '@/lib/data'
 
-const { navigation, event, site } = siteData
+const { navigation, site } = siteData
 
 function MoreDropdown() {
   const [open, setOpen] = useState(false)
@@ -88,14 +88,12 @@ export default function Header() {
           </div>
 
           <div className="hidden md:block">
-            <a
-              href={event.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/register"
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2 rounded-full transition-colors"
             >
               {navigation.header.registerButton.label}
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -139,14 +137,13 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <a
-              href={event.registrationUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/register"
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-3 rounded-full transition-colors text-center mt-2"
+              onClick={() => setMenuOpen(false)}
             >
               {navigation.header.registerButton.label}
-            </a>
+            </Link>
           </div>
         )}
       </nav>

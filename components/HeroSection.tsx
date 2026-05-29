@@ -1,6 +1,6 @@
 import siteData from '@/lib/data'
 
-const { hero, event } = siteData
+const { hero } = siteData
 
 export default function HeroSection() {
   return (
@@ -35,9 +35,7 @@ export default function HeroSection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href={event.registrationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/register"
             className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors"
           >
             {hero.ctaButtons[0].label}

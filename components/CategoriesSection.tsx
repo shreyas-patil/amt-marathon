@@ -4,7 +4,7 @@ import { useState } from 'react'
 import siteData from '@/lib/data'
 import type { RaceCategory } from '@/lib/types'
 
-const { categories, event } = siteData
+const { categories } = siteData
 
 // Deadline sourced from categories.section — single source of truth
 const EARLY_BIRD_DEADLINE = new Date(categories.section.earlyBirdDeadline)
@@ -77,9 +77,7 @@ function MedalCard({ cat }: { cat: RaceCategory }) {
 
   return (
     <a
-      href="https://www.townscript.com/v2/e/amravati-half-marathon2026-221331/booking/tickets"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="/register"
       className="flex flex-col items-center w-full max-w-sm mx-auto"
     >
       <div
@@ -260,9 +258,7 @@ export default function CategoriesSection() {
 
         <div className="text-center">
           <a
-            href={event.registrationUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/register"
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black px-12 py-4 rounded-full text-lg transition-colors"
           >
             {categories.section.ctaLabel}

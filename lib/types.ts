@@ -159,13 +159,28 @@ export interface CategoryFees {
   earlyBirdDeadline: string
 }
 
+export interface AgeSubCategory {
+  gender: string
+  label: string
+  ageRange: string
+}
+
 export interface RaceCategory {
   id: string
   name: string
   distance: string
   description: string
   ageGroup: string
+  noAgeCategory?: boolean
+  subCategories?: AgeSubCategory[]
   fees: CategoryFees
+}
+
+export interface OutOfMaharashtraCategory {
+  heading: string
+  description: string
+  applicableTo: string
+  note: string
 }
 
 export interface CategoriesData {
@@ -176,8 +191,10 @@ export interface CategoriesData {
     earlyBirdDeadline: string
     ctaLabel: string
     feesTableCaption: string
+    eligibilityHeading: string
   }
   categories: RaceCategory[]
+  outOfMaharashtra: OutOfMaharashtraCategory
 }
 
 // ── prizes.json ───────────────────────────────────────────────────────────────
