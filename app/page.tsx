@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import HeroSection from '@/components/HeroSection'
 import EventOverview from '@/components/EventOverview'
 import CategoriesSection from '@/components/CategoriesSection'
+import RoadrunnersSection from '@/components/RoadrunnersSection'
 import SponsorsSection from '@/components/SponsorsSection'
 import siteData from '@/lib/data'
 
@@ -25,6 +26,7 @@ export default function Home() {
       <HeroSection />
       <EventOverview />
       <CategoriesSection />
+      <RoadrunnersSection />
       <SponsorsSection />
     </>
   )
