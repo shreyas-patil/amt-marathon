@@ -18,61 +18,10 @@ function useEarlyBirdExpired() {
   return expired
 }
 
-const categoryTheme: Record<
-  string,
-  {
-    accent: string
-    glow: string
-    medalBg: string
-    sheenColor: string
-    stripeColor: string
-    ageColor: string
-  }
-> = {
-  'half-marathon': {
-    accent: '#f97316',
-    glow: 'rgba(249,115,22,0.50)',
-    medalBg:
-      'linear-gradient(155deg, #100804 0%, #1e0d06 15%, #321408 35%, #2a1006 55%, #180903 75%, #0c0502 100%)',
-    sheenColor: 'rgba(150,80,25,0.20)',
-    stripeColor: '#ea580c',
-    ageColor: '#c4784a',
-  },
-  '10km-power-run': {
-    accent: '#7aad68',
-    glow: 'rgba(122,173,104,0.45)',
-    medalBg:
-      'linear-gradient(155deg, #04100a 0%, #091e0e 15%, #0f2e14 35%, #0a2010 55%, #06140a 75%, #030a05 100%)',
-    sheenColor: 'rgba(60,110,40,0.20)',
-    stripeColor: '#4a8c3a',
-    ageColor: '#6a9e58',
-  },
-  '5km-fitness-run': {
-    accent: '#9c7ec0',
-    glow: 'rgba(156,126,192,0.45)',
-    medalBg:
-      'linear-gradient(155deg, #07050d 0%, #110820 15%, #1c0d32 35%, #150a26 55%, #0d0618 75%, #060310 100%)',
-    sheenColor: 'rgba(90,50,140,0.20)',
-    stripeColor: '#6b3a9c',
-    ageColor: '#9070b8',
-  },
-  '5km-children-dream-run': {
-    accent: '#c49a2e',
-    glow: 'rgba(196,154,46,0.48)',
-    medalBg:
-      'linear-gradient(155deg, #0c0a03 0%, #1c1608 15%, #2c2008 35%, #20180a 55%, #140f04 75%, #09080a 100%)',
-    sheenColor: 'rgba(150,110,20,0.20)',
-    stripeColor: '#b07c18',
-    ageColor: '#b08828',
-  },
-}
-
-function MedalCard({ cat }: { cat: RaceCategory }) {
-  const theme = categoryTheme[cat.id]
+function CategoryCard({ cat }: { cat: RaceCategory }) {
   const [distNum, distUnit] = cat.distance.split(' ')
   const earlyBirdExpired = useEarlyBirdExpired()
 
-  // Strip redundant distance prefix from name
   const displayName = cat.name.startsWith(cat.distance)
     ? cat.name.slice(cat.distance.length).trim()
     : cat.name
@@ -81,101 +30,58 @@ function MedalCard({ cat }: { cat: RaceCategory }) {
     <a
       href="/register"
       onClick={() => trackEvent('cta_register_click', { location: 'category_card', category: cat.id })}
-      className="flex flex-col items-center w-full max-w-sm mx-auto"
+      className="flex flex-col w-full max-w-sm mx-auto group"
     >
       <div
-        className="w-full aspect-square rounded-2xl relative overflow-hidden flex flex-col"
+        className="w-full sm:aspect-square rounded-2xl flex flex-col justify-between p-5 ring-1 ring-zinc-700/60 group-hover:ring-orange-500/50 transition-all duration-200"
         style={{
-          background: theme.medalBg,
-          boxShadow: `0 10px 28px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.07), inset 0 -1px 0 rgba(0,0,0,0.4)`,
+          background: 'linear-gradient(145deg, #3f3f46 0%, #27272a 55%, #18181b 100%)',
+          boxShadow: '0 6px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.15)',
         }}
       >
-        {/* Metallic sheen */}
-        <div
-          className="absolute inset-0 rounded-2xl pointer-events-none"
-          style={{
-            background: `radial-gradient(ellipse at 25% 15%, ${theme.sheenColor} 0%, transparent 50%)`,
-          }}
-        />
-
-        <div className="relative z-10 flex flex-col h-full p-4">
-          {/* Distance — right-aligned */}
-          <div className="text-right leading-none">
-            <span
-              style={{
-                fontFamily: 'var(--font-rubik-doodle), serif',
-                fontSize: '5.5rem',
-                lineHeight: 1,
-                color: theme.accent,
-                textShadow: `0 0 36px ${theme.glow}`,
-              }}
-            >
-              {distNum}
-            </span>
-            <span
-              style={{
-                fontFamily: 'var(--font-rubik-doodle), serif',
-                fontSize: '1.4rem',
-                lineHeight: 1,
-                color: theme.accent,
-                textShadow: `0 0 36px ${theme.glow}`,
-                marginLeft: '0.2em',
-              }}
-            >
-              {distUnit}
-            </span>
-          </div>
-
-          {/* Negative space */}
-          <div className="flex-1" />
-
-          {/* Name + age */}
-          <div className="text-left mb-2">
-            <h3 className="text-white font-black text-base leading-snug">{displayName}</h3>
-            <p
-              className="text-xs tracking-widest uppercase mt-0.5"
-              style={{ color: theme.ageColor }}
-            >
-              {cat.ageGroup}
-            </p>
-          </div>
-
-          {/* Pricing */}
-          <div
-            className="border-t pt-2.5 space-y-1"
-            style={{ borderColor: 'rgba(255,255,255,0.09)' }}
+        {/* Distance — right-aligned */}
+        <div className="text-right">
+          <p
+            className="text-white leading-none"
+            style={{ fontFamily: 'var(--font-black-ops-one)', fontSize: 'clamp(3.5rem, 8vw, 5.5rem)', textShadow: 'none' }}
           >
+            {distNum}
+          </p>
+          <p
+            className="text-orange-500 leading-none"
+            style={{ fontFamily: 'var(--font-black-ops-one)', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)' }}
+          >
+            {distUnit}
+          </p>
+        </div>
+
+        {/* Bottom: name + age + pricing */}
+        <div>
+          <div className="mb-3">
+            <h3 className="text-white font-black text-base leading-tight">{displayName}</h3>
+            {/* zinc-400 on zinc-900 = 5.9:1 — passes WCAG AA for small text */}
+            <p className="text-zinc-400 text-xs font-semibold tracking-widest uppercase mt-1">{cat.ageGroup}</p>
+          </div>
+          <div className="border-t border-zinc-800 pt-3 space-y-1.5">
             <div className="flex justify-between items-baseline">
+              {/* Active: zinc-300 on zinc-900 = 10.4:1 AAA. Expired: disabled exception applies */}
               <span
-                className="text-xs font-medium transition-colors"
-                style={{
-                  color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#d4d4d8',
-                  textDecoration: earlyBirdExpired ? 'line-through' : 'none',
-                }}
+                className={`text-xs font-semibold ${earlyBirdExpired ? 'text-zinc-600 line-through' : 'text-zinc-300'}`}
               >
                 Early bird
               </span>
               <span
-                className="font-black text-base transition-colors"
-                style={{
-                  color: earlyBirdExpired ? 'rgba(161,161,170,0.5)' : '#ffffff',
-                  textDecoration: earlyBirdExpired ? 'line-through' : 'none',
-                }}
+                className={`font-black text-sm ${earlyBirdExpired ? 'text-zinc-600 line-through' : 'text-white'}`}
               >
                 ₹{cat.fees.earlyBird.toLocaleString()}
               </span>
             </div>
             <div className="flex justify-between items-baseline">
-              <span
-                className="text-xs font-medium transition-colors"
-                style={{ color: earlyBirdExpired ? '#d4d4d8' : '#a1a1aa' }}
-              >
+              {/* Active: zinc-400 on zinc-900 = 5.9:1 AA. Expired: promoted to zinc-300 */}
+              <span className={`text-xs font-semibold ${earlyBirdExpired ? 'text-zinc-300' : 'text-zinc-400'}`}>
                 Regular pricing
               </span>
-              <span
-                className={`font-black transition-colors ${earlyBirdExpired ? 'text-base' : 'text-sm'}`}
-                style={{ color: earlyBirdExpired ? '#ffffff' : '#d4d4d8' }}
-              >
+              <span className={`font-black text-sm ${earlyBirdExpired ? 'text-white' : 'text-zinc-300'}`}>
                 ₹{cat.fees.standard.toLocaleString()}
               </span>
             </div>
@@ -207,14 +113,14 @@ export default function CategoriesSection() {
         {/* Desktop — 2-col on tablet, 4-col on large desktop */}
         <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
           {categories.categories.map((cat) => (
-            <MedalCard key={cat.id} cat={cat} />
+            <CategoryCard key={cat.id} cat={cat} />
           ))}
         </div>
 
         {/* Mobile — single column */}
         <div className="sm:hidden flex flex-col gap-14 mb-16">
           {categories.categories.map((cat) => (
-            <MedalCard key={cat.id} cat={cat} />
+            <CategoryCard key={cat.id} cat={cat} />
           ))}
         </div>
 

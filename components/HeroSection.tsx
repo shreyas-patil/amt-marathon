@@ -15,7 +15,7 @@ export default function HeroSection() {
       {/* Decorative line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/40 to-transparent" />
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-16">
+      <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-16 pb-24">
         <p className="text-orange-500 text-xs sm:text-sm font-semibold tracking-[0.25em] uppercase mb-8">
           {hero.locationTag}
         </p>

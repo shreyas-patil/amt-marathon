@@ -103,7 +103,7 @@ export default function Header() {
             <Link
               href="/register"
               onClick={() => trackEvent('cta_register_click', { location: 'header' })}
-              className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2 rounded-full transition-colors"
+              className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2 rounded-full transition-colors whitespace-nowrap"
             >
               {navigation.header.registerButton.label}
             </Link>

@@ -16,6 +16,7 @@ export type EventName =
   | 'social_click'
   | 'sponsor_contact_click'
   | 'townscript_iframe_load'
+  | 'registration_complete'
   | 'section_view'
 
 type EventParams = Record<string, string | number>

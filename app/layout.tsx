@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Geist, Notable, Rubik_Doodle_Triangles } from 'next/font/google'
+import { Geist, Notable, Black_Ops_One } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -12,10 +12,10 @@ const { site, event, seo } = siteData
 
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const notable = Notable({ weight: '400', subsets: ['latin'], variable: '--font-notable' })
-const rubikDoodle = Rubik_Doodle_Triangles({
+const blackOpsOne = Black_Ops_One({
   weight: '400',
   subsets: ['latin'],
-  variable: '--font-rubik-doodle',
+  variable: '--font-black-ops-one',
 })
 
 const siteUrl = `https://${site.domain}`
@@ -69,7 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${notable.variable} ${rubikDoodle.variable} scroll-smooth`}
+      className={`${geist.variable} ${notable.variable} ${blackOpsOne.variable} scroll-smooth`}
     >
       <head>
         <JsonLd />
