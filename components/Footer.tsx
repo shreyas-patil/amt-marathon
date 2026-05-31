@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import siteData from '@/lib/data'
+import { trackEvent } from '@/lib/analytics'
 
 const { site, event, navigation, footer } = siteData
 
@@ -30,6 +33,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    onClick={() => trackEvent('nav_click', { label: link.label, destination: link.href })}
                     className="text-zinc-500 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
@@ -54,6 +58,7 @@ export default function Footer() {
                 <li>
                   <a
                     href={`mailto:${site.email}`}
+                    onClick={() => trackEvent('email_click', { location: 'footer' })}
                     className="hover:text-zinc-300 transition-colors"
                   >
                     {footer.sections.eventDetails.items[2].icon} {site.email}
@@ -70,6 +75,7 @@ export default function Footer() {
             {site.partners.registration.label}{' '}
             <a
               href="/register"
+              onClick={() => trackEvent('cta_register_click', { location: 'footer' })}
               className="hover:text-zinc-400 transition-colors"
             >
               {site.partners.registration.name}

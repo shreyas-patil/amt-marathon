@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import siteData from '@/lib/data'
 import type { RaceCategory } from '@/lib/types'
+import RegisterIframe from '@/components/RegisterIframe'
 
 const { event, site, categories } = siteData
 
@@ -143,20 +144,7 @@ export default function RegisterPage() {
 
       {/* Iframe container */}
       <div className="max-w-5xl mx-auto px-4 pb-24">
-        <div className="rounded-2xl overflow-hidden bg-white shadow-2xl">
-          <link
-            rel="stylesheet"
-            href="https://www.townscript.com/static/Bookingflow/css/ts-iframe.style.css"
-          />
-          <iframe
-            id="ts-iframe"
-            src="https://www.townscript.com/v2/widget/amravati-half-marathon2026-221331/booking"
-            frameBorder={0}
-            height={800}
-            width="100%"
-            title="Amravati Half Marathon 2026 Registration"
-          />
-        </div>
+        <RegisterIframe />
         <p className="text-center text-zinc-600 text-xs mt-6">
           Registration is securely processed by{' '}
           <a

@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import siteData from '@/lib/data'
 import type { RaceCategory } from '@/lib/types'
+import { trackEvent } from '@/lib/analytics'
+import { SectionTracker } from '@/components/SectionTracker'
 
 const { categories } = siteData
 
@@ -78,6 +80,7 @@ function MedalCard({ cat }: { cat: RaceCategory }) {
   return (
     <a
       href="/register"
+      onClick={() => trackEvent('cta_register_click', { location: 'category_card', category: cat.id })}
       className="flex flex-col items-center w-full max-w-sm mx-auto"
     >
       <div
@@ -186,6 +189,7 @@ function MedalCard({ cat }: { cat: RaceCategory }) {
 export default function CategoriesSection() {
   return (
     <section id="categories" className="bg-white py-24 px-6 scroll-mt-16">
+      <SectionTracker sectionId="categories" />
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
@@ -259,6 +263,7 @@ export default function CategoriesSection() {
         <div className="text-center">
           <a
             href="/register"
+            onClick={() => trackEvent('cta_register_click', { location: 'categories_cta' })}
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black px-12 py-4 rounded-full text-lg transition-colors"
           >
             {categories.section.ctaLabel}

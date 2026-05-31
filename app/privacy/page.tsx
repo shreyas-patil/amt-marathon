@@ -63,15 +63,46 @@ export default function PrivacyPage() {
           </p>
         </Section>
 
-        <Section heading="Google Analytics">
+        <Section heading="Cookie consent">
           <p>
-            This website uses Google Analytics to understand how visitors use the site — pages
-            visited, time spent, and general traffic patterns. This data is anonymous and aggregated;
-            it cannot be used to identify you personally.
+            When you first visit this site, a banner asks whether you accept or decline analytics
+            cookies. Your choice is saved in your browser&apos;s local storage under the key{' '}
+            <code className="bg-zinc-100 px-1.5 py-0.5 rounded text-xs font-mono">
+              amt_cookie_consent
+            </code>
+            . No analytics data is collected until you accept.
           </p>
           <p>
-            Google Analytics sets cookies in your browser to distinguish visits. You can opt out at
-            any time using the{' '}
+            To change your preference, clear your browser&apos;s local storage for this site (in
+            DevTools → Application → Local Storage) or use the Google Analytics opt-out add-on
+            below. The banner will reappear on your next visit after clearing.
+          </p>
+        </Section>
+
+        <Section heading="Google Analytics &amp; what we track">
+          <p>
+            If you accept cookies, this website uses Google Analytics 4 to understand how visitors
+            use the site. The following interactions are recorded:
+          </p>
+          <ul className="list-disc list-inside space-y-1 text-sm">
+            <li>Pages visited and time spent</li>
+            <li>Clicks on Register / Book Now buttons (and which section they came from)</li>
+            <li>Navigation link clicks</li>
+            <li>Hotel phone and booking button taps</li>
+            <li>Email and social media link clicks</li>
+            <li>Prize category tab switches</li>
+            <li>How far down each page you scroll (25 / 50 / 75 / 90%)</li>
+            <li>Which sections of the page were viewed</li>
+            <li>Whether the registration iframe loaded successfully</li>
+          </ul>
+          <p>
+            All data is anonymous and aggregated — it cannot be used to identify you personally.
+            Google Analytics sets two cookies:{' '}
+            <code className="bg-zinc-100 px-1.5 py-0.5 rounded text-xs font-mono">_ga</code> and{' '}
+            <code className="bg-zinc-100 px-1.5 py-0.5 rounded text-xs font-mono">_ga_*</code>.
+          </p>
+          <p>
+            You can opt out permanently using the{' '}
             <a
               href="https://tools.google.com/dlpage/gaoptout"
               target="_blank"
@@ -80,14 +111,16 @@ export default function PrivacyPage() {
             >
               Google Analytics Opt-out Browser Add-on
             </a>
-            , or by enabling &ldquo;Do Not Track&rdquo; in your browser settings.
-          </p>
-        </Section>
-
-        <Section heading="Cookies">
-          <p>
-            The only cookies set on this website are from Google Analytics (described above). We do
-            not use cookies for advertising, personalisation, or any other purpose.
+            . Google&apos;s own privacy policy is available at{' '}
+            <a
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:underline"
+            >
+              policies.google.com/privacy
+            </a>
+            .
           </p>
         </Section>
 

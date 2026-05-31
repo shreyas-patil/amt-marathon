@@ -1,5 +1,9 @@
+'use client'
+
 import siteData from '@/lib/data'
 import type { Hotel } from '@/lib/types'
+import { trackEvent } from '@/lib/analytics'
+import { SectionTracker } from '@/components/SectionTracker'
 
 const { hotels } = siteData
 
@@ -57,6 +61,7 @@ function HotelCard({ hotel }: { hotel: Hotel }) {
             <a
               key={num}
               href={`tel:${digits}`}
+              onClick={() => trackEvent('hotel_phone_click', { hotel_name: hotel.name })}
               className="flex items-center gap-2.5 text-zinc-600 hover:text-orange-500 transition-colors group/phone"
             >
               <span className="text-zinc-300 group-hover/phone:text-orange-400 transition-colors">
@@ -72,6 +77,9 @@ function HotelCard({ hotel }: { hotel: Hotel }) {
         href={hotel.bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent('hotel_book_click', { hotel_name: hotel.name })
+        }
         className="mt-auto flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold py-2.5 rounded-xl transition-colors"
       >
         {hotels.section.bookNowLabel}
@@ -84,6 +92,7 @@ function HotelCard({ hotel }: { hotel: Hotel }) {
 export default function HotelsSection() {
   return (
     <section className="bg-white py-24 px-6">
+      <SectionTracker sectionId="hotels" />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">

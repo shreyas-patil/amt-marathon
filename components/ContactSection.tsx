@@ -1,6 +1,10 @@
+'use client'
+
 import Image from 'next/image'
 import siteData from '@/lib/data'
 import type { Organizer } from '@/lib/types'
+import { trackEvent } from '@/lib/analytics'
+import { SectionTracker } from '@/components/SectionTracker'
 
 const { organizers, site, event, contact } = siteData
 
@@ -32,7 +36,6 @@ function OrganizerCard({ org }: { org: Organizer }) {
   return (
     <div className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-8 flex flex-col gap-6 max-w-2xl mx-auto w-full">
       <div className="flex items-start gap-5">
-        {/* Avatar */}
         {org.avatar ? (
           <div className="w-16 h-16 rounded-2xl shrink-0 shadow-md shadow-orange-200 overflow-hidden">
             <Image
@@ -66,6 +69,7 @@ function OrganizerCard({ org }: { org: Organizer }) {
           </span>
           <a
             href={`mailto:${site.email}`}
+            onClick={() => trackEvent('email_click', { location: 'organizer_card' })}
             className="text-zinc-600 hover:text-orange-500 text-sm font-medium transition-colors"
           >
             {site.email}
@@ -97,6 +101,7 @@ const socialPlatforms = [
 export default function ContactSection() {
   return (
     <section className="bg-white py-24 px-6">
+      <SectionTracker sectionId="contact" />
       <div className="max-w-5xl mx-auto">
         {/* Organizers */}
         <div className="text-center mb-16">
@@ -127,6 +132,7 @@ export default function ContactSection() {
             {site.email ? (
               <a
                 href={`mailto:${site.email}`}
+                onClick={() => trackEvent('email_click', { location: 'contact_box' })}
                 className="inline-flex items-center gap-2.5 text-zinc-700 hover:text-orange-500 transition-colors font-medium"
               >
                 <span className="text-zinc-400">
@@ -160,6 +166,12 @@ export default function ContactSection() {
                         href={p.href}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() =>
+                          trackEvent('social_click', {
+                            platform: p.label,
+                            destination_url: p.href ?? '',
+                          })
+                        }
                         className="text-orange-500 hover:text-orange-600 text-xs font-medium transition-colors"
                       >
                         @{p.handle}
@@ -196,6 +208,7 @@ export default function ContactSection() {
                 </p>
                 <a
                   href={`mailto:${site.email}`}
+                  onClick={() => trackEvent('email_click', { location: 'contact_quick_facts' })}
                   className="font-black text-lg hover:text-orange-200 transition-colors break-all"
                 >
                   {site.email}

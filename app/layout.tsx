@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import JsonLd from '@/components/JsonLd'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import CookieConsent from '@/components/CookieConsentLoader'
 import siteData from '@/lib/data'
 
 const { site, event, seo } = siteData
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="bg-black text-white antialiased flex flex-col min-h-screen">
         <GoogleAnalytics />
+        <CookieConsent />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

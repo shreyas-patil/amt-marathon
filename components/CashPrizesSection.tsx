@@ -3,6 +3,8 @@
 import { useState } from 'react'
 import siteData from '@/lib/data'
 import type { PrizeCategory } from '@/lib/types'
+import { trackEvent } from '@/lib/analytics'
+import { SectionTracker } from '@/components/SectionTracker'
 
 const { prizes } = siteData
 
@@ -79,6 +81,7 @@ export default function CashPrizesSection() {
 
   return (
     <section id="prizes" className="bg-zinc-950 py-24 px-4 scroll-mt-16">
+      <SectionTracker sectionId="prizes" />
       <div className="max-w-5xl mx-auto text-center">
         {/* Header */}
         <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
@@ -112,7 +115,10 @@ export default function CashPrizesSection() {
               return (
                 <button
                   key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
+                  onClick={() => {
+                    setActiveTab(tab.id)
+                    trackEvent('prize_tab_click', { tab_id: tab.id, tab_label: tab.label })
+                  }}
                   className="px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap"
                   style={
                     activeTab === tab.id

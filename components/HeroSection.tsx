@@ -1,4 +1,7 @@
+'use client'
+
 import siteData from '@/lib/data'
+import { trackEvent } from '@/lib/analytics'
 
 const { hero } = siteData
 
@@ -36,12 +39,19 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/register"
+            onClick={() => trackEvent('cta_register_click', { location: 'hero' })}
             className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors"
           >
             {hero.ctaButtons[0].label}
           </a>
           <a
             href={hero.ctaButtons[1].href}
+            onClick={() =>
+              trackEvent('nav_click', {
+                label: hero.ctaButtons[1].label,
+                destination: hero.ctaButtons[1].href ?? '',
+              })
+            }
             className="border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-semibold px-10 py-4 rounded-full text-base sm:text-lg transition-all"
           >
             {hero.ctaButtons[1].label}
