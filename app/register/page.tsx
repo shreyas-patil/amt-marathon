@@ -13,56 +13,30 @@ export const metadata: Metadata = {
   },
 }
 
-function TicketStub({ cat }: { cat: RaceCategory }) {
+function CategoryCard({ cat }: { cat: RaceCategory }) {
   const [distNum, distUnit] = cat.distance.split(' ')
+  const displayName = cat.name.startsWith(cat.distance)
+    ? cat.name.slice(cat.distance.length).trim()
+    : cat.name
 
   return (
-    <div
-      className="flex flex-col md:flex-row rounded-2xl overflow-hidden flex-1 bg-zinc-900"
-      style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06)' }}
+    <a
+      href="#register-form"
+      className="block bg-zinc-900 rounded-2xl p-5 hover:bg-zinc-800 transition-colors"
     >
-      {/* Main body */}
-      <div className="flex flex-col flex-1 p-3 md:p-5">
-        {/* Distance — top of card on sm, hidden on md+ (lives in stub panel) */}
-        <div className="md:hidden leading-none mb-2">
-          <span className="font-black text-white text-2xl">{distNum}</span>
-          <span className="font-black text-zinc-400 ml-1 text-xs">{distUnit}</span>
-        </div>
-        <p className="text-zinc-200 font-black text-xs md:text-sm leading-snug flex-1">{cat.name}</p>
-        <div className="mt-3">
-          <p className="hidden md:block text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-1">
-            Eligibility
-          </p>
-          <p className="text-zinc-400 text-[10px] md:text-xs leading-snug">
-            Male &amp; Female · {cat.ageGroup}
-          </p>
-        </div>
+      <div className="leading-none mb-3">
+        <span className="font-black text-white text-3xl">{distNum}</span>
+        <span className="font-black text-zinc-400 text-sm ml-1">{distUnit}</span>
       </div>
-
-      {/* Tear line — horizontal on sm, vertical on md+ */}
-      <div className="relative md:hidden flex items-center">
-        <div className="absolute -left-3 w-5 h-5 rounded-full bg-zinc-950 z-10" />
-        <div className="absolute -right-3 w-5 h-5 rounded-full bg-zinc-950 z-10" />
-        <div className="w-full border-t-2 border-dashed border-zinc-700 mx-3" />
-      </div>
-      <div className="relative hidden md:flex flex-col items-center">
-        <div className="absolute -top-3 w-6 h-6 rounded-full bg-zinc-950 z-10" />
-        <div className="absolute -bottom-3 w-6 h-6 rounded-full bg-zinc-950 z-10" />
-        <div className="h-full border-l-2 border-dashed border-zinc-700 my-3" />
-      </div>
-
-      {/* Stub */}
-      <div className="flex flex-row md:flex-col justify-between items-center md:items-start px-3 py-3 md:px-5 md:py-5 bg-zinc-800 md:w-36 md:shrink-0">
-        {/* Distance — hidden on sm (shown above), visible on md+ */}
-        <div className="hidden md:block leading-none mb-auto">
-          <span className="font-black text-white text-4xl">{distNum}</span>
-          <span className="font-black text-zinc-400 ml-1 text-base">{distUnit}</span>
-        </div>
-        <span className="text-[9px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] text-zinc-300">
-          {cat.noAgeCategory ? 'No Age Category' : cat.ageGroup}
-        </span>
-      </div>
-    </div>
+      <p className="text-zinc-200 font-black text-sm leading-snug mb-2">{displayName}</p>
+      <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-0.5">
+        Eligibility
+      </p>
+      <p className="text-zinc-400 text-xs">
+        Male &amp; Female · {cat.ageGroup}
+        {cat.noAgeCategory ? ' · No Age Category' : ''}
+      </p>
+    </a>
   )
 }
 
@@ -89,40 +63,37 @@ export default function RegisterPage() {
           {categories.section.eligibilityHeading}
         </h2>
 
-        {/* sm: half marathon full-width above, 3 stubs in a row below
-            md+: half marathon tall left (38%), 3 stubs stacked on right */}
-        <div className="flex flex-col md:flex-row gap-3 mb-4">
-          {/* Half Marathon card */}
-          <div className="bg-zinc-900 rounded-2xl p-6 flex flex-col md:w-[38%] md:shrink-0">
-            <div className="mb-4">
-              <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500 mb-1">
-                Half Marathon
-              </p>
-              <span className="font-black text-white text-2xl md:text-4xl leading-none">21.1</span>
-              <span className="text-zinc-400 font-black text-xs md:text-base ml-1">km</span>
-            </div>
-            <p className="text-zinc-400 text-xs mb-4">{halfMarathon.ageGroup}</p>
-            <div className="grid grid-cols-1 gap-2 flex-1">
-              {halfMarathon.subCategories!.map((sub, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col bg-zinc-800 rounded-xl px-4 py-3 border border-zinc-700"
-                >
-                  <span className="text-xs sm:text-sm font-semibold text-zinc-200">
-                    {sub.gender} — {sub.label}
-                  </span>
-                  <span className="text-xs text-zinc-500 mt-0.5">{sub.ageRange}</span>
-                </div>
-              ))}
-            </div>
+        {/* Half Marathon — full width, sub-categories in 2×2 grid */}
+        <div className="bg-zinc-900 rounded-2xl p-5 mb-3">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-4">
+            <p className="text-xs font-semibold uppercase tracking-widest text-zinc-500">
+              Half Marathon
+            </p>
+            <span className="font-black text-white text-2xl md:text-3xl leading-none">21.1</span>
+            <span className="text-zinc-400 font-black text-sm">km</span>
+            <span className="text-zinc-500 text-xs">{halfMarathon.ageGroup}</span>
           </div>
-
-          {/* 3 stubs: horizontal row on sm, stacked column on md+ */}
-          <div className="flex flex-row md:flex-col gap-3 flex-1">
-            {ticketCats.map((cat) => (
-              <TicketStub key={cat.id} cat={cat} />
+          <div className="grid grid-cols-2 gap-2">
+            {halfMarathon.subCategories!.map((sub, i) => (
+              <a
+                key={i}
+                href="#register-form"
+                className="flex flex-col bg-zinc-800 rounded-xl px-4 py-3 border border-zinc-700 hover:bg-zinc-700 hover:border-zinc-600 transition-colors"
+              >
+                <span className="text-xs sm:text-sm font-semibold text-zinc-200">
+                  {sub.gender} — {sub.label}
+                </span>
+                <span className="text-sm text-zinc-400 mt-0.5">{sub.ageRange}</span>
+              </a>
             ))}
           </div>
+        </div>
+
+        {/* 3 other categories — side by side in one row */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+          {ticketCats.map((cat) => (
+            <CategoryCard key={cat.id} cat={cat} />
+          ))}
         </div>
 
         {/* Out of Maharashtra */}
@@ -143,7 +114,7 @@ export default function RegisterPage() {
       </div>
 
       {/* Iframe container */}
-      <div className="max-w-5xl mx-auto px-4 pb-24">
+      <div id="register-form" className="max-w-5xl mx-auto px-4 pb-24 scroll-mt-24">
         <RegisterIframe />
         <p className="text-center text-zinc-600 text-xs mt-6">
           Registration is securely processed by{' '}
