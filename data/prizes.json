@@ -85,7 +85,7 @@
       "id": "5km-fitness-run",
       "name": "5 km Fitness Run",
       "ageNote": "Age 15 & above",
-      "columns": ["Gents", "Ladies"],
+      "columns": ["Male", "Female"],
       "prizes": [
         { "rank": 1, "amounts": [10000, 10000] },
         { "rank": 2, "amounts": [7500, 7500] },

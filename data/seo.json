@@ -61,8 +61,8 @@
       "sitemap": { "priority": 0.6, "changefreq": "yearly" }
     },
     "contact": {
-      "title": "Contact & Organizers",
-      "description": "Meet the team behind the Amravati Half Marathon 2026. Get in touch with the organizers.",
+      "title": "About Us",
+      "description": "About the Amravati Marathon Association, our organizing team, and the story behind Amravati's own half marathon, running since 2016.",
       "canonical": "/contact",
       "sitemap": { "priority": 0.5, "changefreq": "yearly" }
     }

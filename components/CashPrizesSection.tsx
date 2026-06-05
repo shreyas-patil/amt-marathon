@@ -8,12 +8,23 @@ import { SectionTracker } from '@/components/SectionTracker'
 
 const { prizes } = siteData
 
-// Tab accent colors are presentation-layer — owned by CSS tokens in Phase 9
-const tabColors: Record<string, string> = {
-  'half-marathon': '#f97316',
-  '10km': '#7aad68',
-  '5km-fitness': '#a78bfa',
-  'dream-run': '#c49a2e',
+function WarningIcon() {
+  return (
+    <svg
+      className="w-4 h-4 text-orange-400 shrink-0 mt-0.5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+      <line x1="12" y1="9" x2="12" y2="13" />
+      <line x1="12" y1="17" x2="12.01" y2="17" />
+    </svg>
+  )
 }
 
 const fmt = (amount: number | null) => (amount == null ? '—' : `₹${amount.toLocaleString('en-IN')}`)
@@ -21,10 +32,10 @@ const fmt = (amount: number | null) => (amount == null ? '—' : `₹${amount.to
 function PrizeTable({ cat }: { cat: PrizeCategory }) {
   const validPrizes = cat.prizes.filter((p) => p.amounts.some((a) => a != null))
   return (
-    <div className="bg-zinc-900 rounded-2xl overflow-hidden border border-white/8 w-full">
-      <div className="px-6 py-5 border-b border-white/8">
+    <div className="bg-zinc-900 rounded-2xl overflow-hidden border border-white/10 w-full">
+      <div className="px-6 py-5 border-b border-white/10">
         <h4 className="text-white font-black text-base leading-tight">{cat.name}</h4>
-        <p className="text-zinc-500 text-xs mt-1 uppercase tracking-widest">{cat.ageNote}</p>
+        <p className="text-zinc-400 text-xs mt-1">{cat.ageNote}</p>
       </div>
       <table className="w-full text-sm">
         <thead>
@@ -46,11 +57,19 @@ function PrizeTable({ cat }: { cat: PrizeCategory }) {
           {validPrizes.map((prize, i) => (
             <tr
               key={prize.rank}
-              className={`${i < validPrizes.length - 1 ? 'border-b border-white/5' : ''} ${prize.rank === 1 ? 'bg-white/3' : ''}`}
+              className={`${i < validPrizes.length - 1 ? 'border-b border-white/5' : ''} ${prize.rank === 1 ? 'bg-white/5' : ''}`}
             >
               <td className="px-6 py-4">
                 <span
-                  className={`font-bold text-sm ${prize.rank === 1 ? 'text-yellow-400' : prize.rank === 2 ? 'text-zinc-300' : prize.rank === 3 ? 'text-amber-600' : 'text-zinc-600'}`}
+                  className={`font-bold text-sm ${
+                    prize.rank === 1
+                      ? 'text-yellow-400'
+                      : prize.rank === 2
+                        ? 'text-zinc-300'
+                        : prize.rank === 3
+                          ? 'text-amber-600'
+                          : 'text-zinc-500'
+                  }`}
                 >
                   {`#${prize.rank}`}
                 </span>
@@ -84,20 +103,17 @@ export default function CashPrizesSection() {
       <SectionTracker sectionId="prizes" />
       <div className="max-w-5xl mx-auto text-center">
         {/* Header */}
-        <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-          {prizes.section.sectionTag}
-        </p>
-        <h2 className="text-white text-4xl sm:text-5xl font-black mb-4">
-          Run for Glory, <span className="text-zinc-400">Win Big</span>
+        <h2 className="text-white text-4xl sm:text-5xl font-black mb-4 [text-wrap:balance]">
+          Run for Glory,{' '}
+          <span className="text-orange-400">₹4,50,000 in prizes.</span>
         </h2>
         <p className="text-zinc-500 max-w-lg mx-auto text-base mb-14">
-          Total prize pool of <span className="text-orange-400 font-bold">₹4,50,000</span> across
-          all categories.
+          Awarded across all categories — half marathon, 10 km, 5 km, and the children&apos;s dream run.
         </p>
 
         {/* Eligibility note */}
         <div className="inline-flex items-start gap-3 bg-orange-500/10 border border-orange-500/30 rounded-xl px-5 py-4 mb-14 text-left max-w-xl">
-          <span className="text-orange-400 text-lg shrink-0 mt-0.5">⚠</span>
+          <WarningIcon />
           <p className="text-orange-200 text-sm leading-relaxed">
             <span className="font-bold text-orange-400">Eligibility:</span>{' '}
             {prizes.section.eligibilityNote}
@@ -110,26 +126,23 @@ export default function CashPrizesSection() {
           style={{ paddingTop: '16px', paddingBottom: '16px' }}
         >
           <div className="flex gap-2 w-max mx-auto">
-            {prizes.tabs.map((tab) => {
-              const color = tabColors[tab.id] ?? '#f97316'
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => {
-                    setActiveTab(tab.id)
-                    trackEvent('prize_tab_click', { tab_id: tab.id, tab_label: tab.label })
-                  }}
-                  className="px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap"
-                  style={
-                    activeTab === tab.id
-                      ? { background: color, color: '#000', boxShadow: `0 0 20px -4px ${color}` }
-                      : { background: 'rgba(255,255,255,0.06)', color: '#a1a1aa' }
-                  }
-                >
-                  {tab.label}
-                </button>
-              )
-            })}
+            {prizes.tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id)
+                  trackEvent('prize_tab_click', { tab_id: tab.id, tab_label: tab.label })
+                }}
+                className="px-5 py-2.5 rounded-full text-sm font-bold transition-all whitespace-nowrap"
+                style={
+                  activeTab === tab.id
+                    ? { background: '#f97316', color: '#ffffff' }
+                    : { background: 'rgba(255,255,255,0.06)', color: '#a1a1aa' }
+                }
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </div>
 
@@ -149,7 +162,7 @@ export default function CashPrizesSection() {
         </div>
 
         {/* Footer note */}
-        <p className="text-zinc-600 text-xs mt-8 leading-relaxed">
+        <p className="text-zinc-400 text-xs mt-8 leading-relaxed">
           {prizes.section.outOfMaharashtraNote}
         </p>
       </div>
