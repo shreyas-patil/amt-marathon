@@ -9,16 +9,13 @@ export default function EventOverview() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Header + Descriptive Text */}
           <div>
-            <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-              {overview.sectionTag}
-            </p>
-            <h2 className="text-white text-4xl sm:text-5xl font-black leading-tight mb-8">
+            <h2 className="text-white text-4xl sm:text-5xl font-black leading-tight text-balance mb-8">
               {overview.heading.line1}
               <br />
               <span className="text-zinc-400">{overview.heading.line2}</span>
             </h2>
-            <p className="text-zinc-300 text-lg leading-relaxed">{overview.description}</p>
-            <p className="text-zinc-400 text-base leading-relaxed mt-4">
+            <p className="text-zinc-300 text-lg leading-relaxed text-pretty">{overview.description}</p>
+            <p className="text-zinc-400 text-base leading-relaxed mt-4 text-pretty">
               <strong className="text-zinc-200">{overview.uniqueFeatures.heading} </strong>
               {overview.uniqueFeatures.text}
             </p>

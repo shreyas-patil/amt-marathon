@@ -11,10 +11,7 @@ export default function SponsorsSection() {
       <SectionTracker sectionId="sponsors" />
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            Partners
-          </p>
-          <h2 className="text-white text-4xl sm:text-5xl font-black mb-4">Our Sponsors</h2>
+          <h2 className="text-white text-4xl sm:text-5xl font-black text-balance mb-4">Our Sponsors</h2>
           <p className="text-zinc-400 max-w-md mx-auto">
             The organizations that make this event possible.
           </p>

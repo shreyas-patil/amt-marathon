@@ -20,19 +20,19 @@ export default function HeroSection() {
           {hero.locationTag}
         </p>
 
-        <h1 className="text-6xl sm:text-8xl lg:text-[7rem] font-black text-white leading-[0.9] tracking-tighter mb-8">
+        <h1 className="text-6xl sm:text-8xl lg:text-[6rem] font-black text-white leading-[0.9] tracking-[-0.03em] text-balance mb-8">
           {hero.headingLines[0]}
           <br />
           <span className="text-orange-500">{hero.headingLines[1]}</span>
           <br />
-          <span className="text-white/30">{hero.headingLines[2]}</span>
+          <span className="text-white/60">{hero.headingLines[2]}</span>
         </h1>
 
-        <p className="text-orange-500/60 text-2xl sm:text-3xl font-semibold tracking-[0.2em] uppercase -mt-4 mb-12">
+        <p className="text-orange-500/80 text-2xl sm:text-3xl font-semibold tracking-[0.2em] uppercase -mt-4 mb-12">
           {hero.edition}
         </p>
 
-        <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-zinc-400 text-base sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed text-pretty">
           {hero.description}
         </p>
 
@@ -40,7 +40,7 @@ export default function HeroSection() {
           <a
             href="/register"
             onClick={() => trackEvent('cta_register_click', { location: 'hero' })}
-            className="bg-orange-500 hover:bg-orange-600 text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors"
+            className="bg-orange-500 hover:bg-orange-700 text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             {hero.ctaButtons[0].label}
           </a>
@@ -52,7 +52,7 @@ export default function HeroSection() {
                 destination: hero.ctaButtons[1].href ?? '',
               })
             }
-            className="border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-semibold px-10 py-4 rounded-full text-base sm:text-lg transition-all"
+            className="border border-white/20 hover:border-white/50 hover:bg-white/10 text-white font-semibold px-10 py-4 rounded-full text-base sm:text-lg transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-black"
           >
             {hero.ctaButtons[1].label}
           </a>
@@ -62,10 +62,11 @@ export default function HeroSection() {
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/30">
         <span className="text-xs tracking-[0.3em] uppercase">{hero.scrollIndicator.label}</span>
         <svg
-          className="w-4 h-4 animate-bounce"
+          className="w-4 h-4 animate-scroll-hint"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
+          aria-hidden="true"
         >
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
         </svg>

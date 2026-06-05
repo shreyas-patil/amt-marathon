@@ -25,24 +25,21 @@ export default function RoadrunnersSection() {
           </div>
 
           {/* Text flows around the image */}
-          <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            The People Behind the Race
-          </p>
-          <h2 className="text-white text-4xl sm:text-5xl font-black leading-tight mb-6">
+          <h2 className="text-white text-4xl sm:text-5xl font-black leading-tight text-balance mb-6">
             Amravati <span className="text-orange-500">Road Runners</span>
           </h2>
-          <p className="text-zinc-300 text-lg leading-relaxed mb-6">
+          <p className="text-zinc-300 text-lg leading-relaxed text-pretty mb-6">
             Amravati Road Runners is a group of passionate marathon runners who are actively
             involved in the participation, planning and organization of the Amravati Half Marathon.
             From the first training session to the final finish line, every member of this group
             carries a responsibility — and they carry it with pride.
           </p>
-          <p className="text-zinc-400 text-base leading-relaxed mb-6">
+          <p className="text-zinc-400 text-base leading-relaxed text-pretty mb-6">
             Their ambition doesn&apos;t stop locally. Members have gone on to participate in
             Comrades Marathon, Abbott World Marathon Majors, and events far beyond the city limits —
             proving that a small community can dream big.
           </p>
-          <p className="text-zinc-400 text-base leading-relaxed">
+          <p className="text-zinc-400 text-base leading-relaxed text-pretty">
             At its heart, Amravati Road Runners is a health and fitness community. It exists to
             bring everyday people together, build confidence, and show that anyone can toe the start
             line of their next marathon.

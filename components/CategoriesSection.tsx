@@ -36,7 +36,6 @@ function CategoryCard({ cat }: { cat: RaceCategory }) {
         className="w-full sm:aspect-square rounded-2xl flex flex-col justify-between p-5 ring-1 ring-zinc-700/60 group-hover:ring-orange-500/50 transition-all duration-200"
         style={{
           background: 'linear-gradient(145deg, #3f3f46 0%, #27272a 55%, #18181b 100%)',
-          boxShadow: '0 6px 24px rgba(0,0,0,0.22), 0 1px 4px rgba(0,0,0,0.15)',
         }}
       >
         {/* Distance — right-aligned */}
@@ -98,10 +97,7 @@ export default function CategoriesSection() {
       <SectionTracker sectionId="categories" />
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-20">
-          <p className="text-orange-500 text-xs font-semibold tracking-[0.25em] uppercase mb-4">
-            {categories.section.sectionTag}
-          </p>
-          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black mb-4">
+          <h2 className="text-zinc-900 text-4xl sm:text-5xl font-black text-balance mb-4">
             {categories.section.heading}
           </h2>
           <p className="text-zinc-500 max-w-lg mx-auto">

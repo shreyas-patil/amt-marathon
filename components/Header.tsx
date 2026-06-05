@@ -90,7 +90,9 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={() => trackEvent('nav_click', { label: link.label, destination: link.href })}
+                onClick={() =>
+                  trackEvent('nav_click', { label: link.label, destination: link.href })
+                }
                 className="text-white/90 hover:text-white text-base font-bold transition-colors tracking-wide"
               >
                 {link.label}
