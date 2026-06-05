@@ -424,12 +424,12 @@ export default function ContactSection() {
             className="text-zinc-300 leading-relaxed max-w-lg mx-auto text-pretty"
             style={{ lineHeight: 1.75 }}
           >
-            He gave everything to this event. His meticuluous hands shaped the operations that made
-            the marathon run smoothly year after year. His passing was sudden and devastating for
-            everyone in this community. We feel his absence in every corner of this event, and this
-            year is not the same without him here. This year we run for you.
+            You gave everything to this event. Your meticuluous hands shaped the operations that
+            made the marathon run smoothly year after year. Your passing was sudden and devastating
+            for everyone in this community. We feel your absence in every corner of this event, and
+            this year is not the same without you here. This year we run with you in our hearts.
           </p>
-          <p className="text-zinc-500 mt-6 text-sm italic">Mamesh, we miss you.</p>
+          <p className="text-zinc-500 mt-6 text-sm italic">Rest in peace Mamesh, we miss you.</p>
         </div>
       </section>
 

@@ -114,7 +114,7 @@ body {
   animation: flame-body-anim 2.5s ease-in-out infinite;
 }
 .flame-inner {
-  animation: flame-inner-anim 1.1s ease-in-out infinite;
+  animation: flame-inner-anim 1.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
