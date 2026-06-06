@@ -10,7 +10,7 @@
     },
     {
       "id": 2,
-      "name": "Atul Patil",
+      "name": "Dr. Atul Patil",
       "role": "Event Organizer",
       "title": "Amravati Marathon Association",
       "bio": "",
@@ -47,6 +47,14 @@
       "title": "Amravati Marathon Association",
       "bio": "",
       "avatar": "/images/organizers/mangesh.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Dr. Subhash Gawande",
+      "role": "Event Organizer",
+      "title": "Amravati Marathon Association",
+      "bio": "",
+      "avatar": "/images/organizers/subhash.jpg"
     }
   ]
 }

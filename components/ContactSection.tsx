@@ -266,56 +266,47 @@ export default function ContactSection() {
         </div>
       </section>
 
-      {/* ── Race Categories ── */}
-      <section className="bg-zinc-50 py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2
-            className="text-zinc-900 font-black mb-10 text-balance"
+      {/* ── In Memoriam ── */}
+      <section className="bg-zinc-950 py-24 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="mb-8">
+            <FlameIcon />
+          </div>
+          <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase font-semibold mb-8">
+            In Memoriam
+          </p>
+          <div
+            className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-6"
             style={{
-              fontSize: 'clamp(1.75rem, 4vw, 2.5rem)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
+              maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
             }}
           >
-            Race Categories
-          </h2>
-          <div className="space-y-px">
-            {raceCategories.map((cat) => (
-              <div
-                key={cat.num}
-                className="bg-white flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 px-6 py-5 first:rounded-t-2xl last:rounded-b-2xl"
-              >
-                <div className="shrink-0 flex items-baseline gap-1.5 w-28">
-                  <span
-                    className="text-orange-500 leading-none"
-                    style={{
-                      fontFamily: 'var(--font-black-ops-one)',
-                      fontSize: 'clamp(2rem, 4vw, 2.5rem)',
-                    }}
-                  >
-                    {cat.distance}
-                  </span>
-                  <span className="text-zinc-400 text-xs font-semibold tracking-wider uppercase">
-                    km
-                  </span>
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-zinc-900 font-black text-base">{cat.name}</p>
-                  <p className="text-zinc-500 text-sm mt-1 leading-relaxed">{cat.eligibility}</p>
-                  {cat.sub.length > 0 && (
-                    <ul className="mt-2.5 space-y-1">
-                      {cat.sub.map((s, i) => (
-                        <li key={i} className="text-zinc-400 text-xs flex gap-2 items-start">
-                          <span className="text-orange-300 mt-0.5 shrink-0">›</span>
-                          {s}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-            ))}
+            <Image
+              src="/images/organizers/mamesh.jpg"
+              alt="Mamesh Mathankar"
+              width={160}
+              height={160}
+              className="w-full h-full object-cover grayscale"
+            />
           </div>
+          <h2
+            className="text-white font-black mb-1 text-balance"
+            style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', letterSpacing: '-0.01em' }}
+          >
+            Mamesh Mathankar
+          </h2>
+          <div className="w-10 h-px bg-zinc-700 mx-auto my-8" />
+          <p
+            className="text-zinc-300 leading-relaxed max-w-lg mx-auto text-pretty"
+            style={{ lineHeight: 1.75 }}
+          >
+            You gave everything to this event. Your meticuluous hands shaped the operations that
+            made the marathon run smoothly year after year. Your passing was sudden and devastating
+            for everyone in this community. We feel your absence in every corner of this event, and
+            this year is not the same without you here. This year we run with you in our hearts.
+          </p>
+          <p className="text-zinc-500 mt-6 text-sm italic">Rest in peace Mamesh, we miss you.</p>
         </div>
       </section>
 
@@ -386,50 +377,6 @@ export default function ContactSection() {
                 ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── In Memoriam ── */}
-      <section className="bg-zinc-950 py-24 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="mb-8">
-            <FlameIcon />
-          </div>
-          <p className="text-zinc-500 text-xs tracking-[0.3em] uppercase font-semibold mb-8">
-            In Memoriam
-          </p>
-          <div
-            className="w-40 h-40 rounded-full overflow-hidden mx-auto mb-6"
-            style={{
-              maskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
-              WebkitMaskImage: 'radial-gradient(circle, black 70%, transparent 100%)',
-            }}
-          >
-            <Image
-              src="/images/organizers/mamesh.jpg"
-              alt="Mamesh Mathankar"
-              width={160}
-              height={160}
-              className="w-full h-full object-cover grayscale"
-            />
-          </div>
-          <h2
-            className="text-white font-black mb-1 text-balance"
-            style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', letterSpacing: '-0.01em' }}
-          >
-            Mamesh Mathankar
-          </h2>
-          <div className="w-10 h-px bg-zinc-700 mx-auto my-8" />
-          <p
-            className="text-zinc-300 leading-relaxed max-w-lg mx-auto text-pretty"
-            style={{ lineHeight: 1.75 }}
-          >
-            You gave everything to this event. Your meticuluous hands shaped the operations that
-            made the marathon run smoothly year after year. Your passing was sudden and devastating
-            for everyone in this community. We feel your absence in every corner of this event, and
-            this year is not the same without you here. This year we run with you in our hearts.
-          </p>
-          <p className="text-zinc-500 mt-6 text-sm italic">Rest in peace Mamesh, we miss you.</p>
         </div>
       </section>
 
