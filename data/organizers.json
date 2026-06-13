@@ -18,19 +18,19 @@
     },
     {
       "id": 3,
-      "name": "Gajanan Dharmale",
+      "name": "Dr. Subhash Gawande",
       "role": "Event Organizer",
       "title": "Amravati Marathon Association",
       "bio": "",
-      "avatar": "/images/organizers/gjanan.jpg"
+      "avatar": "/images/organizers/subhash.jpg"
     },
     {
       "id": 4,
-      "name": "Himanshu Patil",
+      "name": "Mukund Wankhade",
       "role": "Event Organizer",
       "title": "Amravati Marathon Association",
       "bio": "",
-      "avatar": "/images/organizers/himanshu.jpg"
+      "avatar": "/images/organizers/mukund.jpeg"
     },
     {
       "id": 5,
@@ -42,6 +42,22 @@
     },
     {
       "id": 6,
+      "name": "Satish Dawande",
+      "role": "Event Organizer",
+      "title": "Amravati Marathon Association",
+      "bio": "",
+      "avatar": "/images/organizers/satish.jpeg"
+    },
+    {
+      "id": 7,
+      "name": "Gajanan Dharmale",
+      "role": "Event Organizer",
+      "title": "Amravati Marathon Association",
+      "bio": "",
+      "avatar": "/images/organizers/gjanan.jpg"
+    },
+    {
+      "id": 8,
       "name": "Mangesh Gawande",
       "role": "Event Organizer",
       "title": "Amravati Marathon Association",
@@ -49,12 +65,12 @@
       "avatar": "/images/organizers/mangesh.jpg"
     },
     {
-      "id": 7,
-      "name": "Dr. Subhash Gawande",
+      "id": 9,
+      "name": "Himanshu Patil",
       "role": "Event Organizer",
       "title": "Amravati Marathon Association",
       "bio": "",
-      "avatar": "/images/organizers/subhash.jpg"
+      "avatar": "/images/organizers/himanshu.jpg"
     }
   ]
 }

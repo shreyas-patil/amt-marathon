@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import Image from 'next/image'
 import siteData from '@/lib/data'
 import type { Organizer } from '@/lib/types'
@@ -7,6 +8,53 @@ import { trackEvent } from '@/lib/analytics'
 import { SectionTracker } from '@/components/SectionTracker'
 
 const { organizers, site, event, contact } = siteData
+
+type RevealState = 'idle' | 'hidden' | 'in'
+
+// Reveals on scroll, but only as an enhancement: SSR, no-JS, reduced-motion,
+// and environments without IntersectionObserver all render fully visible.
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T>(null)
+  const [state, setState] = useState<RevealState>('idle')
+
+  useEffect(() => {
+    const el = ref.current
+    if (
+      !el ||
+      typeof IntersectionObserver === 'undefined' ||
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+    ) {
+      return
+    }
+
+    setState('hidden')
+    const reveal = () => {
+      setState('in')
+      observer.disconnect()
+      clearTimeout(fallback)
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && reveal(),
+      { threshold: 0.15 }
+    )
+    observer.observe(el)
+    // Safety net: never leave the section blank if the observer never fires
+    // (e.g. full-page headless capture below the fold).
+    const fallback = setTimeout(reveal, 1500)
+
+    return () => {
+      observer.disconnect()
+      clearTimeout(fallback)
+    }
+  }, [])
+
+  return { ref, state }
+}
+
+function revealClass(state: RevealState) {
+  if (state === 'idle') return ''
+  return state === 'in' ? 'organizer-reveal is-in' : 'organizer-reveal'
+}
 
 function getInitials(name: string) {
   return name
@@ -133,10 +181,12 @@ const raceCategories = [
 
 function OrganizerTile({ org }: { org: Organizer }) {
   const initials = getInitials(org.name)
+  const avatarBox =
+    'w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden shrink-0 ring-2 ring-zinc-100 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:ring-orange-500/60 group-hover:scale-[1.04] group-hover:shadow-lg group-hover:shadow-orange-500/15'
   return (
     <div className="flex flex-col items-center gap-4 text-center group">
       {org.avatar ? (
-        <div className="w-40 h-40 rounded-full overflow-hidden shrink-0 ring-2 ring-zinc-100 transition-all duration-300 group-hover:ring-orange-500/60 group-hover:scale-105">
+        <div className={avatarBox}>
           <Image
             src={org.avatar}
             alt={org.name}
@@ -146,14 +196,67 @@ function OrganizerTile({ org }: { org: Organizer }) {
           />
         </div>
       ) : (
-        <div className="w-40 h-40 rounded-full bg-orange-500 flex items-center justify-center shrink-0 ring-2 ring-zinc-100 transition-all duration-300 group-hover:ring-orange-500/60 group-hover:scale-105">
+        <div className={`${avatarBox} bg-orange-500 flex items-center justify-center`}>
           <span className="text-white font-black text-3xl">{initials}</span>
         </div>
       )}
       <div>
-        <p className="text-zinc-900 font-black text-base leading-tight">{org.name}</p>
+        <p className="text-zinc-900 font-black text-base leading-tight transition-colors duration-300 group-hover:text-orange-600">
+          {org.name}
+        </p>
         {org.role && <p className="text-zinc-400 text-xs mt-1 font-medium">{org.role}</p>}
       </div>
+    </div>
+  )
+}
+
+function TeamGrid({ members }: { members: Organizer[] }) {
+  const { ref, state } = useReveal<HTMLDivElement>()
+  return (
+    <div
+      ref={ref}
+      className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 sm:gap-x-8 gap-y-12 justify-items-center content-start pt-8"
+    >
+      {members.map((org, i) => (
+        <div key={org.id} className={revealClass(state)} style={{ '--i': i } as CSSProperties}>
+          <OrganizerTile org={org} />
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function RaceDirectorCard() {
+  const { ref, state } = useReveal<HTMLDivElement>()
+  const dilip = organizers.organizers.find((o) => o.name === 'Dilip Patil')
+  if (!dilip) return null
+  const initials = getInitials(dilip.name)
+  return (
+    <div ref={ref} className={`bg-orange-600 rounded-2xl p-8 ${revealClass(state)}`}>
+      <div className="flex flex-col items-center text-center gap-4 mb-7">
+        {dilip.avatar ? (
+          <div className="w-40 h-40 rounded-full overflow-hidden shrink-0 ring-2 ring-white/30">
+            <Image
+              src={dilip.avatar}
+              alt={dilip.name}
+              width={160}
+              height={160}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ) : (
+          <div className="w-40 h-40 rounded-full bg-orange-900 flex items-center justify-center shrink-0">
+            <span className="text-white font-black text-3xl">{initials}</span>
+          </div>
+        )}
+        <div>
+          <p className="text-white font-black text-xl leading-tight">{dilip.name}</p>
+          <p className="text-orange-200 font-bold text-sm mt-1">{dilip.role}</p>
+        </div>
+      </div>
+      <p className="text-white/90 text-m leading-relaxed text-pretty" style={{ lineHeight: 1.75 }}>
+        {dilip.bio}
+      </p>
     </div>
   )
 }
@@ -331,51 +434,10 @@ export default function ContactSection() {
 
           <div className="grid lg:grid-cols-[340px_1fr] gap-8 lg:gap-14 items-start">
             {/* Race Director — inverted card for maximum contrast */}
-            {(() => {
-              const dilip = organizers.organizers.find((o) => o.name === 'Dilip Patil')
-              if (!dilip) return null
-              const initials = getInitials(dilip.name)
-              return (
-                <div className="bg-orange-600 rounded-2xl p-8">
-                  <div className="flex flex-col items-center text-center gap-4 mb-7">
-                    {dilip.avatar ? (
-                      <div className="w-40 h-40 rounded-full overflow-hidden shrink-0 ring-2 ring-white/30">
-                        <Image
-                          src={dilip.avatar}
-                          alt={dilip.name}
-                          width={160}
-                          height={160}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-40 h-40 rounded-full bg-orange-900 flex items-center justify-center shrink-0">
-                        <span className="text-white font-black text-3xl">{initials}</span>
-                      </div>
-                    )}
-                    <div>
-                      <p className="text-white font-black text-xl leading-tight">{dilip.name}</p>
-                      <p className="text-orange-200 font-bold text-sm mt-1">{dilip.role}</p>
-                    </div>
-                  </div>
-                  <p
-                    className="text-white/90 text-m leading-relaxed text-pretty"
-                    style={{ lineHeight: 1.75 }}
-                  >
-                    {dilip.bio}
-                  </p>
-                </div>
-              )
-            })()}
+            <RaceDirectorCard />
 
             {/* Rest of the team */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-12 justify-items-center content-start pt-8">
-              {organizers.organizers
-                .filter((o) => o.name !== 'Dilip Patil')
-                .map((org) => (
-                  <OrganizerTile key={org.id} org={org} />
-                ))}
-            </div>
+            <TeamGrid members={organizers.organizers.filter((o) => o.name !== 'Dilip Patil')} />
           </div>
         </div>
       </section>

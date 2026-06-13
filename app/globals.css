@@ -124,3 +124,27 @@ body {
     animation: none;
   }
 }
+
+/* ── Organizer reveal (staggered scroll-in) ── */
+.organizer-reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  will-change: opacity, transform;
+}
+.organizer-reveal.is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .organizer-reveal,
+  .organizer-reveal.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
