@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import siteData from '@/lib/data'
 import RegistrationTracker from '@/components/RegistrationTracker'
+import WhatsAppJoin from '@/components/WhatsAppJoin'
 
 const { event, site } = siteData
 
@@ -93,10 +94,13 @@ export function ThankYouContent({
       {email && (
         <p className="text-zinc-500 text-sm text-center max-w-sm mb-10">
           We&apos;ve sent your registration details to{' '}
-          <span className="text-zinc-300">{email}</span>. Check your inbox (and spam folder) for your
-          confirmation email from Townscript.
+          <span className="text-zinc-300">{email}</span>. Check your inbox (and spam folder) for
+          your confirmation email from Townscript.
         </p>
       )}
+
+      {/* Join the WhatsApp group */}
+      <WhatsAppJoin groupUrl={event.whatsappGroupUrl} />
 
       {/* Back home */}
       <Link
