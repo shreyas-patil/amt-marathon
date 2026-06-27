@@ -37,10 +37,10 @@ describe('ThankYouContent — details card', () => {
     expect(screen.getAllByText('asha@example.com').length).toBeGreaterThan(0)
   })
 
-  test('appears when only a ticket id is present (no email)', () => {
-    render(<ThankYouContent firstName={null} ticketIds="TS-12345" />)
-    expect(screen.getByText(/ticket id/i)).toBeInTheDocument()
-    expect(screen.getByText('TS-12345')).toBeInTheDocument()
+  test('appears when only a reference id is present (no email)', () => {
+    render(<ThankYouContent firstName={null} merchantReferenceId="REF-12345" />)
+    expect(screen.getByText(/reference id/i)).toBeInTheDocument()
+    expect(screen.getByText('REF-12345')).toBeInTheDocument()
     // The email-specific confirmation note must not render without an email.
     expect(screen.queryByText(/check your inbox/i)).not.toBeInTheDocument()
   })

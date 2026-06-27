@@ -18,7 +18,6 @@ type SearchParams = {
   email?: string
   phone?: string
   eventcode?: string
-  ticketIds?: string
   merchantReferenceId?: string
 }
 
@@ -40,16 +39,14 @@ export function ThankYouContent({
   firstName,
   email,
   phone,
-  ticketIds,
   merchantReferenceId,
 }: {
   firstName: string | null
   email?: string
   phone?: string
-  ticketIds?: string
   merchantReferenceId?: string
 }) {
-  const hasAnyDetail = email || phone || ticketIds || merchantReferenceId
+  const hasAnyDetail = email || phone || merchantReferenceId
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6 py-24">
@@ -84,7 +81,6 @@ export function ThankYouContent({
       {hasAnyDetail && (
         <div className="w-full max-w-lg bg-zinc-900 rounded-2xl px-6 py-2 mb-10">
           {email && <DetailRow label="Confirmation sent to" value={email} />}
-          {ticketIds && <DetailRow label="Ticket ID" value={ticketIds} />}
           {merchantReferenceId && <DetailRow label="Reference ID" value={merchantReferenceId} />}
           {phone && <DetailRow label="Updates on" value={phone} />}
         </div>
@@ -118,7 +114,7 @@ export default async function ThankYouPage({
 }: {
   searchParams: Promise<SearchParams>
 }) {
-  const { name, email, phone, ticketIds, merchantReferenceId } = await searchParams
+  const { name, email, phone, merchantReferenceId } = await searchParams
 
   const firstName = name?.trim().split(/\s+/)[0] ?? null
 
@@ -129,7 +125,6 @@ export default async function ThankYouPage({
         firstName={firstName}
         email={email}
         phone={phone}
-        ticketIds={ticketIds}
         merchantReferenceId={merchantReferenceId}
       />
     </div>
