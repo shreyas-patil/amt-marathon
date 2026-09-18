@@ -20,11 +20,11 @@ export default function SponsorsSection() {
         {sponsors.length === 0 ? (
           <SponsorEmptyState />
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {sponsors.map((sponsor) => (
               <div
                 key={sponsor.id}
-                className="flex items-center justify-center p-6 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-zinc-600 transition-colors"
+                className="flex items-center justify-center p-6 bg-zinc-900 rounded-2xl border border-zinc-800 hover:border-zinc-600 transition-colors w-[calc(50%-0.75rem)] sm:w-[calc(33.333%-1rem)] md:w-[calc(25%-1.125rem)]"
               >
                 <Image
                   src={sponsor.logo}
