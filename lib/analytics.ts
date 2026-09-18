@@ -15,7 +15,8 @@ export type EventName =
   | 'email_click'
   | 'social_click'
   | 'sponsor_contact_click'
-  | 'townscript_iframe_load'
+  | 'register_outbound_click'
+  | 'register_iframe_load'
   | 'registration_complete'
   | 'section_view'
 

@@ -24,8 +24,8 @@ describe('HeroSection — renders all content it pulls from data', () => {
 
 describe('HeroSection', () => {
   // Note: the primary CTA routes to the internal "/register" page (which hosts
-  // the Townscript iframe). The resolved event.registrationUrl is consumed
-  // there, not on the hero — so we pin "/register" as the real behavior.
+  // the outbound registration CTA). The resolved event.registrationUrl is
+  // consumed there, not on the hero — so we pin "/register" as the real behavior.
   test('primary CTA links to the internal register route', () => {
     render(<HeroSection />)
     expect(screen.getByRole('link', { name: hero.ctaButtons[0].label })).toHaveAttribute(

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import siteData from '@/lib/data'
-import RegisterIframe from '@/components/RegisterIframe'
+import RegisterCta from '@/components/RegisterCta'
 
 const { event, site, categories } = siteData
 
@@ -157,6 +157,33 @@ export default function RegisterPage() {
           </div>
         </div>
 
+        {/* Registration partner change notice */}
+        <div
+          role="note"
+          className="flex items-start gap-3 rounded-2xl border border-orange-500/30 bg-orange-500/[0.08] px-5 py-4 mt-6"
+        >
+          <svg
+            className="w-5 h-5 text-orange-400 shrink-0 mt-0.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <p className="text-sm text-zinc-300 leading-relaxed text-pretty">
+            <span className="font-bold text-white">Our registration partner has changed.</span>{' '}
+            Registration is now handled by {site.partners.registration.name} instead of Townscript.
+            Click <span className="font-semibold text-orange-400">Continue to registration</span>{' '}
+            below to book your spot on their secure page.
+          </p>
+        </div>
+
         {/* Scroll CTA */}
         <div className="text-center mt-6">
           <a
@@ -189,16 +216,16 @@ export default function RegisterPage() {
         aria-label="Registration form"
         className="max-w-5xl mx-auto px-4 pb-24 scroll-mt-24"
       >
-        <RegisterIframe />
+        <RegisterCta />
         <p className="text-center text-zinc-400 text-xs mt-6">
           Registration is securely processed by{' '}
           <a
-            href="https://www.townscript.com"
+            href="https://alpharacingsolution.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-zinc-300 transition-colors underline underline-offset-2"
           >
-            Townscript
+            Alpha Racing Solution
           </a>
           . Your data is protected by their privacy policy.
         </p>

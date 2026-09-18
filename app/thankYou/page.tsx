@@ -91,7 +91,7 @@ export function ThankYouContent({
         <p className="text-zinc-500 text-sm text-center max-w-sm mb-10">
           We&apos;ve sent your registration details to{' '}
           <span className="text-zinc-300">{email}</span>. Check your inbox (and spam folder) for
-          your confirmation email from Townscript.
+          your confirmation email from Alpha Racing Solution.
         </p>
       )}
 

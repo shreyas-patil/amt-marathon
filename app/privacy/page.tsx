@@ -56,10 +56,10 @@ export default function PrivacyPage() {
               rel="noopener noreferrer"
               className="text-orange-500 hover:underline"
             >
-              Townscript
+              Alpha Racing Solution
             </a>
             , a third-party ticketing platform. Any personal information you provide during
-            registration is governed by Townscript&apos;s own privacy policy.
+            registration is governed by Alpha Racing Solution&apos;s own privacy policy.
           </p>
         </Section>
 
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
             <li>Prize category tab switches</li>
             <li>How far down each page you scroll (25 / 50 / 75 / 90%)</li>
             <li>Which sections of the page were viewed</li>
-            <li>Whether the registration iframe loaded successfully</li>
+            <li>Clicks through to the registration provider</li>
           </ul>
           <p>
             All data is anonymous and aggregated — it cannot be used to identify you personally.
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
 
         <Section heading="Third-party links">
           <p>
-            This site links to external services including Townscript (registration), hotel booking
+            This site links to external services including Alpha Racing Solution (registration), hotel booking
             platforms, and Google Maps. Once you leave this site, their respective privacy policies
             apply.
           </p>

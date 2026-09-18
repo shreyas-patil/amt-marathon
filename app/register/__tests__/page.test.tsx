@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import siteData from '@/lib/data'
 import RegisterPage from '../page'
 
-const { event, categories } = siteData
+const { event, categories, site } = siteData
 const halfMarathon = categories.categories.find((c) => c.id === 'half-marathon')!
 const ticketCats = categories.categories.filter((c) => c.id !== 'half-marathon')
 
@@ -41,6 +41,16 @@ describe('RegisterPage — eligibility panel', () => {
         : cat.name
       expect(screen.getByText(displayName)).toBeInTheDocument()
     }
+  })
+})
+
+describe('RegisterPage — partner change notice', () => {
+  test('tells users registration moved from Townscript to the new partner', () => {
+    render(<RegisterPage />)
+    const note = screen.getByRole('note')
+    expect(note).toHaveTextContent(/registration partner has changed/i)
+    expect(note).toHaveTextContent('Townscript')
+    expect(note).toHaveTextContent(site.partners.registration.name)
   })
 })
 

@@ -8,9 +8,9 @@ export default defineConfig({
     environment: 'happy-dom',
     globals: true,
     setupFiles: ['./test/setup.ts'],
-    // RegisterIframe renders a real Townscript <link>/<iframe>; stop happy-dom
-    // from fetching those external resources (the fetches only abort on
-    // teardown and spam the output — they are not what we're testing).
+    // Stop happy-dom from fetching any external resources a component might
+    // reference (stylesheets, scripts, iframes). Those fetches only abort on
+    // teardown and spam the output — they are not what we're testing.
     environmentOptions: {
       happyDOM: {
         settings: {

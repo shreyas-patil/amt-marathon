@@ -96,10 +96,10 @@ Object.defineProperty(navigator, 'clipboard', {
 })
 
 // ── Silence happy-dom external-resource noise ───────────────────────────────
-// RegisterIframe renders a real Townscript <link> and <iframe>. With resource
-// loading disabled (see vitest.config.ts), happy-dom captures and console.errors
-// a DOMException for each. Those are environmental, not assertion failures —
-// swallow ONLY those two exact messages so genuine errors still surface.
+// With resource loading disabled (see vitest.config.ts), happy-dom captures and
+// console.errors a DOMException for any external stylesheet/iframe a component
+// references. Those are environmental, not assertion failures — swallow ONLY
+// those exact messages so genuine errors still surface.
 const realConsoleError = console.error.bind(console)
 const IGNORED_DOM_NOISE = [
   'CSS file loading is disabled',

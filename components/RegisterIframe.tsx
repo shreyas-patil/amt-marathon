@@ -3,36 +3,72 @@
 import { useEffect, useState } from 'react'
 import { trackEvent } from '@/lib/analytics'
 
-export default function RegisterIframe() {
+/**
+ * @deprecated NOT CURRENTLY USED. The `/register` page renders
+ * {@link ../components/RegisterCta} (an outbound link) instead.
+ *
+ * This component embeds a third-party registration widget in an iframe. It is
+ * retained for when our registration provider ships an embeddable widget that
+ * whitelists our domain.
+ *
+ * Why it's shelved: Alpha Racing Solution's checkout currently returns
+ * `X-Frame-Options: SAMEORIGIN`, so browsers refuse to render it in an iframe
+ * from our domain. Embedding also needs cross-site session/cookie support for
+ * their multi-step checkout + payment step. Both are the vendor's to fix.
+ *
+ * When their widget is ready, swap `<RegisterCta />` for this on the register
+ * page and pass the widget's embed URL + expected postMessage origin, e.g.:
+ *
+ *   <RegisterIframe
+ *     src="https://<provider>/embed/amravati-hm-2026"
+ *     messageOrigin="https://<provider>"
+ *   />
+ *
+ * It is intentionally provider-agnostic: no origin/URL is hardcoded, so it
+ * works for whichever provider we embed. `messageOrigin` is validated on every
+ * postMessage to reject spoofed events. Keep it covered by
+ * `__tests__/RegisterIframe.test.tsx`.
+ */
+export default function RegisterIframe({
+  src,
+  messageOrigin,
+  stylesheetHref,
+  title = 'Registration',
+}: {
+  /** The provider's iframe embed URL. */
+  src: string
+  /** Exact origin (scheme + host) postMessage events must come from. */
+  messageOrigin: string
+  /** Optional provider stylesheet the widget needs. */
+  stylesheetHref?: string
+  title?: string
+}) {
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     function handleMessage(e: MessageEvent) {
-      if (e.origin !== 'https://www.townscript.com') return
+      if (e.origin !== messageOrigin) return
       if (e.data?.event === 'registration_complete') {
         trackEvent('registration_complete')
       }
     }
     window.addEventListener('message', handleMessage)
     return () => window.removeEventListener('message', handleMessage)
-  }, [])
+  }, [messageOrigin])
 
   return (
     <div className="rounded-2xl overflow-hidden bg-white shadow-2xl relative" style={{ minHeight: '600px' }}>
-      <link
-        rel="stylesheet"
-        href="https://www.townscript.com/static/Bookingflow/css/ts-iframe.style.css"
-      />
+      {stylesheetHref && <link rel="stylesheet" href={stylesheetHref} />}
       <iframe
-        id="ts-iframe"
-        src="https://www.townscript.com/v2/widget/amravati-half-marathon2026-221331/booking"
+        id="register-iframe"
+        src={src}
         style={{ border: 'none' }}
         height={1200}
         width="100%"
-        title="Amravati Half Marathon 2026 Registration"
+        title={title}
         onLoad={() => {
           setLoaded(true)
-          trackEvent('townscript_iframe_load')
+          trackEvent('register_iframe_load')
         }}
       />
       {!loaded && (

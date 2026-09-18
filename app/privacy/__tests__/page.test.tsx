@@ -14,9 +14,9 @@ describe('PrivacyPage — data-driven content', () => {
     expect(screen.getAllByText(new RegExp(String(event.year))).length).toBeGreaterThan(0)
   })
 
-  test('links registration to the Townscript URL from data', () => {
+  test('links registration to the Alpha Racing Solution URL from data', () => {
     render(<PrivacyPage />)
-    expect(screen.getByRole('link', { name: 'Townscript' })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: 'Alpha Racing Solution' })).toHaveAttribute(
       'href',
       event.registrationUrl
     )
