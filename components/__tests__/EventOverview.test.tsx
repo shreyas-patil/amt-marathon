@@ -23,14 +23,21 @@ describe('EventOverview — renders all the copy it pulls from data', () => {
     expect(screen.getByText(event.startLine.address)).toBeInTheDocument()
 
     // The whole card is a link to the Google Maps URL from event.json.
-    expect(screen.getByRole('link')).toHaveAttribute('href', event.startLine.googleMapsUrl)
+    const links = screen.getAllByRole('link')
+    const startLineLink = links.find(
+      (l) => l.getAttribute('href') === event.startLine.googleMapsUrl
+    )
+    expect(startLineLink).toBeDefined()
   })
 
-  test('shows the bib-collection card with its title, date, subtext, and venue note from data', () => {
+  test('shows the bib-collection card with its title, date, subtext, and venue map link from data', () => {
     render(<EventOverview />)
     expect(screen.getByText(overview.infoCards.bibCollection.title)).toBeInTheDocument()
     expect(screen.getByText(event.bibCollection.date)).toBeInTheDocument()
     expect(screen.getByText(event.bibCollection.subtext)).toBeInTheDocument()
-    expect(screen.getByText(event.bibCollection.venueNote)).toBeInTheDocument()
+
+    // The venue name is a link to its Google Maps URL from event.json.
+    const venueLink = screen.getByRole('link', { name: event.bibCollection.venueName })
+    expect(venueLink).toHaveAttribute('href', event.bibCollection.googleMapsUrl)
   })
 })

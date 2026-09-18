@@ -64,7 +64,8 @@ export interface EventConfig {
   bibCollection: {
     date: string
     subtext: string
-    venueNote: string
+    venueName: string
+    googleMapsUrl: string
   }
   registrationUrl: string
   maxParticipants: number

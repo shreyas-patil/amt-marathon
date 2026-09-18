@@ -72,7 +72,14 @@ export default function EventOverview() {
                 {event.bibCollection.date}
               </p>
               <p className="text-zinc-300 text-base mb-4">{event.bibCollection.subtext}</p>
-              <p className="text-zinc-300 text-base">{event.bibCollection.venueNote}</p>
+              <a
+                href={event.bibCollection.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-amber-400 hover:text-amber-300 transition-colors text-base font-semibold underline underline-offset-2 decoration-amber-400/40"
+              >
+                {event.bibCollection.venueName}
+              </a>
             </div>
           </div>
         </div>
