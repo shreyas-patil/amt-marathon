@@ -21,7 +21,7 @@ function Section({ heading, children }: { heading: string; children: React.React
 }
 
 export default function PrivacyPage() {
-  const lastUpdated = 'May 2026'
+  const lastUpdated = 'October 2026'
 
   return (
     <div className="pt-16 bg-white min-h-screen">
@@ -60,6 +60,22 @@ export default function PrivacyPage() {
             </a>
             , a third-party ticketing platform. Any personal information you provide during
             registration is governed by Alpha Racing Solution&apos;s own privacy policy.
+          </p>
+        </Section>
+
+        <Section heading="Race results">
+          <p>
+            After the race, the{' '}
+            <a href="/results" className="text-orange-500 hover:underline">
+              results page
+            </a>{' '}
+            lists the names of the top finishers in each category and, for timed categories, their
+            finish times. This information comes from the official timing sheets provided by our
+            timing partner. Bib numbers and other registration details are not published.
+          </p>
+          <p>
+            If you are listed and would like your name corrected or removed, email us at the
+            address in the Contact section below.
           </p>
         </Section>
 

@@ -367,9 +367,21 @@ export interface Organizer {
 export interface ResultEntry {
   rank: number
   name: string
-  category: string
-  time: string
-  prize: number
+  time?: string
+}
+
+export interface ResultGroup {
+  label: string
+  entries: ResultEntry[]
+}
+
+export interface ResultEvent {
+  id: string
+  name: string
+  /** false keeps the entries in the data file but shows rc.pendingNote instead of the tables */
+  published: boolean
+  showTiming: boolean
+  groups: ResultGroup[]
 }
 
 export interface ResultsData {
@@ -384,5 +396,15 @@ export interface ResultsData {
     subtext: string
     description: string
   }
-  results: ResultEntry[]
+  resultsContent: {
+    tag: string
+    heading: string
+    subtext: string
+    provisionalNote: string
+    pendingNote: string
+    rankLabel: string
+    nameLabel: string
+    timeLabel: string
+  }
+  events: ResultEvent[]
 }

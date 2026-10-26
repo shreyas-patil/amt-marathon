@@ -1,8 +1,8 @@
 {
   "year": 2026,
   "eventDate": "2026-10-25",
-  "status": "pending",
-  "message": "Results will be available after the event.",
+  "status": "completed",
+  "message": "Official results of the Amravati Half Marathon 2026.",
   "placeholderContent": {
     "icon": "🏁",
     "tag": "Results",
@@ -10,5 +10,280 @@
     "subtext": "The race is on October 25, 2026.",
     "description": "Results, rankings, and prize winners will be published here once the last runner crosses the finish line. Come back then."
   },
-  "results": []
+  "resultsContent": {
+    "tag": "Results 2026",
+    "heading": "The podium.",
+    "subtext": "Top five finishers in every category of the Amravati Half Marathon, October 25, 2026.",
+    "provisionalNote": "These are provisional results, subject to final verification.",
+    "rankLabel": "Rank",
+    "nameLabel": "Name",
+    "timeLabel": "Time",
+    "pendingNote": "Results for this category are still being finalised and will be published here soon."
+  },
+  "events": [
+    {
+      "id": "half-marathon-male",
+      "name": "Half Marathon — Male",
+      "published": true,
+      "showTiming": true,
+      "groups": [
+        {
+          "label": "Below 45 Years",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Chaitanya Rupnar",
+              "time": "1:10:19"
+            },
+            {
+              "rank": 2,
+              "name": "Lahu Chandanshive",
+              "time": "1:11:18"
+            },
+            {
+              "rank": 3,
+              "name": "Kundan Kumar",
+              "time": "1:13:03"
+            },
+            {
+              "rank": 4,
+              "name": "Aawez Chavan",
+              "time": "1:26:28"
+            },
+            {
+              "rank": 5,
+              "name": "Nikesh Kasdekar",
+              "time": "1:27:45"
+            }
+          ]
+        },
+        {
+          "label": "Above 45 Years",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Santu Warde",
+              "time": "1:19:59"
+            },
+            {
+              "rank": 2,
+              "name": "Sunil",
+              "time": "1:22:16"
+            },
+            {
+              "rank": 3,
+              "name": "Rajesh Koche",
+              "time": "1:26:29"
+            },
+            {
+              "rank": 4,
+              "name": "Vasant Desai",
+              "time": "1:30:10"
+            },
+            {
+              "rank": 5,
+              "name": "Shivaji Gaikwad",
+              "time": "1:38:45"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "half-marathon-female",
+      "name": "Half Marathon — Female",
+      "published": true,
+      "showTiming": true,
+      "groups": [
+        {
+          "label": "Below 40 Years",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Manisha Pawar",
+              "time": "1:29:14"
+            },
+            {
+              "rank": 2,
+              "name": "Prajakta",
+              "time": "1:30:53"
+            },
+            {
+              "rank": 3,
+              "name": "Jyoti Gawate",
+              "time": "1:35:08"
+            },
+            {
+              "rank": 4,
+              "name": "Parimala Babar",
+              "time": "1:37:04"
+            },
+            {
+              "rank": 5,
+              "name": "Sanjana Joshi",
+              "time": "1:37:31"
+            }
+          ]
+        },
+        {
+          "label": "Above 40 Years",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Renu Sidhu",
+              "time": "1:55:23"
+            },
+            {
+              "rank": 2,
+              "name": "Minaj Nadaf",
+              "time": "2:01:43"
+            },
+            {
+              "rank": 3,
+              "name": "Ritu Talmale",
+              "time": "2:04:12"
+            },
+            {
+              "rank": 4,
+              "name": "Dr Archana Kannamwar",
+              "time": "2:08:19"
+            },
+            {
+              "rank": 5,
+              "name": "Dr Rujuta Phuke",
+              "time": "2:14:34"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "half-marathon-other-state",
+      "name": "Half Marathon — Other State Runners",
+      "published": true,
+      "showTiming": true,
+      "groups": [
+        {
+          "label": "Male",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Aniket Singh",
+              "time": "1:16:07"
+            },
+            {
+              "rank": 2,
+              "name": "Anil Jindal",
+              "time": "1:21:16"
+            },
+            {
+              "rank": 3,
+              "name": "Pushu C",
+              "time": "1:22:07"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "10k-power-run",
+      "name": "10 Km Power Run",
+      "published": true,
+      "showTiming": true,
+      "groups": [
+        {
+          "label": "Male",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Piyush Masane",
+              "time": "30:17"
+            },
+            {
+              "rank": 2,
+              "name": "Ajit Bende",
+              "time": "32:09"
+            },
+            {
+              "rank": 3,
+              "name": "Nitin Hiwarale",
+              "time": "32:47"
+            },
+            {
+              "rank": 4,
+              "name": "Shankar Nande",
+              "time": "33:58"
+            },
+            {
+              "rank": 5,
+              "name": "Anurag Gedam",
+              "time": "34:16"
+            }
+          ]
+        },
+        {
+          "label": "Female",
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Yamini Thakre",
+              "time": "36:00"
+            },
+            {
+              "rank": 2,
+              "name": "Vaishnavi Wankhade",
+              "time": "41:07"
+            },
+            {
+              "rank": 3,
+              "name": "Saliya Khan",
+              "time": "41:20"
+            },
+            {
+              "rank": 4,
+              "name": "Sneha Chaudhary",
+              "time": "42:26"
+            },
+            {
+              "rank": 5,
+              "name": "Nisha Jagtap",
+              "time": "43:45"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5k-fitness-run",
+      "name": "5 Km Fitness Run",
+      "published": false,
+      "showTiming": false,
+      "groups": [
+        {
+          "label": "Male",
+          "entries": []
+        },
+        {
+          "label": "Female",
+          "entries": []
+        }
+      ]
+    },
+    {
+      "id": "5k-childrens-dream-run",
+      "name": "5 Km Children's Dream Run",
+      "published": false,
+      "showTiming": false,
+      "groups": [
+        {
+          "label": "Boys",
+          "entries": []
+        },
+        {
+          "label": "Girls",
+          "entries": []
+        }
+      ]
+    }
+  ]
 }

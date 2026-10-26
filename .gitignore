@@ -3,3 +3,6 @@ pnpm-lock.yaml
 *.tsbuildinfo
 .next
 next-env.d.ts
+
+# Unpublished draft results (names under objection etc.). Never commit.
+data/results/drafts/

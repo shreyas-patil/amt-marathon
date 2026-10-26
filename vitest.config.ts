@@ -25,6 +25,9 @@ export default defineConfig({
     // identically in tests and in the Next.js build.
     alias: {
       '@': path.resolve(import.meta.dirname, '.'),
+      // 'server-only' throws outside a React Server Components build; tests render server
+      // components directly, so stub it out.
+      'server-only': path.resolve(import.meta.dirname, 'test/server-only-stub.ts'),
     },
   },
 })
