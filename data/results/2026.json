@@ -256,32 +256,116 @@
     {
       "id": "5k-fitness-run",
       "name": "5 Km Fitness Run",
-      "published": false,
+      "published": true,
       "showTiming": false,
       "groups": [
         {
           "label": "Male",
-          "entries": []
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Bisram Mawaskar"
+            },
+            {
+              "rank": 2,
+              "name": "Prajwal Harane"
+            },
+            {
+              "rank": 3,
+              "name": "Bhavesh Khandar"
+            },
+            {
+              "rank": 4,
+              "name": "Shivam Gudde"
+            },
+            {
+              "rank": 5,
+              "name": "Anurag Kalbande"
+            }
+          ]
         },
         {
           "label": "Female",
-          "entries": []
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Anjali Madavi"
+            },
+            {
+              "rank": 2,
+              "name": "Pranali Shegokar"
+            },
+            {
+              "rank": 3,
+              "name": "Rutika Nandewar"
+            },
+            {
+              "rank": 4,
+              "name": "Snehal Chavhan"
+            },
+            {
+              "rank": 5,
+              "name": "Madhuri Mandale"
+            }
+          ]
         }
       ]
     },
     {
       "id": "5k-childrens-dream-run",
       "name": "5 Km Children's Dream Run",
-      "published": false,
+      "published": true,
       "showTiming": false,
       "groups": [
         {
           "label": "Boys",
-          "entries": []
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Swaraj Partani"
+            },
+            {
+              "rank": 2,
+              "name": "Aayush Rojatkar"
+            },
+            {
+              "rank": 3,
+              "name": "Chirag Khokle"
+            },
+            {
+              "rank": 4,
+              "name": "Chetan Yadav"
+            },
+            {
+              "rank": 5,
+              "name": "Harshit Thakur"
+            }
+          ]
         },
         {
           "label": "Girls",
-          "entries": []
+          "entries": [
+            {
+              "rank": 1,
+              "name": "Navya Chitade"
+            },
+            {
+              "rank": 2,
+              "name": "Rajlaxmi Mohod"
+            },
+            {
+              "rank": 3,
+              "name": "Sharvari Deokar"
+            },
+            {
+              "rank": 4,
+              "name": "Purvi Sabalkar"
+            },
+            {
+              "rank": 5,
+              "name": "Samiksha Mohod"
+            }
+          ]
         }
       ]
     }
