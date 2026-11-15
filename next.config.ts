@@ -26,6 +26,13 @@ const nextConfig: NextConfig = {
   typescript: {
     tsconfigPath: './tsconfig.json',
   },
+  // Easy-to-say aliases for the women's run page (/sakhi), for word-of-mouth sharing.
+  // Temporary (307) so the main slug can still change without browsers caching it.
+  async redirects() {
+    return ['/mahila', '/women', '/womens', '/womens10k', '/womens-10k', '/women10k'].map(
+      (source) => ({ source, destination: '/sakhi', permanent: false })
+    )
+  },
   async headers() {
     return [
       {

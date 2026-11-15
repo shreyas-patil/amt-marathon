@@ -23,14 +23,13 @@ describe('HeroSection — renders all content it pulls from data', () => {
 })
 
 describe('HeroSection', () => {
-  // Note: the primary CTA routes to the internal "/register" page (which hosts
-  // the outbound registration CTA). The resolved event.registrationUrl is
-  // consumed there, not on the hero — so we pin "/register" as the real behavior.
-  test('primary CTA links to the internal register route', () => {
+  // The primary CTA sends visitors to the featured event page (currently the
+  // women's run at /sakhi); the href lives in data/hero.json.
+  test('primary CTA links to the href set in data', () => {
     render(<HeroSection />)
     expect(screen.getByRole('link', { name: hero.ctaButtons[0].label })).toHaveAttribute(
       'href',
-      '/register'
+      hero.ctaButtons[0].href
     )
   })
 
@@ -50,5 +49,22 @@ describe('HeroSection', () => {
       label: hero.ctaButtons[1].label,
       destination: hero.ctaButtons[1].href,
     })
+  })
+})
+
+describe('HeroSection — theme', () => {
+  test('a Marathi edition line is marked as Marathi', () => {
+    render(<HeroSection />)
+    const edition = screen.getByText(hero.edition)
+    if (hero.editionLang === 'mr') {
+      expect(edition).toHaveAttribute('lang', 'mr')
+      expect(edition.className).not.toMatch(/uppercase|tracking/)
+    }
+  })
+
+  test('the primary button follows the theme colour', () => {
+    render(<HeroSection />)
+    const button = screen.getByRole('link', { name: hero.ctaButtons[0].label })
+    expect(button.className).toMatch(hero.theme === 'sakhi' ? /bg-sakhi/ : /bg-orange-500/)
   })
 })

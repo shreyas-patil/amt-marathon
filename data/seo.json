@@ -65,6 +65,23 @@
       "description": "About the Amravati Marathon Association, our organizing team, and the story behind Amravati's own half marathon, running since 2016.",
       "canonical": "/contact",
       "sitemap": { "priority": 0.5, "changefreq": "yearly" }
+    },
+    "sakhi": {
+      "title": "Amravati Women's 10K, 7 March 2027",
+      "description": "A road race for women in Amravati on Sunday 7 March 2027, for International Women's Day. 10 km and 5 km, two age groups, ₹1,36,000 in prizes. चला, सोबत धावूया!",
+      "canonical": "/sakhi",
+      "openGraph": {
+        "url": "/sakhi",
+        "title": "Amravati Women's 10K · चला, सोबत धावूया!",
+        "description": "Sunday 7 March 2027 in Amravati. 10 km and 5 km for women aged 15 and above. ₹1,36,000 in prizes."
+      },
+      "sitemap": { "priority": 0.9, "changefreq": "weekly" }
+    },
+    "sakhiRoute": {
+      "title": "Women's 10K route map",
+      "description": "Course maps for the Amravati Women's 10K on 7 March 2027: the 10 km and 5 km routes.",
+      "canonical": "/sakhi/route",
+      "sitemap": { "priority": 0.6, "changefreq": "monthly" }
     }
   },
   "openGraph": {

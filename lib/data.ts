@@ -13,21 +13,44 @@ import contact from '@/data/contact.json'
 import footer from '@/data/footer.json'
 import routeMaps from '@/data/route-maps.json'
 import organizers from '@/data/organizers.json'
+import sakhiJson from '@/data/sakhi.json'
+import type { SakhiData } from '@/lib/types'
 
-// Resolve cross-references: inject registrationUrl into hero CTA buttons
+// Where "Register" buttons go. `sakhiRegistration` is the women's run: straight to
+// the registration site once its link is set in data/sakhi.json, otherwise to the
+// /sakhi page (which says when registration opens). One tap to sign up, not two.
+const registerTargets: Record<string, string> = {
+  registrationUrl: event.registrationUrl,
+  sakhiRegistration: sakhiJson.registrationUrl || sakhiJson.path,
+}
+
+type Linkish = { label: string; href?: string; hrefKey?: string }
+
+function resolveHref<T extends Linkish>(item: T): T & { href: string } {
+  const href = (item.hrefKey && registerTargets[item.hrefKey]) || item.href || '/register'
+  return { ...item, href }
+}
+
+// Resolve cross-references: inject register targets into hero CTAs and the header button
 const resolvedHero = {
   ...hero,
-  ctaButtons: hero.ctaButtons.map((btn) =>
-    'hrefKey' in btn && btn.hrefKey === 'registrationUrl'
-      ? { ...btn, href: event.registrationUrl }
-      : btn
-  ),
+  ctaButtons: hero.ctaButtons.map((btn) => resolveHref(btn as Linkish & { variant: string })),
+}
+
+const resolvedNavigation = {
+  ...navigation,
+  header: {
+    ...navigation.header,
+    registerButton: resolveHref(
+      navigation.header.registerButton as Linkish & { moreDropdownLabel: string }
+    ),
+  },
 }
 
 export const siteData = {
   site,
   event,
-  navigation,
+  navigation: resolvedNavigation,
   seo,
   hero: resolvedHero,
   overview,
@@ -61,4 +84,15 @@ export function getOrganizers(): Organizer[] {
   return organizers.organizers
 }
 
+// The women's run page data. Kept out of siteData so the main site's client
+// components don't ship it to the browser.
+export function getSakhi(): SakhiData {
+  return sakhiJson as SakhiData
+}
+
 export default siteData
+
+/** True for links that leave the site (e.g. the registration provider). */
+export function isExternalHref(href: string | undefined): boolean {
+  return !!href && /^https?:\/\//.test(href)
+}

@@ -1,0 +1,196 @@
+{
+  "name": "Amravati Women's 10K",
+  "path": "/sakhi",
+  "date": "2027-03-07",
+  "registrationUrl": "",
+  "registrationClosedLabel": "Registration opens 20 Nov",
+  "nav": {
+    "backLabel": "Amravati Half Marathon",
+    "backHref": "/",
+    "links": [
+      {
+        "label": "Categories",
+        "href": "/sakhi#categories"
+      },
+      {
+        "label": "Route",
+        "href": "/sakhi/route"
+      },
+      {
+        "label": "Prizes",
+        "href": "/sakhi#prizes"
+      },
+      {
+        "label": "Key dates",
+        "href": "/sakhi#key-dates"
+      }
+    ]
+  },
+  "hero": {
+    "kicker": "जागतिक महिला दिनानिमित्त",
+    "intro": "Come together for your sister's solidarity. Run for your health.",
+    "title": {
+      "line1": "Amravati",
+      "emphasis": "Women's",
+      "rest": "10K"
+    },
+    "date": "Sunday, 7 March 2027",
+    "dateMr": "रविवार, ७ मार्च २०२७",
+    "summary": "10 km and 5 km · ₹1,36,000 in prizes",
+    "cta": {
+      "label": "Register now",
+      "labelMr": "नोंदणी करा"
+    },
+    "earlyBirdNote": "Early bird: ₹200 off until 31 December"
+  },
+  "sakhi": {
+    "heading": "Bring your",
+    "headingEmphasis": "sakhi",
+    "headingMr": "सखी सोबत असेल, तर आणखी मजा!",
+    "body": "This race is for every woman, whether you come on your own or with friends. Know someone who would enjoy it? Send her the link.",
+    "shareLabel": "Share with a friend",
+    "shareText": "Amravati Women's 10K, Sunday 7 March 2027. चला, सोबत धावूया!"
+  },
+  "distances": {
+    "heading": "Pick your distance",
+    "earlyBirdDeadline": "2026-12-31T23:59:59+05:30",
+    "items": [
+      {
+        "id": "10k",
+        "label": "10 km",
+        "fees": {
+          "earlyBird": 600,
+          "standard": 800
+        },
+        "name": "10 km Run"
+      },
+      {
+        "id": "5k",
+        "label": "5 km",
+        "fees": {
+          "earlyBird": 400,
+          "standard": 600
+        },
+        "name": "5 km Run"
+      }
+    ],
+    "ageGroups": "Age groups: 15 to 39, and 40 and above",
+    "ageGroupsMr": "वयोगट: १५ ते ३९, आणि ४० व त्याहून अधिक",
+    "ageNote": "Age counts on race day. Turned 40 by 7 March? You run in 40 and above.",
+    "earlyBirdLabel": "Early bird",
+    "regularLabel": "Regular pricing",
+    "ageGroupsShort": "15–39 · 40 & above"
+  },
+  "prizes": {
+    "total": "₹1,36,000",
+    "headingRest": "in prizes",
+    "headingMr": "एकूण ₹१,३६,००० ची बक्षिसे",
+    "intro": "The top five in each age group win, in both distances.",
+    "columns": {
+      "place": "Place",
+      "first": "10 km",
+      "second": "5 km"
+    },
+    "rows": [
+      {
+        "place": "1st",
+        "first": 15000,
+        "second": 10000
+      },
+      {
+        "place": "2nd",
+        "first": 10000,
+        "second": 7500
+      },
+      {
+        "place": "3rd",
+        "first": 7500,
+        "second": 5000
+      },
+      {
+        "place": "4th",
+        "first": 5000,
+        "second": 3000
+      },
+      {
+        "place": "5th",
+        "first": 3000,
+        "second": 2000
+      }
+    ],
+    "note": "Paid separately in each age group: 15 to 39, and 40 and above."
+  },
+  "keyDates": {
+    "heading": "Key dates",
+    "headingMr": "महत्त्वाच्या तारखा",
+    "items": [
+      {
+        "date": "20 Nov",
+        "label": "Registration opens"
+      },
+      {
+        "date": "31 Dec",
+        "label": "Early bird price ends"
+      },
+      {
+        "date": "7 Mar",
+        "label": "Race day"
+      }
+    ],
+    "tba": "Start line, start time and bib collection will be announced here.",
+    "tbaMr": "लवकरच जाहीर होईल."
+  },
+  "footer": {
+    "byLine": "A race by the organisers of",
+    "wordmark": [
+      "AMRAVATI",
+      "HALF MARATHON"
+    ],
+    "links": [
+      {
+        "label": "runamravati.com",
+        "href": "/"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      },
+      {
+        "label": "Privacy",
+        "href": "/privacy"
+      }
+    ]
+  },
+  "route": {
+    "path": "/sakhi/route",
+    "kicker": "मार्ग नकाशा",
+    "title": {
+      "emphasis": "Women's",
+      "rest": "10K route"
+    },
+    "provisional": true,
+    "provisionalNote": "For now the women's run uses the same 10 km and 5 km courses as the Amravati Half Marathon. If the route changes, the new map will be posted on this page.",
+    "maps": [
+      {
+        "id": "10k",
+        "label": "10 km",
+        "name": "10 km Run",
+        "image": "/images/route-maps/10kmRoute.png",
+        "width": 2920,
+        "height": 2283,
+        "alt": "10 km route map for the Amravati Women's 10K"
+      },
+      {
+        "id": "5k",
+        "label": "5 km",
+        "name": "5 km Run",
+        "image": "/images/route-maps/05kmRoute.png",
+        "width": 2920,
+        "height": 2286,
+        "alt": "5 km route map for the Amravati Women's 10K"
+      }
+    ],
+    "backLabel": "Back to the Women's 10K",
+    "backHref": "/sakhi"
+  }
+}

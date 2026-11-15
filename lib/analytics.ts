@@ -19,6 +19,7 @@ export type EventName =
   | 'register_iframe_load'
   | 'registration_complete'
   | 'section_view'
+  | 'share_click'
 
 type EventParams = Record<string, string | number>
 

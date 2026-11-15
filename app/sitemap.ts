@@ -13,6 +13,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: seo.pages.home.sitemap?.priority,
     },
     {
+      url: `${base}/sakhi`,
+      lastModified: new Date(),
+      changeFrequency: seo.pages.sakhi.sitemap?.changefreq as MetadataRoute.Sitemap[0]['changeFrequency'],
+      priority: seo.pages.sakhi.sitemap?.priority,
+    },
+    {
+      url: `${base}/sakhi/route`,
+      lastModified: new Date(),
+      changeFrequency: seo.pages.sakhiRoute.sitemap?.changefreq as MetadataRoute.Sitemap[0]['changeFrequency'],
+      priority: seo.pages.sakhiRoute.sitemap?.priority,
+    },
+    {
       url: `${base}/prizes`,
       lastModified: new Date(),
       changeFrequency: seo.pages.prizes.sitemap?.changefreq as MetadataRoute.Sitemap[0]['changeFrequency'],

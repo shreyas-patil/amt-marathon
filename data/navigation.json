@@ -1,6 +1,7 @@
 {
   "main": [
     { "label": "Home", "href": "/" },
+    { "label": "Women's 10K", "href": "/sakhi" },
     { "label": "Categories", "href": "/#categories" },
     { "label": "Prizes", "href": "/prizes" },
     { "label": "Route", "href": "/route-maps" },
@@ -16,6 +17,7 @@
   "header": {
     "registerButton": {
       "label": "Register Now",
+      "hrefKey": "sakhiRegistration",
       "moreDropdownLabel": "More"
     }
   }

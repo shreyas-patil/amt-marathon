@@ -89,6 +89,9 @@ export interface NavigationConfig {
   header: {
     registerButton: {
       label: string
+      /** Resolved from hrefKey in lib/data.ts */
+      href: string
+      hrefKey?: string
       moreDropdownLabel: string
     }
   }
@@ -130,9 +133,13 @@ export interface HeroCtaButton {
 }
 
 export interface HeroContent {
+  /** Colour theme: 'orange' (half marathon) or 'sakhi' (women's run, teal and gold) */
+  theme?: 'orange' | 'sakhi'
   locationTag: string
   headingLines: [string, string, string]
   edition: string
+  /** Set to 'mr' when the edition line is Marathi (no uppercase or letter spacing) */
+  editionLang?: string
   description: string
   ctaButtons: HeroCtaButton[]
   scrollIndicator: { label: string }
@@ -407,4 +414,100 @@ export interface ResultsData {
     timeLabel: string
   }
   events: ResultEvent[]
+}
+
+// ── sakhi.json (Amravati Women's 10K page) ───────────────────────────────────
+
+export interface SakhiLink {
+  label: string
+  href: string
+}
+
+export interface SakhiDistance {
+  id: string
+  label: string
+  name: string
+  fees: { earlyBird: number; standard: number }
+}
+
+export interface SakhiPrizeRow {
+  place: string
+  first: number
+  second: number
+}
+
+export interface SakhiData {
+  name: string
+  path: string
+  date: string
+  registrationUrl: string
+  registrationClosedLabel: string
+  nav: { backLabel: string; backHref: string; links: SakhiLink[] }
+  hero: {
+    kicker: string
+    intro: string
+    title: { line1: string; emphasis: string; rest: string }
+    date: string
+    dateMr: string
+    summary: string
+    cta: { label: string; labelMr: string }
+    earlyBirdNote: string
+  }
+  sakhi: {
+    heading: string
+    headingEmphasis: string
+    headingMr: string
+    body: string
+    shareLabel: string
+    shareText: string
+  }
+  distances: {
+    heading: string
+    earlyBirdDeadline: string
+    earlyBirdLabel: string
+    regularLabel: string
+    items: SakhiDistance[]
+    ageGroups: string
+    ageGroupsShort: string
+    ageGroupsMr: string
+    ageNote: string
+  }
+  prizes: {
+    total: string
+    headingRest: string
+    headingMr: string
+    intro: string
+    columns: { place: string; first: string; second: string }
+    rows: SakhiPrizeRow[]
+    note: string
+  }
+  keyDates: {
+    heading: string
+    headingMr: string
+    items: { date: string; label: string }[]
+    tba: string
+    tbaMr: string
+  }
+  footer: { byLine: string; wordmark: [string, string]; links: SakhiLink[] }
+  route: {
+    path: string
+    kicker: string
+    title: { emphasis: string; rest: string }
+    /** true while the women's run reuses the half marathon's 10 km / 5 km courses */
+    provisional: boolean
+    provisionalNote: string
+    maps: SakhiRouteMap[]
+    backLabel: string
+    backHref: string
+  }
+}
+
+export interface SakhiRouteMap {
+  id: string
+  label: string
+  name: string
+  image: string
+  width: number
+  height: number
+  alt: string
 }

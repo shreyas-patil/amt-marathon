@@ -3,10 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import siteData from '@/lib/data'
+import siteData, { isExternalHref } from '@/lib/data'
 import { trackEvent } from '@/lib/analytics'
 
 const { navigation, site } = siteData
+const register = navigation.header.registerButton
+// Straight to the registration site when it's live (new tab); otherwise an in-site page.
+const registerExternal = isExternalHref(register.href)
+const registerLinkProps = registerExternal
+  ? { target: '_blank', rel: 'noopener noreferrer' }
+  : {}
+
+function trackRegister(location: string) {
+  trackEvent('cta_register_click', { location })
+  if (registerExternal) trackEvent('register_outbound_click', { location })
+}
 
 function MoreDropdown() {
   const [open, setOpen] = useState(false)
@@ -102,13 +113,14 @@ export default function Header() {
           </div>
 
           <div className="hidden md:block">
-            <Link
-              href="/register"
-              onClick={() => trackEvent('cta_register_click', { location: 'header' })}
+            <a
+              href={register.href}
+              {...registerLinkProps}
+              onClick={() => trackRegister('header')}
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-2 rounded-full transition-colors whitespace-nowrap"
             >
-              {navigation.header.registerButton.label}
-            </Link>
+              {register.label}
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -158,16 +170,17 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link
-              href="/register"
+            <a
+              href={register.href}
+              {...registerLinkProps}
               className="bg-orange-500 hover:bg-orange-600 text-white text-sm font-bold px-5 py-3 rounded-full transition-colors text-center mt-2"
               onClick={() => {
-                trackEvent('cta_register_click', { location: 'header_mobile' })
+                trackRegister('header_mobile')
                 setMenuOpen(false)
               }}
             >
-              {navigation.header.registerButton.label}
-            </Link>
+              {register.label}
+            </a>
           </div>
         )}
       </nav>

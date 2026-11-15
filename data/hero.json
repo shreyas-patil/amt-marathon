@@ -1,18 +1,24 @@
 {
-  "locationTag": "Amravati, Maharashtra",
-  "headingLines": ["AMRAVATI", "HALF MARATHON", "25 October 2026"],
-  "edition": "9th Edition",
-  "description": "Run through the heart of Vidarbha. Four categories. Thousands of runners. The race that fills Amravati's streets every October.",
+  "theme": "sakhi",
+  "locationTag": "Amravati Half Marathon presents",
+  "headingLines": [
+    "AMRAVATI",
+    "WOMEN'S 10K",
+    "7 March 2027"
+  ],
+  "edition": "चला, सोबत धावूया!",
+  "editionLang": "mr",
+  "description": "Come together for your sister's solidarity. Run for your health. 10 km and 5 km on the Sunday before International Women's Day, with ₹1,36,000 in prizes.",
   "ctaButtons": [
     {
       "label": "Register Now",
       "variant": "primary",
-      "hrefKey": "registrationUrl"
+      "hrefKey": "sakhiRegistration"
     },
     {
-      "label": "View Categories",
+      "label": "See race details",
       "variant": "secondary",
-      "href": "#categories"
+      "href": "/sakhi"
     }
   ],
   "scrollIndicator": {

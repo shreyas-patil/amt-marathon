@@ -21,7 +21,7 @@ function Section({ heading, children }: { heading: string; children: React.React
 }
 
 export default function PrivacyPage() {
-  const lastUpdated = 'October 2026'
+  const lastUpdated = 'November 2026'
 
   return (
     <div className="pt-16 bg-white min-h-screen">
@@ -110,6 +110,7 @@ export default function PrivacyPage() {
             <li>How far down each page you scroll (25 / 50 / 75 / 90%)</li>
             <li>Which sections of the page were viewed</li>
             <li>Clicks through to the registration provider</li>
+            <li>Taps on the Share button (and whether your phone&apos;s share sheet or WhatsApp opened)</li>
           </ul>
           <p>
             All data is anonymous and aggregated — it cannot be used to identify you personally.
@@ -142,8 +143,9 @@ export default function PrivacyPage() {
 
         <Section heading="Third-party links">
           <p>
-            This site links to external services including Alpha Racing Solution (registration), hotel booking
-            platforms, and Google Maps. Once you leave this site, their respective privacy policies
+            This site links to external services including Alpha Racing Solution (registration for the
+            half marathon and the Amravati Women&apos;s 10K), WhatsApp (when you share a page), hotel
+            booking platforms, and Google Maps. Once you leave this site, their respective privacy policies
             apply.
           </p>
         </Section>

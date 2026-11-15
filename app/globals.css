@@ -10,6 +10,23 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Women's run (/sakhi) fonts: variables are set by app/sakhi/layout.tsx */
+  --font-sakhi-display: var(--font-tiro);
+  --font-sakhi-mr: var(--font-mukta);
+  --font-sakhi-hero: var(--font-baloo);
+}
+
+/* Women's run (/sakhi) palette: peacock teal with marigold zari gold */
+@theme {
+  --color-sakhi: #0d6e72;
+  --color-sakhi-deep: #0a5357;
+  --color-sakhi-soft: #2f9a9e;
+  --color-sakhi-gold: #f2a516;
+  --color-sakhi-gold-light: #fcd34d;
+  --color-sakhi-cream: #fde7a8;
+  --color-sakhi-night: #0b2423;
+  --color-sakhi-muted: #3c5553;
+  --color-sakhi-rule: #dfe8e7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -146,5 +163,30 @@ body {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+/* ── Women's run (/sakhi) hero entrance ──
+   Content is visible by default; the animation only plays the entrance.
+   Each element sets --sakhi-delay inline to stagger the sequence. */
+@keyframes sakhi-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sakhi-rise {
+  animation: sakhi-rise 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--sakhi-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sakhi-rise {
+    animation: none;
   }
 }
