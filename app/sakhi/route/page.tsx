@@ -41,6 +41,7 @@ export default function SakhiRoutePage() {
             className="sakhi-rise font-sakhi-display text-[44px] font-normal leading-none text-balance md:text-7xl"
             style={rise(1)}
           >
+            <span className="block">{route.title.line1}</span>{' '}
             <em>{route.title.emphasis}</em> {route.title.rest}
           </h1>
           {route.provisional && (

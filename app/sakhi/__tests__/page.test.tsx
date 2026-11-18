@@ -1,3 +1,5 @@
+import { existsSync } from 'fs'
+import { join } from 'path'
 import { describe, expect, test, vi } from 'vitest'
 import { render, screen, within } from '@testing-library/react'
 import { getSakhi } from '@/lib/data'
@@ -13,11 +15,11 @@ describe('SakhiPage — hero', () => {
     expect(screen.getByText(sakhi.hero.kicker)).toHaveAttribute('lang', 'mr')
   })
 
-  test('the page title is "Women\'s 10K" in English', () => {
+  test('the page title is the event\'s full name, "Amravati Women\'s 10K"', () => {
     render(<SakhiPage />)
     const h1 = screen.getByRole('heading', { level: 1 })
-    expect(h1).toHaveTextContent(`${sakhi.hero.title.emphasis} ${sakhi.hero.title.rest}`)
-    expect(h1).not.toHaveTextContent(sakhi.hero.title.line1)
+    expect(h1).toHaveTextContent("Amravati Women's 10K")
+    expect(h1.textContent).toBe(sakhi.name)
   })
 
   test('shows the date in English and Marathi', () => {
@@ -58,7 +60,6 @@ describe('SakhiPage — sections', () => {
       expect(within(section).getByRole('heading', { name: d.name })).toBeInTheDocument()
     }
     expect(screen.getByText(sakhi.distances.ageGroups)).toBeInTheDocument()
-    expect(screen.getByText(sakhi.distances.ageNote)).toBeInTheDocument()
   })
 
   test('the prize table has one row per place with both distances', () => {
@@ -67,6 +68,35 @@ describe('SakhiPage — sections', () => {
     const rows = within(table).getAllByRole('row')
     expect(rows).toHaveLength(sakhi.prizes.rows.length + 1)
     expect(within(table).getByText('₹15,000')).toBeInTheDocument()
+  })
+
+  test('each distance column header names both age groups', () => {
+    render(<SakhiPage />)
+    const headers = within(screen.getByRole('table')).getAllByRole('columnheader')
+    for (const name of [sakhi.prizes.columns.first, sakhi.prizes.columns.second]) {
+      const header = headers.find((h) => h.textContent?.startsWith(name))!
+      expect(header).toHaveTextContent(sakhi.distances.ageGroupsShort)
+    }
+  })
+
+  test('drops the age note and the prize footnote', () => {
+    render(<SakhiPage />)
+    expect(screen.queryByText(/counts on race day/)).not.toBeInTheDocument()
+    expect(screen.queryByText(/Paid separately/)).not.toBeInTheDocument()
+  })
+
+  test('the women of the club open the Bring your sakhi section', () => {
+    render(<SakhiPage />)
+    const region = screen.getByRole('region', { name: sakhi.sakhi.photosLabel })
+    const section = region.closest('section')!
+    expect(within(section).getByRole('heading', { level: 2, name: /sakhi/ })).toBeInTheDocument()
+    expect(within(region).getAllByRole('img')).toHaveLength(sakhi.sakhi.photos.length)
+  })
+
+  test('every photo file is in public/', () => {
+    for (const photo of sakhi.sakhi.photos) {
+      expect(existsSync(join(process.cwd(), 'public', photo.src))).toBe(true)
+    }
   })
 
   test('key dates stay on one line', () => {

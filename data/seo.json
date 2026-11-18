@@ -78,7 +78,7 @@
       "sitemap": { "priority": 0.9, "changefreq": "weekly" }
     },
     "sakhiRoute": {
-      "title": "Women's 10K route map",
+      "title": "Amravati Women's 10K route map",
       "description": "Course maps for the Amravati Women's 10K on 7 March 2027: the 10 km and 5 km routes.",
       "canonical": "/sakhi/route",
       "sitemap": { "priority": 0.6, "changefreq": "monthly" }

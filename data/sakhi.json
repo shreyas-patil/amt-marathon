@@ -41,7 +41,7 @@
       "label": "Register now",
       "labelMr": "नोंदणी करा"
     },
-    "earlyBirdNote": "Early bird: ₹200 off until 31 December"
+    "earlyBirdNote": "Early bird discount: ₹200 off until 31 December"
   },
   "sakhi": {
     "heading": "Bring your",
@@ -49,7 +49,40 @@
     "headingMr": "सखी सोबत असेल, तर आणखी मजा!",
     "body": "This race is for every woman, whether you come on your own or with friends. Know someone who would enjoy it? Send her the link.",
     "shareLabel": "Share with a friend",
-    "shareText": "Amravati Women's 10K, Sunday 7 March 2027. चला, सोबत धावूया!"
+    "shareText": "Amravati Women's 10K, Sunday 7 March 2027. चला, सोबत धावूया!",
+    "photosLabel": "Photos of women from Amravati Road Runners",
+    "photos": [
+      {
+        "src": "/images/sakhi/runners/wave.jpg",
+        "width": 480,
+        "height": 640,
+        "alt": "A woman from Amravati Road Runners in the club's blue running shirt, smiling and waving on a morning road run"
+      },
+      {
+        "src": "/images/sakhi/runners/arms-wide.jpg",
+        "width": 480,
+        "height": 640,
+        "alt": "A woman from Amravati Road Runners running down an empty road with arms spread wide"
+      },
+      {
+        "src": "/images/sakhi/runners/peace-sign.jpg",
+        "width": 480,
+        "height": 640,
+        "alt": "A woman in an Amravati Half Marathon T-shirt and pink headband, smiling and showing a peace sign mid-run"
+      },
+      {
+        "src": "/images/sakhi/runners/hands-on-hips.jpg",
+        "width": 480,
+        "height": 640,
+        "alt": "A woman from Amravati Road Runners in sunglasses, hands on hips and smiling, with clubmates behind"
+      },
+      {
+        "src": "/images/sakhi/runners/running-together.jpg",
+        "width": 315,
+        "height": 420,
+        "alt": "Two women from Amravati Road Runners running side by side in tricolour shirts"
+      }
+    ]
   },
   "distances": {
     "heading": "Pick your distance",
@@ -74,12 +107,11 @@
         "name": "5 km Run"
       }
     ],
-    "ageGroups": "Age groups: 15 to 39, and 40 and above",
-    "ageGroupsMr": "वयोगट: १५ ते ३९, आणि ४० व त्याहून अधिक",
-    "ageNote": "Age counts on race day. Turned 40 by 7 March? You run in 40 and above.",
+    "ageGroups": "Age groups: 15 to 40, and 40 and above",
+    "ageGroupsMr": "वयोगट: १५ ते ४०, आणि ४० व त्याहून अधिक",
     "earlyBirdLabel": "Early bird",
     "regularLabel": "Regular pricing",
-    "ageGroupsShort": "15–39 · 40 & above"
+    "ageGroupsShort": "15–40 · 40 & above"
   },
   "prizes": {
     "total": "₹1,36,000",
@@ -117,8 +149,7 @@
         "first": 3000,
         "second": 2000
       }
-    ],
-    "note": "Paid separately in each age group: 15 to 39, and 40 and above."
+    ]
   },
   "keyDates": {
     "heading": "Key dates",
@@ -130,7 +161,7 @@
       },
       {
         "date": "31 Dec",
-        "label": "Early bird price ends"
+        "label": "Early bird discount ends"
       },
       {
         "date": "7 Mar",
@@ -165,6 +196,7 @@
     "path": "/sakhi/route",
     "kicker": "मार्ग नकाशा",
     "title": {
+      "line1": "Amravati",
       "emphasis": "Women's",
       "rest": "10K route"
     },
@@ -190,7 +222,7 @@
         "alt": "5 km route map for the Amravati Women's 10K"
       }
     ],
-    "backLabel": "Back to the Women's 10K",
+    "backLabel": "Back to the Amravati Women's 10K",
     "backHref": "/sakhi"
   }
 }

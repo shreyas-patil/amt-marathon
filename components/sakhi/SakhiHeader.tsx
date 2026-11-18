@@ -17,6 +17,8 @@ interface Props {
   registrationUrl: string
   registerLabel: string
   closedLabel: string
+  /** The event's name, which labels the navigation for screen readers. */
+  name: string
 }
 
 /**
@@ -31,6 +33,7 @@ export default function SakhiHeader({
   registrationUrl,
   registerLabel,
   closedLabel,
+  name,
 }: Props) {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -58,7 +61,7 @@ export default function SakhiHeader({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Women's 10K">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label={name}>
         <div className="flex items-center justify-between h-16">
           <Link
             href={backHref}

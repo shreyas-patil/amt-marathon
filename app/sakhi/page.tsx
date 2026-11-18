@@ -4,6 +4,7 @@ import PaithaniBand from '@/components/sakhi/PaithaniBand'
 import SakhiRegisterButton from '@/components/sakhi/SakhiRegisterButton'
 import ShareButton from '@/components/sakhi/ShareButton'
 import DistanceCard from '@/components/sakhi/DistanceCard'
+import RunnerPhotos from '@/components/sakhi/RunnerPhotos'
 import { container, rise, Marathi, HeroMarathi } from '@/components/sakhi/shared'
 
 const { site, seo } = siteData
@@ -49,6 +50,7 @@ export default function SakhiPage() {
                 className="sakhi-rise whitespace-nowrap font-sakhi-display text-[52px] font-normal leading-none md:text-8xl"
                 style={rise(1)}
               >
+                <span className="block">{hero.title.line1}</span>{' '}
                 <em>{hero.title.emphasis}</em> {hero.title.rest}
               </h1>
               <p
@@ -112,14 +114,14 @@ export default function SakhiPage() {
             <p className="text-base text-zinc-600">
               <Marathi>{distances.ageGroupsMr}</Marathi>
             </p>
-            <p className="mt-1 text-sm leading-normal text-zinc-500">{distances.ageNote}</p>
           </div>
         </div>
       </section>
       <PaithaniBand tone="white" next="black" id="band-distances" />
 
-      {/* ── Bring your sakhi (black) ─────────────────────── */}
-      <section className="bg-[#0a0a0a]">
+      {/* ── Bring your sakhi (black): women of the club, then the invitation ── */}
+      <section className="bg-[#0a0a0a] pt-11 lg:pt-[72px]">
+        <RunnerPhotos photos={sakhi.sakhi.photos} label={sakhi.sakhi.photosLabel} />
         <div className={`${container} grid gap-3.5 py-11 lg:grid-cols-12 lg:gap-x-6 lg:py-[72px]`}>
           <div className="flex flex-col gap-1 text-center lg:col-span-5 lg:text-left">
             <h2 className="font-sakhi-display text-4xl font-normal leading-tight lg:text-5xl">
@@ -166,10 +168,12 @@ export default function SakhiPage() {
                     {prizes.columns.place}
                   </th>
                   <th scope="col" className="py-2.5 text-right font-semibold">
-                    {prizes.columns.first}
+                    <span className="block text-sakhi-night">{prizes.columns.first}</span>
+                    <span className="block text-xs font-normal">{distances.ageGroupsShort}</span>
                   </th>
                   <th scope="col" className="py-2.5 text-right font-semibold">
-                    {prizes.columns.second}
+                    <span className="block text-sakhi-night">{prizes.columns.second}</span>
+                    <span className="block text-xs font-normal">{distances.ageGroupsShort}</span>
                   </th>
                 </tr>
               </thead>
@@ -192,7 +196,6 @@ export default function SakhiPage() {
                 ))}
               </tbody>
             </table>
-            <p className="mt-4 text-center text-sm text-sakhi-muted lg:text-left">{prizes.note}</p>
           </div>
         </div>
       </section>

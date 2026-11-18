@@ -17,7 +17,7 @@ const THEMES = {
     button: 'bg-orange-500 hover:bg-orange-700 focus-visible:ring-orange-500',
   },
   sakhi: {
-    glow: 'bg-[radial-gradient(ellipse_80%_60%_at_50%_60%,rgba(13,110,114,0.3),transparent)]',
+    glow: 'bg-[radial-gradient(ellipse_80%_60%_at_50%_60%,rgba(224,40,127,0.3),transparent)]',
     line: 'via-sakhi-gold/50',
     tag: 'text-sakhi-gold-light',
     accent: 'text-sakhi-gold',

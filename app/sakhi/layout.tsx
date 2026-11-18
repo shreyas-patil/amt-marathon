@@ -43,6 +43,7 @@ export default function SakhiLayout({ children }: { children: React.ReactNode })
         registrationUrl={sakhi.registrationUrl}
         registerLabel={sakhi.hero.cta.label}
         closedLabel={sakhi.registrationClosedLabel}
+        name={sakhi.name}
       />
       {children}
       <SakhiFooter footer={sakhi.footer} />

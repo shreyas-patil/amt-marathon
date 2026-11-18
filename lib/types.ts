@@ -430,6 +430,14 @@ export interface SakhiDistance {
   fees: { earlyBird: number; standard: number }
 }
 
+/** A photo of women from the club, shown in the "Bring your sakhi" section. */
+export interface SakhiPhoto {
+  src: string
+  alt: string
+  width: number
+  height: number
+}
+
 export interface SakhiPrizeRow {
   place: string
   first: number
@@ -460,6 +468,8 @@ export interface SakhiData {
     body: string
     shareLabel: string
     shareText: string
+    photosLabel: string
+    photos: SakhiPhoto[]
   }
   distances: {
     heading: string
@@ -470,7 +480,6 @@ export interface SakhiData {
     ageGroups: string
     ageGroupsShort: string
     ageGroupsMr: string
-    ageNote: string
   }
   prizes: {
     total: string
@@ -479,7 +488,6 @@ export interface SakhiData {
     intro: string
     columns: { place: string; first: string; second: string }
     rows: SakhiPrizeRow[]
-    note: string
   }
   keyDates: {
     heading: string
@@ -492,7 +500,7 @@ export interface SakhiData {
   route: {
     path: string
     kicker: string
-    title: { emphasis: string; rest: string }
+    title: { line1: string; emphasis: string; rest: string }
     /** true while the women's run reuses the half marathon's 10 km / 5 km courses */
     provisional: boolean
     provisionalNote: string

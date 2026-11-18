@@ -13,7 +13,7 @@ describe('SakhiRoutePage', () => {
   test('is titled as the women\'s run route, not the half marathon\'s', () => {
     render(<SakhiRoutePage />)
     const h1 = screen.getByRole('heading', { level: 1 })
-    expect(h1).toHaveTextContent(`${route.title.emphasis} ${route.title.rest}`)
+    expect(h1).toHaveTextContent("Amravati Women's 10K route")
     expect(document.body).not.toHaveTextContent(/Half Marathon 2026|21\.1 km|Power Run|Dream Run/)
   })
 

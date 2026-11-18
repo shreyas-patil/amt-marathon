@@ -6,6 +6,7 @@ import SakhiRegisterButton from '../SakhiRegisterButton'
 import ShareButton from '../ShareButton'
 import DistanceCard from '../DistanceCard'
 import SakhiHeader from '../SakhiHeader'
+import RunnerPhotos from '../RunnerPhotos'
 import { getSakhi } from '@/lib/data'
 
 vi.mock('@/lib/analytics', () => ({ trackEvent: vi.fn() }))
@@ -153,7 +154,7 @@ describe('DistanceCard', () => {
   const distance = { id: '10k', label: '10 km', name: '10 km Run', fees: { earlyBird: 600, standard: 800 } }
   const props = {
     distance,
-    ageGroups: '15–39 · 40 & above',
+    ageGroups: '15–40 · 40 & above',
     deadline: '2026-12-31T23:59:59+05:30',
     earlyBirdLabel: 'Early bird',
     regularLabel: 'Regular pricing',
@@ -199,6 +200,33 @@ describe('DistanceCard', () => {
   })
 })
 
+describe('RunnerPhotos', () => {
+  const { photos, photosLabel } = getSakhi().sakhi
+
+  test('shows every photo from data, each with its own description', () => {
+    render(<RunnerPhotos photos={photos} label={photosLabel} />)
+    const images = screen.getAllByRole('img')
+    expect(images).toHaveLength(photos.length)
+    photos.forEach((photo, i) => expect(images[i]).toHaveAttribute('alt', photo.alt))
+  })
+
+  test('is a named region keyboard users can scroll', () => {
+    render(<RunnerPhotos photos={photos} label={photosLabel} />)
+    const region = screen.getByRole('region', { name: photosLabel })
+    expect(region).toHaveAttribute('tabindex', '0')
+  })
+
+  test('swipes sideways on phones and becomes one row from lg up', () => {
+    render(<RunnerPhotos photos={photos} label={photosLabel} />)
+    expect(screen.getByTestId('runner-photos')).toHaveClass('overflow-x-auto', 'snap-x', 'lg:grid-cols-5')
+  })
+
+  test('has no caption', () => {
+    const { container } = render(<RunnerPhotos photos={photos} label={photosLabel} />)
+    expect(container.querySelector('figcaption')).toBeNull()
+  })
+})
+
 describe('SakhiHeader', () => {
   const sakhi = getSakhi()
   const props = {
@@ -208,7 +236,13 @@ describe('SakhiHeader', () => {
     registrationUrl: '',
     registerLabel: 'Register now',
     closedLabel: sakhi.registrationClosedLabel,
+    name: sakhi.name,
   }
+
+  test('its navigation is named after the event', () => {
+    render(<SakhiHeader {...props} />)
+    expect(screen.getByRole('navigation', { name: "Amravati Women's 10K" })).toBeInTheDocument()
+  })
 
   test('logo goes back to the main site; links use the main site\'s wording', () => {
     render(<SakhiHeader {...props} />)
