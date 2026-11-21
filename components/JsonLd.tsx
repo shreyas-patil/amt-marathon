@@ -9,7 +9,7 @@ export default function JsonLd() {
     '@context': 'https://schema.org',
     '@type': 'SportsEvent',
     name: event.name,
-    description: seo.pages.home.description,
+    description: seo.pages.home.halfMarathonEventDescription ?? seo.pages.home.description,
     url: siteUrl,
     startDate: `${event.date}T${event.startTime}`,
     endDate: `${event.date}T${event.endTime}`,

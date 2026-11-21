@@ -1,5 +1,12 @@
 import { describe, expect, test } from 'vitest'
-import siteData, { getCategories, getHotels, getSakhi, isExternalHref } from '../data'
+import siteData, {
+  getCategories,
+  getHotels,
+  getSakhi,
+  isExternalHref,
+  raceForHref,
+  registerHref,
+} from '../data'
 
 describe('data — hero CTAs', () => {
   test('every hero CTA ends up with an href (literal or resolved from hrefKey)', () => {
@@ -57,10 +64,28 @@ describe('data — women\'s run (getSakhi)', () => {
     }
   })
 
-  test('site-wide Register buttons go straight to registration when live, else to /sakhi', () => {
-    const expected = sakhi.registrationUrl || sakhi.path
-    expect(siteData.navigation.header.registerButton.href).toBe(expected)
-    expect(siteData.hero.ctaButtons[0].href).toBe(expected)
+  test('the main site\'s Register buttons go straight to the women\'s run sign-up page', () => {
+    expect(siteData.navigation.header.registerButton.href).toBe(sakhi.registrationUrl)
+    expect(siteData.hero.ctaButtons[0].href).toBe(sakhi.registrationUrl)
+    expect(registerHref).toBe(sakhi.registrationUrl)
+  })
+
+  test('the women\'s run registration link is the Alpha Racing page for this race', () => {
+    expect(sakhi.registrationUrl).toBe('https://alpharacingsolution.com/buy/amravati-women-10k')
+  })
+})
+
+describe('data — raceForHref (the GA "race" parameter)', () => {
+  test('/sakhi and its Alpha Racing link are the women\'s run', () => {
+    expect(raceForHref('/sakhi')).toBe('womens_10k')
+    expect(raceForHref('/sakhi#categories')).toBe('womens_10k')
+    expect(raceForHref(getSakhi().registrationUrl)).toBe('womens_10k')
+  })
+
+  test('anything else is the half marathon', () => {
+    expect(raceForHref('/register')).toBe('half_marathon')
+    expect(raceForHref(siteData.event.registrationUrl)).toBe('half_marathon')
+    expect(raceForHref('/sakhiextra')).toBe('half_marathon')
   })
 })
 

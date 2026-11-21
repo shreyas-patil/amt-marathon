@@ -68,6 +68,8 @@ export interface EventConfig {
     googleMapsUrl: string
   }
   registrationUrl: string
+  /** Sent as the `race` parameter on Google Analytics register events. */
+  analyticsId: string
   maxParticipants: number
   totalPrizePool: string
   history: {
@@ -105,6 +107,8 @@ export interface SeoPageConfig {
   canonical: string
   openGraph?: { url?: string; title?: string; description?: string }
   sitemap?: { priority: number; changefreq: string }
+  /** Home only: the half marathon's own description for its structured data. */
+  halfMarathonEventDescription?: string
 }
 
 export interface SeoConfig {
@@ -449,6 +453,8 @@ export interface SakhiData {
   path: string
   date: string
   registrationUrl: string
+  /** Sent as the `race` parameter on Google Analytics register events. */
+  analyticsId: string
   registrationClosedLabel: string
   nav: { backLabel: string; backHref: string; links: SakhiLink[] }
   hero: {

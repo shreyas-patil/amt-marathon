@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Geist, Notable, Black_Ops_One } from 'next/font/google'
 import './globals.css'
-import JsonLd from '@/components/JsonLd'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import CookieConsent from '@/components/CookieConsentLoader'
 import siteData from '@/lib/data'
@@ -69,9 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${geist.variable} ${notable.variable} ${blackOpsOne.variable} scroll-smooth`}
     >
-      <head>
-        <JsonLd />
-      </head>
       <body className="bg-black text-white antialiased flex flex-col min-h-screen">
         <GoogleAnalytics />
         <CookieConsent />

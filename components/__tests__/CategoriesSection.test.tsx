@@ -1,9 +1,11 @@
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import siteData from '@/lib/data'
+import { trackEvent } from '@/lib/analytics'
 import CategoriesSection from '../CategoriesSection'
 
 vi.mock('@/lib/analytics', () => ({ trackEvent: vi.fn() }))
+const mockTrack = vi.mocked(trackEvent)
 
 const { categories } = siteData
 
@@ -80,5 +82,25 @@ describe('CategoriesSection — early bird deadline', () => {
     for (const label of screen.getAllByText('Early bird')) {
       expect(label).toHaveClass('line-through')
     }
+  })
+})
+
+describe('CategoriesSection — Register links', () => {
+  test('every category card and the Register Now button open the women\'s run sign-up page', () => {
+    const { container } = render(<CategoriesSection />)
+    const links = Array.from(container.querySelectorAll('a'))
+    expect(links.length).toBeGreaterThan(categories.categories.length)
+    for (const link of links) {
+      expect(link).toHaveAttribute('href', 'https://alpharacingsolution.com/buy/amravati-women-10k')
+      expect(link).toHaveAttribute('target', '_blank')
+    }
+  })
+
+  test('the Register Now button is tracked as a register click and an outbound click', () => {
+    render(<CategoriesSection />)
+    fireEvent.click(screen.getByRole('link', { name: categories.section.ctaLabel }))
+    const params = { location: 'categories_cta', race: 'womens_10k' }
+    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', params)
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', params)
   })
 })

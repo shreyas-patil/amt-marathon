@@ -7,6 +7,7 @@ import ShareButton from '../ShareButton'
 import DistanceCard from '../DistanceCard'
 import SakhiHeader from '../SakhiHeader'
 import RunnerPhotos from '../RunnerPhotos'
+import SakhiJsonLd from '../SakhiJsonLd'
 import { getSakhi } from '@/lib/data'
 
 vi.mock('@/lib/analytics', () => ({ trackEvent: vi.fn() }))
@@ -115,7 +116,10 @@ describe('SakhiRegisterButton', () => {
     expect(link).toHaveAttribute('target', '_blank')
     expect(screen.getByText(props.labelMr)).toHaveAttribute('lang', 'mr')
     fireEvent.click(link)
-    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', { location: 'sakhi_hero' })
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', {
+      location: 'sakhi_hero',
+      race: 'womens_10k',
+    })
   })
 })
 
@@ -188,6 +192,7 @@ describe('DistanceCard', () => {
     expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', {
       location: 'sakhi_card',
       category: '10k',
+      race: 'womens_10k',
     })
   })
 
@@ -260,5 +265,42 @@ describe('SakhiHeader', () => {
   test('ends with the Paithani strip', () => {
     render(<SakhiHeader {...props} />)
     expect(screen.getByTestId('paithani-strip')).toBeInTheDocument()
+  })
+
+  test('once registration is live, Register links out and is tracked for the women\'s run', () => {
+    render(<SakhiHeader {...props} registrationUrl="https://example.com/reg" />)
+    const link = screen.getByRole('link', { name: 'Register now' })
+    expect(link).toHaveAttribute('href', 'https://example.com/reg')
+    expect(link).toHaveAttribute('target', '_blank')
+    fireEvent.click(link)
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', {
+      location: 'sakhi_header',
+      race: 'womens_10k',
+    })
+  })
+})
+
+describe('SakhiJsonLd', () => {
+  const sakhi = getSakhi()
+  const read = () => {
+    const { container } = render(<SakhiJsonLd />)
+    return JSON.parse(container.querySelector('script[type="application/ld+json"]')!.textContent!)
+  }
+
+  test('describes the women\'s run as a sports event on its own page and date', () => {
+    const data = read()
+    expect(data['@type']).toBe('SportsEvent')
+    expect(data.name).toBe("Amravati Women's 10K")
+    expect(data.url).toBe('https://runamravati.com/sakhi')
+    expect(data.startDate).toBe('2027-03-07')
+    expect(data.location.address.addressLocality).toBe('Amravati')
+  })
+
+  test('offers point at the women\'s run sign-up page with the fee range', () => {
+    const { offers } = read()
+    expect(offers.url).toBe(sakhi.registrationUrl)
+    expect(offers.priceCurrency).toBe('INR')
+    expect(offers.lowPrice).toBe(400)
+    expect(offers.highPrice).toBe(800)
   })
 })

@@ -1,6 +1,9 @@
 'use client'
 
 import { trackEvent } from '@/lib/analytics'
+import { getSakhi } from '@/lib/data'
+
+const race = getSakhi().analyticsId
 
 interface Props {
   registrationUrl: string
@@ -41,7 +44,7 @@ export default function SakhiRegisterButton({
       href={registrationUrl}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackEvent('register_outbound_click', { location })}
+      onClick={() => trackEvent('register_outbound_click', { location, race })}
       className={`${base} bg-white text-sakhi-deep hover:bg-sakhi-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-sakhi`}
     >
       {label} ·{' '}

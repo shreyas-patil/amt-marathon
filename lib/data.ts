@@ -16,9 +16,9 @@ import organizers from '@/data/organizers.json'
 import sakhiJson from '@/data/sakhi.json'
 import type { SakhiData } from '@/lib/types'
 
-// Where "Register" buttons go. `sakhiRegistration` is the women's run: straight to
-// the registration site once its link is set in data/sakhi.json, otherwise to the
-// /sakhi page (which says when registration opens). One tap to sign up, not two.
+// Where the main site's "Register" buttons go (picked by `hrefKey` in the data).
+// `sakhiRegistration` is the women's run: straight to its Alpha Racing sign-up page
+// (set in data/sakhi.json), or /sakhi if that link is ever emptied.
 const registerTargets: Record<string, string> = {
   registrationUrl: event.registrationUrl,
   sakhiRegistration: sakhiJson.registrationUrl || sakhiJson.path,
@@ -91,6 +91,29 @@ export function getSakhi(): SakhiData {
 }
 
 export default siteData
+
+/**
+ * Where every Register button on the main site goes: the header button's target
+ * (data/navigation.json → header.registerButton). The category cards and footer use it too.
+ */
+export const registerHref = resolvedNavigation.header.registerButton.href
+
+/** Opens registration sites in a new tab; in-site links stay in the same tab. */
+export function linkTargetProps(href: string) {
+  return isExternalHref(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {}
+}
+
+/**
+ * The race a Register link is for, sent to Google Analytics as `race` so the
+ * women's run and the half marathon can be told apart in reports.
+ */
+export function raceForHref(href: string): string {
+  const { path, registrationUrl, analyticsId } = sakhiJson
+  const isSakhi =
+    href === path || href.startsWith(`${path}#`) || href.startsWith(`${path}/`) ||
+    (!!registrationUrl && href === registrationUrl)
+  return isSakhi ? analyticsId : event.analyticsId
+}
 
 /** True for links that leave the site (e.g. the registration provider). */
 export function isExternalHref(href: string | undefined): boolean {

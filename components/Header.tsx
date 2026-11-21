@@ -3,20 +3,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
-import siteData, { isExternalHref } from '@/lib/data'
+import siteData, { isExternalHref, raceForHref } from '@/lib/data'
 import { trackEvent } from '@/lib/analytics'
 
 const { navigation, site } = siteData
 const register = navigation.header.registerButton
-// Straight to the registration site when it's live (new tab); otherwise an in-site page.
+// Straight to the registration site (new tab); an in-site page if the link is ever emptied.
 const registerExternal = isExternalHref(register.href)
 const registerLinkProps = registerExternal
   ? { target: '_blank', rel: 'noopener noreferrer' }
   : {}
+const registerRace = raceForHref(register.href)
 
 function trackRegister(location: string) {
-  trackEvent('cta_register_click', { location })
-  if (registerExternal) trackEvent('register_outbound_click', { location })
+  trackEvent('cta_register_click', { location, race: registerRace })
+  if (registerExternal) trackEvent('register_outbound_click', { location, race: registerRace })
 }
 
 function MoreDropdown() {

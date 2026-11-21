@@ -3,12 +3,13 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
-import siteData from '@/lib/data'
+import siteData, { getSakhi } from '@/lib/data'
 import { trackEvent } from '@/lib/analytics'
 import type { SakhiLink } from '@/lib/types'
 import { PaithaniStrip } from '@/components/sakhi/PaithaniBand'
 
 const { site } = siteData
+const race = getSakhi().analyticsId
 
 interface Props {
   links: SakhiLink[]
@@ -44,7 +45,7 @@ export default function SakhiHeader({
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => {
-          trackEvent('register_outbound_click', { location })
+          trackEvent('register_outbound_click', { location, race })
           setMenuOpen(false)
         }}
         className={`bg-sakhi hover:bg-sakhi-deep text-white text-sm font-bold px-5 rounded-full transition-colors whitespace-nowrap ${extra}`}

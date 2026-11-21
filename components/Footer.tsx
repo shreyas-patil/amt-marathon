@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import siteData from '@/lib/data'
+import siteData, { isExternalHref, linkTargetProps, raceForHref, registerHref } from '@/lib/data'
 import { trackEvent } from '@/lib/analytics'
 
 const { site, event, navigation, footer } = siteData
@@ -74,8 +74,13 @@ export default function Footer() {
           <p>
             {site.partners.registration.label}{' '}
             <a
-              href="/register"
-              onClick={() => trackEvent('cta_register_click', { location: 'footer' })}
+              href={registerHref}
+              {...linkTargetProps(registerHref)}
+              onClick={() => {
+                const params = { location: 'footer', race: raceForHref(registerHref) }
+                trackEvent('cta_register_click', params)
+                if (isExternalHref(registerHref)) trackEvent('register_outbound_click', params)
+              }}
               className="hover:text-zinc-400 transition-colors"
             >
               {site.partners.registration.name}

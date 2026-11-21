@@ -19,14 +19,15 @@
   },
   "pages": {
     "home": {
-      "title": "Amravati Half Marathon 2026 | runamravati.com",
-      "description": "Register now for the Amravati Half Marathon 2026 on October 25, 2026 in Amravati, Maharashtra. Half Marathon, 10 km, 5 km & Children's Dream Run. Total prize pool ₹4,50,000.",
+      "title": "Amravati Women's 10K, 7 March 2027 | Amravati Half Marathon",
+      "description": "Registration is open for the Amravati Women's 10K on Sunday 7 March 2027: 10 km and 5 km for women aged 15 and above, ₹1,36,000 in prizes. From the organisers of the Amravati Half Marathon.",
       "canonical": "/",
       "openGraph": {
         "url": "/",
-        "title": "Amravati Half Marathon 2026",
-        "description": "Register now for the Amravati Half Marathon 2026 on October 25, 2026 in Amravati, Maharashtra. Half Marathon, 10 km, 5 km & Children's Dream Run. Total prize pool ₹4,50,000."
+        "title": "Amravati Women's 10K, 7 March 2027",
+        "description": "Registration is open. 10 km and 5 km for women aged 15 and above, ₹1,36,000 in prizes. From the organisers of the Amravati Half Marathon."
       },
+      "halfMarathonEventDescription": "The Amravati Half Marathon 2026 on 25 October 2026 in Amravati, Maharashtra: Half Marathon, 10 km, 5 km and Children's Dream Run, with a total prize pool of ₹4,50,000.",
       "sitemap": { "priority": 1.0, "changefreq": "weekly" }
     },
     "prizes": {
@@ -68,7 +69,7 @@
     },
     "sakhi": {
       "title": "Amravati Women's 10K, 7 March 2027",
-      "description": "A road race for women in Amravati on Sunday 7 March 2027, for International Women's Day. 10 km and 5 km, two age groups, ₹1,36,000 in prizes. चला, सोबत धावूया!",
+      "description": "A road race for women in Amravati on Sunday 7 March 2027, for International Women's Day. 10 km and 5 km, two age groups, ₹1,36,000 in prizes. Registration is open. चला, सोबत धावूया!",
       "canonical": "/sakhi",
       "openGraph": {
         "url": "/sakhi",

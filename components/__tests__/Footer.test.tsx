@@ -60,7 +60,15 @@ describe('Footer — with real data', () => {
   test('the registration partner link fires cta_register_click attributed to the footer', () => {
     render(<Footer />)
     fireEvent.click(screen.getByRole('link', { name: site.partners.registration.name }))
-    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', { location: 'footer' })
+    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', { location: 'footer', race: 'womens_10k' })
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', { location: 'footer', race: 'womens_10k' })
+  })
+
+  test('the registration partner link opens the women\'s run sign-up page in a new tab', () => {
+    render(<Footer />)
+    const link = screen.getByRole('link', { name: site.partners.registration.name })
+    expect(link).toHaveAttribute('href', 'https://alpharacingsolution.com/buy/amravati-women-10k')
+    expect(link).toHaveAttribute('target', '_blank')
   })
 })
 

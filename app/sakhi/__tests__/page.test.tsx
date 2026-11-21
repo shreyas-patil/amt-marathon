@@ -28,6 +28,16 @@ describe('SakhiPage — hero', () => {
     expect(screen.getByText(sakhi.hero.dateMr)).toBeInTheDocument()
   })
 
+  test('every Register spot on the page (hero and both distance cards) links out to Alpha Racing', () => {
+    render(<SakhiPage />)
+    const main = within(screen.getByRole('main'))
+    const outbound = main
+      .getAllByRole('link')
+      .filter((a) => a.getAttribute('href') === sakhi.registrationUrl)
+    expect(outbound).toHaveLength(1 + sakhi.distances.items.length)
+    for (const link of outbound) expect(link).toHaveAttribute('target', '_blank')
+  })
+
   test('Register button matches the registration link state in data', () => {
     render(<SakhiPage />)
     if (sakhi.registrationUrl) {
@@ -40,6 +50,17 @@ describe('SakhiPage — hero', () => {
     }
   })
 
+})
+
+describe('SakhiPage — search engines', () => {
+  test('carries the women\'s run event data, not the half marathon\'s', () => {
+    const { container } = render(<SakhiPage />)
+    const blocks = Array.from(container.querySelectorAll('script[type="application/ld+json"]')).map(
+      (s) => JSON.parse(s.textContent!)
+    )
+    expect(blocks).toHaveLength(1)
+    expect(blocks[0].name).toBe(sakhi.name)
+  })
 })
 
 describe('SakhiPage — sections', () => {

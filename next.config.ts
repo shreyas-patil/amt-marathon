@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import sakhi from './data/sakhi.json'
 
 const securityHeaders = [
   // Prevent clickjacking — stops other sites from embedding your pages in iframes
@@ -29,9 +30,18 @@ const nextConfig: NextConfig = {
   // Easy-to-say aliases for the women's run page (/sakhi), for word-of-mouth sharing.
   // Temporary (307) so the main slug can still change without browsers caching it.
   async redirects() {
-    return ['/mahila', '/women', '/womens', '/womens10k', '/womens-10k', '/women10k'].map(
-      (source) => ({ source, destination: '/sakhi', permanent: false })
+    const aliases = ['/mahila', '/women', '/womens', '/womens10k', '/womens-10k', '/women10k'].map(
+      (source) => ({ source, destination: sakhi.path, permanent: false })
     )
+    // /register is the 2026 half marathon's page, whose registration has closed.
+    // While the women's run is the open race, old /register links go straight to its
+    // sign-up page on Alpha Racing. Remove this when half marathon registration reopens.
+    const register = {
+      source: '/register',
+      destination: sakhi.registrationUrl || sakhi.path,
+      permanent: false,
+    }
+    return [...aliases, register]
   },
   async headers() {
     return [

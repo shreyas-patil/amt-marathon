@@ -27,7 +27,9 @@ export default function RegisterCta() {
         href={event.registrationUrl}
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackEvent('register_outbound_click')}
+        onClick={() =>
+          trackEvent('register_outbound_click', { location: 'register_page', race: event.analyticsId })
+        }
         className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-bold px-9 py-4 rounded-full transition-colors text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900 focus-visible:ring-orange-500"
       >
         Continue to registration

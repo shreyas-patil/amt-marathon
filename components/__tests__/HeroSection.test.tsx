@@ -36,7 +36,8 @@ describe('HeroSection', () => {
   test('clicking the primary CTA fires cta_register_click attributed to the hero', () => {
     render(<HeroSection />)
     fireEvent.click(screen.getByRole('link', { name: hero.ctaButtons[0].label }))
-    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', { location: 'hero' })
+    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', { location: 'hero', race: 'womens_10k' })
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', { location: 'hero', race: 'womens_10k' })
   })
 
   test('secondary CTA uses its data href and fires nav_click with that destination', () => {

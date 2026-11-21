@@ -1,12 +1,19 @@
 'use client'
 
 import { useState } from 'react'
-import siteData from '@/lib/data'
+import siteData, { isExternalHref, linkTargetProps, raceForHref, registerHref } from '@/lib/data'
 import type { RaceCategory } from '@/lib/types'
 import { trackEvent } from '@/lib/analytics'
 import { SectionTracker } from '@/components/SectionTracker'
 
 const { categories } = siteData
+const race = raceForHref(registerHref)
+const registerExternal = isExternalHref(registerHref)
+
+function trackRegister(params: Record<string, string>) {
+  trackEvent('cta_register_click', { ...params, race })
+  if (registerExternal) trackEvent('register_outbound_click', { ...params, race })
+}
 
 // Deadline sourced from categories.section — single source of truth
 const EARLY_BIRD_DEADLINE = new Date(categories.section.earlyBirdDeadline)
@@ -28,8 +35,9 @@ function CategoryCard({ cat }: { cat: RaceCategory }) {
 
   return (
     <a
-      href="/register"
-      onClick={() => trackEvent('cta_register_click', { location: 'category_card', category: cat.id })}
+      href={registerHref}
+      {...linkTargetProps(registerHref)}
+      onClick={() => trackRegister({ location: 'category_card', category: cat.id })}
       className="flex flex-col w-full max-w-sm mx-auto group"
     >
       <div
@@ -164,8 +172,9 @@ export default function CategoriesSection() {
 
         <div className="text-center">
           <a
-            href="/register"
-            onClick={() => trackEvent('cta_register_click', { location: 'categories_cta' })}
+            href={registerHref}
+            {...linkTargetProps(registerHref)}
+            onClick={() => trackRegister({ location: 'categories_cta' })}
             className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black px-12 py-4 rounded-full text-lg transition-colors"
           >
             {categories.section.ctaLabel}

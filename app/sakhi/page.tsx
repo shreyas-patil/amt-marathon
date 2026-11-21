@@ -5,6 +5,7 @@ import SakhiRegisterButton from '@/components/sakhi/SakhiRegisterButton'
 import ShareButton from '@/components/sakhi/ShareButton'
 import DistanceCard from '@/components/sakhi/DistanceCard'
 import RunnerPhotos from '@/components/sakhi/RunnerPhotos'
+import SakhiJsonLd from '@/components/sakhi/SakhiJsonLd'
 import { container, rise, Marathi, HeroMarathi } from '@/components/sakhi/shared'
 
 const { site, seo } = siteData
@@ -34,6 +35,7 @@ export default function SakhiPage() {
 
   return (
     <main className="flex-1 text-white">
+      <SakhiJsonLd />
       {/* ── Hero (teal); pt-[82px] clears the fixed header and its strip ───── */}
       <section className="bg-sakhi pt-[82px]">
         <div className={container}>

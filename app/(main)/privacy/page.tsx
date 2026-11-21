@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
-import siteData from '@/lib/data'
+import siteData, { getSakhi } from '@/lib/data'
 
 const { site, event } = siteData
+// The race whose registration is open: the women's run, else the half marathon.
+const registrationUrl = getSakhi().registrationUrl || event.registrationUrl
 const siteUrl = `https://${site.domain}`
 
 export const metadata: Metadata = {
@@ -49,9 +51,9 @@ export default function PrivacyPage() {
             sign-up forms, login systems, or contact forms that store your data on our servers.
           </p>
           <p>
-            Registration for the race is handled entirely by{' '}
+            Registration for our races is handled entirely by{' '}
             <a
-              href={event.registrationUrl}
+              href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-orange-500 hover:underline"
@@ -102,7 +104,7 @@ export default function PrivacyPage() {
           </p>
           <ul className="list-disc list-inside space-y-1 text-sm">
             <li>Pages visited and time spent</li>
-            <li>Clicks on Register / Book Now buttons (and which section they came from)</li>
+            <li>Clicks on Register / Book Now buttons (which section they came from, and which race)</li>
             <li>Navigation link clicks</li>
             <li>Hotel phone and booking button taps</li>
             <li>Email and social media link clicks</li>

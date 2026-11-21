@@ -2,6 +2,9 @@
 
 import { useSyncExternalStore } from 'react'
 import { trackEvent } from '@/lib/analytics'
+import { getSakhi } from '@/lib/data'
+
+const race = getSakhi().analyticsId
 import type { SakhiDistance } from '@/lib/types'
 
 interface Props {
@@ -109,7 +112,11 @@ export default function DistanceCard({
       target="_blank"
       rel="noopener noreferrer"
       onClick={() =>
-        trackEvent('register_outbound_click', { location: 'sakhi_card', category: distance.id })
+        trackEvent('register_outbound_click', {
+          location: 'sakhi_card',
+          category: distance.id,
+          race,
+        })
       }
       className="group mx-auto flex w-full max-w-sm flex-col"
     >

@@ -1,6 +1,6 @@
 import { describe, expect, test } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import siteData from '@/lib/data'
+import siteData, { getSakhi } from '@/lib/data'
 import PrivacyPage from '../page'
 
 const { site, event } = siteData
@@ -14,11 +14,11 @@ describe('PrivacyPage — data-driven content', () => {
     expect(screen.getAllByText(new RegExp(String(event.year))).length).toBeGreaterThan(0)
   })
 
-  test('links registration to the Alpha Racing Solution URL from data', () => {
+  test('links registration to the open race on Alpha Racing Solution (the women\'s run)', () => {
     render(<PrivacyPage />)
     expect(screen.getByRole('link', { name: 'Alpha Racing Solution' })).toHaveAttribute(
       'href',
-      event.registrationUrl
+      getSakhi().registrationUrl || event.registrationUrl
     )
   })
 

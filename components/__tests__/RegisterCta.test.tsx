@@ -22,6 +22,9 @@ describe('RegisterCta', () => {
   test('clicking the CTA fires register_outbound_click', () => {
     render(<RegisterCta />)
     fireEvent.click(screen.getByRole('link', { name: /continue to registration/i }))
-    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click')
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', {
+      location: 'register_page',
+      race: 'half_marathon',
+    })
   })
 })

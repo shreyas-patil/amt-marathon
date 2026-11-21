@@ -14,7 +14,8 @@ describe('JsonLd — structured data is built from the data folder', () => {
     const data = JSON.parse(script!.textContent!)
 
     expect(data.name).toBe(event.name)
-    expect(data.description).toBe(seo.pages.home.description)
+    expect(data.description).toBe(seo.pages.home.halfMarathonEventDescription)
+    expect(data.description).toMatch(/Half Marathon/)
     expect(data.url).toBe(`https://${site.domain}`)
     expect(data.offers.url).toBe(event.registrationUrl)
     expect(data.organizer.name).toBe(site.name)

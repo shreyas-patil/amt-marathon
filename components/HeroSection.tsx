@@ -1,6 +1,6 @@
 'use client'
 
-import siteData, { isExternalHref } from '@/lib/data'
+import siteData, { isExternalHref, raceForHref } from '@/lib/data'
 import { trackEvent } from '@/lib/analytics'
 
 const { hero } = siteData
@@ -34,6 +34,7 @@ export default function HeroSection() {
   const secondary = hero.ctaButtons[1]
   const primaryHref = primary.href ?? '/register'
   const primaryExternal = isExternalHref(primaryHref)
+  const race = raceForHref(primaryHref)
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden">
@@ -83,8 +84,8 @@ export default function HeroSection() {
             href={primaryHref}
             {...(primaryExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             onClick={() => {
-              trackEvent('cta_register_click', { location: 'hero' })
-              if (primaryExternal) trackEvent('register_outbound_click', { location: 'home_hero' })
+              trackEvent('cta_register_click', { location: 'hero', race })
+              if (primaryExternal) trackEvent('register_outbound_click', { location: 'hero', race })
             }}
             className={`${theme.button} text-white font-bold px-10 py-4 rounded-full text-base sm:text-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-black`}
           >

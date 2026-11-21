@@ -26,6 +26,26 @@ describe('Header — renders content from data', () => {
   })
 })
 
+describe('Header — Register button', () => {
+  test('opens the women\'s run sign-up page in a new tab, on desktop and in the phone menu', () => {
+    render(<Header />)
+    openMobileMenu()
+    const links = screen.getAllByRole('link', { name: navigation.header.registerButton.label })
+    expect(links).toHaveLength(2)
+    for (const link of links) {
+      expect(link).toHaveAttribute('href', 'https://alpharacingsolution.com/buy/amravati-women-10k')
+      expect(link).toHaveAttribute('target', '_blank')
+    }
+  })
+
+  test('a click is tracked as a register click and an outbound click for the women\'s run', () => {
+    render(<Header />)
+    fireEvent.click(screen.getAllByRole('link', { name: navigation.header.registerButton.label })[0])
+    expect(mockTrack).toHaveBeenCalledWith('cta_register_click', { location: 'header', race: 'womens_10k' })
+    expect(mockTrack).toHaveBeenCalledWith('register_outbound_click', { location: 'header', race: 'womens_10k' })
+  })
+})
+
 describe('Header — mobile drawer', () => {
   test('hamburger toggles the mobile drawer open and closed', () => {
     render(<Header />)
